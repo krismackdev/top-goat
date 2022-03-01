@@ -3,6 +3,15 @@ import './GamesPage.css'
 import { db } from '../../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material'
 
 type PlayerSuitability = 'yes' | 'no' | 'ok'
 
@@ -23,7 +32,7 @@ const GamesPage: React.FC = () => {
 
   useEffect(() => {
     // this function will get the games from firestore,
-    // then set games state with the result
+    // then set the games state with the result
     const setGamesInitially = async () => {
       const fetchGames = async () => {
         const gamesRef = collection(db, 'games')
@@ -48,6 +57,25 @@ const GamesPage: React.FC = () => {
   return (
     <div className="games-page-container">
       <p>Games Page!</p>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Header 1</TableCell>
+              <TableCell>Header 2</TableCell>
+              <TableCell>Header 3</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>data 1</TableCell>
+              <TableCell>data 2</TableCell>
+              <TableCell>data 3</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   )
 }
