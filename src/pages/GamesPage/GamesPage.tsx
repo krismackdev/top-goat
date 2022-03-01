@@ -1,4 +1,5 @@
-import './MatchPage.css'
+import React from 'react'
+import './GamesPage.css'
 import { db } from '../../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
@@ -17,9 +18,7 @@ interface GamesState {
   }
 }
 
-type GameArray = GamesState[] | []
-
-const MatchPage = () => {
+const GamesPage: React.FC = () => {
   const [games, setGames] = useState<GamesState[]>([])
 
   useEffect(() => {
@@ -46,13 +45,11 @@ const MatchPage = () => {
     setGamesInitially()
   }, [])
 
-  console.log('games = ', games)
-
   return (
-    <div className="match-page-container">
-      <p>Match Page!</p>
+    <div className="games-page-container">
+      <p>Games Page!</p>
     </div>
   )
 }
 
-export default MatchPage
+export default GamesPage

@@ -1,1 +1,1 @@
-export { default as MatchPage } from './MatchPage/MatchPage'
+export { default as GamesPage } from './GamesPage/GamesPage'

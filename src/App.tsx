@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
 import { Navbar } from './components'
-import { MatchPage } from './pages'
+import { GamesPage } from './pages'
 
 const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      <MatchPage />
+      <GamesPage />
     </>
   )
 }
