@@ -1,7 +1,13 @@
+import React from 'react'
 import './App.css'
+import { Navbar } from './components'
 
-function App() {
-  return <p>Hello World</p>
+const App: React.FC = () => {
+  return (
+    <>
+      <Navbar />
+    </>
+  )
 }
 
 export default App
