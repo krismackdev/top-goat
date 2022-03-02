@@ -12,6 +12,8 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
+import { tableCellClasses } from '@mui/material/TableCell'
+import { styled } from '@mui/system'
 
 type PlayerSuitability = 'yes' | 'no' | 'ok'
 
@@ -26,6 +28,14 @@ interface GamesState {
     five: PlayerSuitability
   }
 }
+
+const StyledTableCell = styled(TableCell)({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: 'rgb(48, 43, 43)',
+    color: 'white',
+    fontWeight: 'bold',
+  },
+})
 
 const GamesPage: React.FC = () => {
   const [games, setGames] = useState<GamesState[]>([])
@@ -58,20 +68,39 @@ const GamesPage: React.FC = () => {
     <div className="games-page-container">
       <p>Games Page!</p>
       <TableContainer component={Paper}>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell>Header 1</TableCell>
-              <TableCell>Header 2</TableCell>
-              <TableCell>Header 3</TableCell>
+              <StyledTableCell>Game</StyledTableCell>
+              <StyledTableCell align="center">Pic</StyledTableCell>
+              <StyledTableCell align="center">Link</StyledTableCell>
+              <StyledTableCell align="center">Played</StyledTableCell>
+              <StyledTableCell align="center">1p</StyledTableCell>
+              <StyledTableCell align="center">2p</StyledTableCell>
+              <StyledTableCell align="center">3p</StyledTableCell>
+              <StyledTableCell align="center">4p</StyledTableCell>
+              <StyledTableCell align="center">5p</StyledTableCell>
+              <StyledTableCell align="center">Last</StyledTableCell>
+              <StyledTableCell align="center">Plays</StyledTableCell>
+              <StyledTableCell align="center">Delete</StyledTableCell>
+              <StyledTableCell align="center">Edit</StyledTableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
             <TableRow>
-              <TableCell>data 1</TableCell>
-              <TableCell>data 2</TableCell>
-              <TableCell>data 3</TableCell>
+              <TableCell>azul</TableCell>
+              <TableCell align="center">pic here</TableCell>
+              <TableCell align="center">link here</TableCell>
+              <TableCell align="center">yes</TableCell>
+              <TableCell align="center">no</TableCell>
+              <TableCell align="center">yes</TableCell>
+              <TableCell align="center">yes</TableCell>
+              <TableCell align="center">yes</TableCell>
+              <TableCell align="center">no</TableCell>
+              <TableCell align="center">today</TableCell>
+              <TableCell align="center">10</TableCell>
+              <TableCell align="center">x</TableCell>
+              <TableCell align="center">O</TableCell>
             </TableRow>
           </TableBody>
         </Table>
