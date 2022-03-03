@@ -14,12 +14,18 @@ import {
 import { tableCellClasses } from '@mui/material/TableCell'
 import { styled } from '@mui/system'
 import OpenInBrowserTwoToneIcon from '@mui/icons-material/OpenInBrowserTwoTone'
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
 
 const StyledTableCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: 'rgb(48, 43, 43)',
     color: 'white',
     fontWeight: 'bold',
+    borderRight: '1px solid rgb(48, 43, 43)',
+  },
+  [`&.${tableCellClasses.body}`]: {
+    borderRight: '1px solid black',
   },
 })
 
@@ -28,10 +34,20 @@ const GamesPage: React.FC = () => {
 
   console.log(gamesCtx)
 
+  const getConditionalColor = (val: 'yes' | 'ok' | 'no') => {
+    switch (val) {
+      case 'yes':
+        return '#1EA51E'
+      case 'ok':
+        return '#7CEC98'
+      default:
+        return '#777777'
+    }
+  }
+
   return (
     <div className="games-page-container">
-      <p>Games Page!</p>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -57,34 +73,83 @@ const GamesPage: React.FC = () => {
                   console.log('game in map =', game)
                   return (
                     <>
-                      <TableCell>{game.title}</TableCell>
-                      <TableCell align="center">
+                      <StyledTableCell>{game.title}</StyledTableCell>
+                      <StyledTableCell align="center">
                         <img
                           style={{ maxWidth: '30px' }}
                           src={game.image}
                           alt={`${game.title.replace(/\s+/g, '-')}-pic`}
                         ></img>
-                      </TableCell>
-                      <TableCell align="center">
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
                         <a href={game.link} target="_blank" rel="noreferrer">
                           <OpenInBrowserTwoToneIcon />
                         </a>
-                      </TableCell>
-                      <TableCell align="center">...</TableCell>
-                      <TableCell align="center">{game.players.one}</TableCell>
-                      <TableCell align="center">{game.players.two}</TableCell>
-                      <TableCell align="center">{game.players.three}</TableCell>
-                      <TableCell align="center">{game.players.four}</TableCell>
-                      <TableCell align="center">{game.players.five}</TableCell>
-                      <TableCell align="center">...</TableCell>
-                      <TableCell align="center">...</TableCell>
-                      <TableCell align="center">x</TableCell>
-                      <TableCell align="center">^</TableCell>
+                      </StyledTableCell>
+                      <StyledTableCell align="center">...</StyledTableCell>
+                      <StyledTableCell
+                        sx={{
+                          backgroundColor: `${getConditionalColor(
+                            game.players.one
+                          )}`,
+                        }}
+                        align="center"
+                      >
+                        {game.players.one}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        sx={{
+                          backgroundColor: `${getConditionalColor(
+                            game.players.two
+                          )}`,
+                        }}
+                        align="center"
+                      >
+                        {game.players.two}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        sx={{
+                          backgroundColor: `${getConditionalColor(
+                            game.players.three
+                          )}`,
+                        }}
+                        align="center"
+                      >
+                        {game.players.three}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        sx={{
+                          backgroundColor: `${getConditionalColor(
+                            game.players.four
+                          )}`,
+                        }}
+                        align="center"
+                      >
+                        {game.players.four}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        sx={{
+                          backgroundColor: `${getConditionalColor(
+                            game.players.five
+                          )}`,
+                        }}
+                        align="center"
+                      >
+                        {game.players.five}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">...</StyledTableCell>
+                      <StyledTableCell align="center">...</StyledTableCell>
+                      <StyledTableCell align="center">
+                        <DeleteIcon />
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        <EditIcon />
+                      </StyledTableCell>
                     </>
                   )
                 })
               ) : (
-                <TableCell>No Data To Show</TableCell>
+                <StyledTableCell>No Data To Show</StyledTableCell>
               )}
             </TableRow>
           </TableBody>
