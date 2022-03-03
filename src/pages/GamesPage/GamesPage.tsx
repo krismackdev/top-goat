@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GamesContextProvider } from '../../store/games-context'
 import './GamesPage.css'
-import { db } from '../../firebase/config'
-import { collection, getDocs } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import {
   Paper,
   Table,
@@ -15,20 +14,6 @@ import {
 import { tableCellClasses } from '@mui/material/TableCell'
 import { styled } from '@mui/system'
 
-type PlayerSuitability = 'yes' | 'no' | 'ok'
-
-interface GamesState {
-  title: string
-  image: string
-  players: {
-    one: PlayerSuitability
-    two: PlayerSuitability
-    three: PlayerSuitability
-    four: PlayerSuitability
-    five: PlayerSuitability
-  }
-}
-
 const StyledTableCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: 'rgb(48, 43, 43)',
@@ -38,31 +23,9 @@ const StyledTableCell = styled(TableCell)({
 })
 
 const GamesPage: React.FC = () => {
-  const [games, setGames] = useState<GamesState[]>([])
+  const gamesCtx = useContext(GamesContextProvider)
 
-  useEffect(() => {
-    // this function will get the games from firestore,
-    // then set the games state with the result
-    const setGamesInitially = async () => {
-      const fetchGames = async () => {
-        const gamesRef = collection(db, 'games')
-        const gamesCollection = await getDocs(gamesRef)
-        return gamesCollection
-      }
-      const downloadedGames = await fetchGames().then(res => {
-        const result: GamesState[] = []
-        res.docs.forEach(doc => {
-          let currentGame = doc.data()
-          if (currentGame) {
-            result.push(currentGame as GamesState)
-          }
-        })
-        return result
-      })
-      setGames(downloadedGames)
-    }
-    setGamesInitially()
-  }, [])
+  console.log(gamesCtx)
 
   return (
     <div className="games-page-container">
@@ -71,7 +34,7 @@ const GamesPage: React.FC = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Game</StyledTableCell>
+              <StyledTableCell sx={{ minWidth: 232 }}>Game</StyledTableCell>
               <StyledTableCell align="center">Pic</StyledTableCell>
               <StyledTableCell align="center">Link</StyledTableCell>
               <StyledTableCell align="center">Played</StyledTableCell>
@@ -88,7 +51,7 @@ const GamesPage: React.FC = () => {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>azul</TableCell>
+              <TableCell>war with the evil power master</TableCell>
               <TableCell align="center">pic here</TableCell>
               <TableCell align="center">link here</TableCell>
               <TableCell align="center">yes</TableCell>
