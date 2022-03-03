@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { GamesContextProvider } from '../../store/games-context'
+import { GamesContext } from '../../store/games-context'
 import './GamesPage.css'
 // import { useEffect, useState } from 'react'
 import {
@@ -23,7 +23,7 @@ const StyledTableCell = styled(TableCell)({
 })
 
 const GamesPage: React.FC = () => {
-  const gamesCtx = useContext(GamesContextProvider)
+  const gamesCtx = useContext(GamesContext)
 
   console.log(gamesCtx)
 

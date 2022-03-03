@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
@@ -17,10 +17,14 @@ interface GamesState {
   }
 }
 
-const GamesContext = createContext<GamesState[]>([])
+type GamesContextProviderProps = { children: React.ReactNode }
 
-export const GamesContextProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [games, setGames] = useState([])
+export const GamesContext = createContext<GamesState[] | undefined>(undefined)
+
+export const GamesContextProvider = ({
+  children,
+}: GamesContextProviderProps) => {
+  const [games, setGames] = useState<GamesState[] | undefined>(undefined)
 
   useEffect(() => {
     // this function will get the games from firestore,
@@ -37,7 +41,8 @@ export const GamesContextProvider = ({ children }: PropsWithChildren<{}>) => {
         res.docs.forEach(doc => {
           let currentGame = doc.data()
           if (currentGame) {
-            result.push(currentGame)
+            // ************* is it safe to be asserting as GamesState here?
+            result.push(currentGame as GamesState)
           }
         })
         return result
@@ -48,8 +53,6 @@ export const GamesContextProvider = ({ children }: PropsWithChildren<{}>) => {
 
     setGamesInitially()
   }, [])
-
-  console.log('games =', games)
 
   return <GamesContext.Provider value={games}>{children}</GamesContext.Provider>
 }
