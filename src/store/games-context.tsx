@@ -6,8 +6,8 @@ import { collection, getDocs } from 'firebase/firestore'
 type PlayerSuitability = 'yes' | 'no' | 'ok'
 
 interface GamesState {
-  title: string
   image: string
+  link: string
   players: {
     one: PlayerSuitability
     two: PlayerSuitability
@@ -15,6 +15,7 @@ interface GamesState {
     four: PlayerSuitability
     five: PlayerSuitability
   }
+  title: string
 }
 
 type GamesContextProviderProps = { children: React.ReactNode }

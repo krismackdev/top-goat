@@ -51,19 +51,30 @@ const GamesPage: React.FC = () => {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>war with the evil power master</TableCell>
-              <TableCell align="center">pic here</TableCell>
-              <TableCell align="center">link here</TableCell>
-              <TableCell align="center">yes</TableCell>
-              <TableCell align="center">no</TableCell>
-              <TableCell align="center">yes</TableCell>
-              <TableCell align="center">yes</TableCell>
-              <TableCell align="center">yes</TableCell>
-              <TableCell align="center">no</TableCell>
-              <TableCell align="center">today</TableCell>
-              <TableCell align="center">10</TableCell>
-              <TableCell align="center">x</TableCell>
-              <TableCell align="center">O</TableCell>
+              {Array.isArray(gamesCtx) && gamesCtx.length > 0 ? (
+                gamesCtx.map(game => {
+                  console.log('game in map =', game)
+                  return (
+                    <>
+                      <TableCell>{game.title}</TableCell>
+                      <TableCell align="center">IMAGE</TableCell>
+                      <TableCell align="center">{game.link}</TableCell>
+                      <TableCell align="center">unk</TableCell>
+                      <TableCell align="center">{game.players.one}</TableCell>
+                      <TableCell align="center">{game.players.two}</TableCell>
+                      <TableCell align="center">{game.players.three}</TableCell>
+                      <TableCell align="center">{game.players.four}</TableCell>
+                      <TableCell align="center">{game.players.five}</TableCell>
+                      <TableCell align="center">unk</TableCell>
+                      <TableCell align="center">unk</TableCell>
+                      <TableCell align="center">x</TableCell>
+                      <TableCell align="center">^</TableCell>
+                    </>
+                  )
+                })
+              ) : (
+                <TableCell>No Data To Show</TableCell>
+              )}
             </TableRow>
           </TableBody>
         </Table>
