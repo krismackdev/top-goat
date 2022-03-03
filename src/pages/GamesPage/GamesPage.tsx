@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 import { tableCellClasses } from '@mui/material/TableCell'
 import { styled } from '@mui/system'
+import OpenInBrowserTwoToneIcon from '@mui/icons-material/OpenInBrowserTwoTone'
 
 const StyledTableCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
@@ -57,16 +58,26 @@ const GamesPage: React.FC = () => {
                   return (
                     <>
                       <TableCell>{game.title}</TableCell>
-                      <TableCell align="center">IMAGE</TableCell>
-                      <TableCell align="center">{game.link}</TableCell>
-                      <TableCell align="center">unk</TableCell>
+                      <TableCell align="center">
+                        <img
+                          style={{ maxWidth: '30px' }}
+                          src={game.image}
+                          alt={`${game.title.replace(/\s+/g, '-')}-pic`}
+                        ></img>
+                      </TableCell>
+                      <TableCell align="center">
+                        <a href={game.link} target="_blank" rel="noreferrer">
+                          <OpenInBrowserTwoToneIcon />
+                        </a>
+                      </TableCell>
+                      <TableCell align="center">...</TableCell>
                       <TableCell align="center">{game.players.one}</TableCell>
                       <TableCell align="center">{game.players.two}</TableCell>
                       <TableCell align="center">{game.players.three}</TableCell>
                       <TableCell align="center">{game.players.four}</TableCell>
                       <TableCell align="center">{game.players.five}</TableCell>
-                      <TableCell align="center">unk</TableCell>
-                      <TableCell align="center">unk</TableCell>
+                      <TableCell align="center">...</TableCell>
+                      <TableCell align="center">...</TableCell>
                       <TableCell align="center">x</TableCell>
                       <TableCell align="center">^</TableCell>
                     </>
