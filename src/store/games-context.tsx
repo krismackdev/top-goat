@@ -1,7 +1,7 @@
 import React from 'react'
 import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, doc, deleteDoc, getDocs } from 'firebase/firestore'
 
 interface GameObject {
   id: string
@@ -32,37 +32,37 @@ export const GamesContextProvider = ({
 }: GamesContextProviderProps) => {
   const [games, setGames] = useState<GameObject[] | undefined>(undefined)
 
-  useEffect(() => {
-    // this function will get the games from firestore,
-    // then set the games state with the result
-    const setGamesInitially = async () => {
-      const fetchGames = async () => {
-        const gamesRef = collection(db, 'games')
-        const gamesCollection = await getDocs(gamesRef)
-        return gamesCollection
-      }
-
-      const downloadedGames = await fetchGames().then(res => {
-        const result: GameObject[] = []
-        res.docs.forEach(doc => {
-          let currentGame = doc.data()
-          if (currentGame) {
-            currentGame = { ...currentGame, id: doc.id }
-            // ************* is it safe to be asserting as GamesState here?
-            result.push(currentGame as GameObject)
-          }
-        })
-        return result
-      })
-
-      setGames(downloadedGames)
+  // this function sets the games state with data from firestore
+  const setGamesWithFetchedData = async () => {
+    const fetchGames = async () => {
+      const gamesRef = collection(db, 'games')
+      const gamesCollection = await getDocs(gamesRef)
+      return gamesCollection
     }
 
-    setGamesInitially()
+    const downloadedGames = await fetchGames().then(res => {
+      const result: GameObject[] = []
+      res.docs.forEach(doc => {
+        let currentGame = doc.data()
+        if (currentGame) {
+          currentGame = { ...currentGame, id: doc.id }
+          // ************* is it safe to be asserting as GamesState here?
+          result.push(currentGame as GameObject)
+        }
+      })
+      return result
+    })
+
+    setGames(downloadedGames)
+  }
+
+  useEffect(() => {
+    setGamesWithFetchedData()
   }, [])
 
-  const deleteGame = (id: string): void => {
-    console.log('DG! id =', id)
+  const deleteGame = async (id: string): Promise<void> => {
+    await deleteDoc(doc(db, 'games', id))
+    setGamesWithFetchedData()
   }
 
   return (
