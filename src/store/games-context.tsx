@@ -3,29 +3,34 @@ import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
 
-type PlayerSuitability = 'yes' | 'no' | 'ok'
-
-interface GamesState {
+interface GameObject {
+  id: string
   image: string
   link: string
   players: {
-    one: PlayerSuitability
-    two: PlayerSuitability
-    three: PlayerSuitability
-    four: PlayerSuitability
-    five: PlayerSuitability
+    one: 'yes' | 'no' | 'ok'
+    two: 'yes' | 'no' | 'ok'
+    three: 'yes' | 'no' | 'ok'
+    four: 'yes' | 'no' | 'ok'
+    five: 'yes' | 'no' | 'ok'
   }
   title: string
 }
 
 type GamesContextProviderProps = { children: React.ReactNode }
 
-export const GamesContext = createContext<GamesState[] | undefined>(undefined)
+export const GamesContext = createContext<{
+  games: GameObject[] | undefined
+  deleteGame: (id: string) => void
+}>({
+  games: undefined,
+  deleteGame: () => {},
+})
 
 export const GamesContextProvider = ({
   children,
 }: GamesContextProviderProps) => {
-  const [games, setGames] = useState<GamesState[] | undefined>(undefined)
+  const [games, setGames] = useState<GameObject[] | undefined>(undefined)
 
   useEffect(() => {
     // this function will get the games from firestore,
@@ -38,12 +43,13 @@ export const GamesContextProvider = ({
       }
 
       const downloadedGames = await fetchGames().then(res => {
-        const result: GamesState[] = []
+        const result: GameObject[] = []
         res.docs.forEach(doc => {
           let currentGame = doc.data()
           if (currentGame) {
+            currentGame = { ...currentGame, id: doc.id }
             // ************* is it safe to be asserting as GamesState here?
-            result.push(currentGame as GamesState)
+            result.push(currentGame as GameObject)
           }
         })
         return result
@@ -55,5 +61,13 @@ export const GamesContextProvider = ({
     setGamesInitially()
   }, [])
 
-  return <GamesContext.Provider value={games}>{children}</GamesContext.Provider>
+  const deleteGame = (id: string): void => {
+    console.log('DG! id =', id)
+  }
+
+  return (
+    <GamesContext.Provider value={{ games, deleteGame }}>
+      {children}
+    </GamesContext.Provider>
+  )
 }
