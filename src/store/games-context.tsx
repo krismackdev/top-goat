@@ -1,7 +1,13 @@
 import React from 'react'
 import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
-import { collection, doc, deleteDoc, getDocs } from 'firebase/firestore'
+import {
+  collection,
+  doc,
+  deleteDoc,
+  getDocs,
+  updateDoc,
+} from 'firebase/firestore'
 
 interface GameObject {
   id: string
@@ -22,9 +28,11 @@ type GamesContextProviderProps = { children: React.ReactNode }
 export const GamesContext = createContext<{
   games: GameObject[] | undefined
   deleteGame: (id: string) => void
+  updateGame: (game: GameObject) => void
 }>({
   games: undefined,
   deleteGame: () => {},
+  updateGame: () => {},
 })
 
 export const GamesContextProvider = ({
@@ -65,10 +73,15 @@ export const GamesContextProvider = ({
     setGamesWithFetchedData()
   }
 
-  console.log('games in ctx =', games)
+  const updateGame = async (game: GameObject): Promise<void> => {
+    // using spread operator below due to firebase issue #5853
+    // ... if you use game as is, it causes a typescript error
+    await updateDoc(doc(db, 'games', game.id), { ...game })
+    setGamesWithFetchedData()
+  }
 
   return (
-    <GamesContext.Provider value={{ games, deleteGame }}>
+    <GamesContext.Provider value={{ games, deleteGame, updateGame }}>
       {children}
     </GamesContext.Provider>
   )

@@ -158,7 +158,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
 
   console.log('editState =', editState)
 
-  const { deleteGame } = useContext(GamesContext)
+  const { deleteGame, updateGame } = useContext(GamesContext)
 
   const getConditionalColor = (val: PlayerSuitability) => {
     switch (val) {
@@ -273,7 +273,14 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
         </StyledTableCell>
 
         <StyledTableCell align="center">
-          <IconButton sx={{ color: 'green' }}>
+          <IconButton
+            sx={{ color: 'green' }}
+            onClick={() => {
+              const { isActive, ...updatedGame } = editState
+              updateGame(updatedGame)
+              dispatch({ type: 'toggleEditingMode' })
+            }}
+          >
             <CheckIcon />
           </IconButton>
           <IconButton
@@ -286,7 +293,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
       </TableRow>
     )
     //                                                    //
-    // ** row in edit mode = above, normal row = below ** //
+    //               .. edit mode ABOVE ..                //
+    //                                                    //
+    //                                                    //
+    //               .. normal row BELOW ..               //
     //                                                    //
   } else {
     return (
