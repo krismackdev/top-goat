@@ -65,6 +65,8 @@ export const GamesContextProvider = ({
     setGamesWithFetchedData()
   }
 
+  console.log('games in ctx =', games)
+
   return (
     <GamesContext.Provider value={{ games, deleteGame }}>
       {children}
