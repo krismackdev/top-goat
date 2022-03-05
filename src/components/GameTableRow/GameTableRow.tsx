@@ -179,7 +179,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   if (editState.isActive) {
     return (
       <TableRow key={game.id} sx={{ height: '20px' }}>
-        <StyledTableCell>
+        <StyledTableCell className="editing editing-start">
           <TextField
             variant="standard"
             value={editState.title}
@@ -188,7 +188,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             }
           />
         </StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">
           <TextField
             variant="standard"
             value={editState.image}
@@ -197,7 +197,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             }
           />
         </StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">
           <TextField
             variant="standard"
             value={editState.link}
@@ -206,8 +206,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             }
           />
         </StyledTableCell>
-        <StyledTableCell>...</StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">...</StyledTableCell>
+        <StyledTableCell className="editing">
           <Select
             value={editState.players.one}
             onChange={e =>
@@ -219,7 +219,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">
           <Select
             value={editState.players.two}
             onChange={e =>
@@ -231,7 +231,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">
           <Select
             value={editState.players.three}
             onChange={e =>
@@ -243,7 +243,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">
           <Select
             value={editState.players.four}
             onChange={e =>
@@ -255,7 +255,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">
           <Select
             value={editState.players.five}
             onChange={e =>
@@ -267,13 +267,13 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell>...</StyledTableCell>
-        <StyledTableCell>...</StyledTableCell>
-        <StyledTableCell>
+        <StyledTableCell className="editing">...</StyledTableCell>
+        <StyledTableCell className="editing">...</StyledTableCell>
+        <StyledTableCell className="editing">
           {/* delete cell is empty during edit by design */}
         </StyledTableCell>
 
-        <StyledTableCell align="center">
+        <StyledTableCell className="editing editing-end" align="center">
           <IconButton
             sx={{ color: 'green' }}
             onClick={() => {

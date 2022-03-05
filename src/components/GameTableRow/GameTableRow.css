@@ -1,3 +1,7 @@
 .MuiSelect-outlined {
   padding: 5px 32px 5px 14px !important;
 }
+
+table {
+  border-collapse: separate !important ;
+}
