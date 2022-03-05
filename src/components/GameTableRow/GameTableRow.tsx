@@ -1,5 +1,6 @@
 import React, { useContext, useReducer } from 'react'
 import { GamesContext } from '../../store/games-context'
+import './GameTableRow.css'
 import StyledTableCell from '../../mui/StyledTableCell'
 import { TableRow } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -177,7 +178,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
 
   if (editState.isActive) {
     return (
-      <TableRow key={game.id}>
+      <TableRow key={game.id} sx={{ height: '20px' }}>
         <StyledTableCell>
           <TextField
             variant="standard"
