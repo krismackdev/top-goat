@@ -206,7 +206,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             }
           />
         </StyledTableCell>
-        <StyledTableCell className="editing">...</StyledTableCell>
+        <StyledTableCell className="editing"></StyledTableCell>
         <StyledTableCell className="editing">
           <Select
             value={editState.players.one}
@@ -267,8 +267,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell className="editing">...</StyledTableCell>
-        <StyledTableCell className="editing">...</StyledTableCell>
+        <StyledTableCell className="editing"></StyledTableCell>
+        <StyledTableCell className="editing"></StyledTableCell>
         <StyledTableCell className="editing">
           {/* delete cell is empty during edit by design */}
         </StyledTableCell>
