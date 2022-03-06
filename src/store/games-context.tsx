@@ -41,10 +41,14 @@ type GamesContextProviderProps = { children: React.ReactNode }
 export const GamesContext = createContext<{
   games: GameObject[] | undefined
   deleteGame: (id: string) => void
+  reverseSortTitle: boolean
+  sortByTitle: () => void
   updateGame: (game: GameObject) => void
 }>({
   games: undefined,
   deleteGame: () => {},
+  reverseSortTitle: false,
+  sortByTitle: () => {},
   updateGame: () => {},
 })
 
@@ -52,6 +56,7 @@ export const GamesContextProvider = ({
   children,
 }: GamesContextProviderProps) => {
   const [games, setGames] = useState<GameObject[] | undefined>(undefined)
+  const [reverseSortTitle, setReverseSortTitle] = useState(false)
 
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
@@ -86,6 +91,23 @@ export const GamesContextProvider = ({
     setGamesWithFetchedData()
   }
 
+  const sortByTitle = (): void => {
+    setReverseSortTitle(prev => !prev)
+    setGames(prev => {
+      if (prev) {
+        return prev
+          .map(x => x)
+          .sort((a, b) => {
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return reverseSortTitle ? 1 : -1
+            } else {
+              return reverseSortTitle ? -1 : 1
+            }
+          })
+      }
+    })
+  }
+
   const updateGame = async (game: GameObject): Promise<void> => {
     // using spread operator below due to firebase issue #5853
     // ... if you use game as is, it causes a typescript error
@@ -95,7 +117,9 @@ export const GamesContextProvider = ({
   }
 
   return (
-    <GamesContext.Provider value={{ games, deleteGame, updateGame }}>
+    <GamesContext.Provider
+      value={{ games, deleteGame, reverseSortTitle, sortByTitle, updateGame }}
+    >
       {children}
     </GamesContext.Provider>
   )

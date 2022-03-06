@@ -11,9 +11,11 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 const GamesPage: React.FC = () => {
-  const { games } = useContext(GamesContext)
+  const { games, reverseSortTitle, sortByTitle } = useContext(GamesContext)
 
   return (
     <div className="games-page-container">
@@ -21,7 +23,14 @@ const GamesPage: React.FC = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <StyledTableCell sx={{ minWidth: 232 }}>Game</StyledTableCell>
+              <StyledTableCell sx={{ minWidth: 232 }} onClick={sortByTitle}>
+                Game &nbsp;
+                {reverseSortTitle ? (
+                  <FontAwesomeIcon icon={faCaretDown} />
+                ) : (
+                  <FontAwesomeIcon icon={faCaretUp} />
+                )}
+              </StyledTableCell>
               <StyledTableCell align="center">Pic</StyledTableCell>
               <StyledTableCell align="center">Link</StyledTableCell>
               <StyledTableCell align="center">Played</StyledTableCell>
