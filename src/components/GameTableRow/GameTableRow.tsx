@@ -239,7 +239,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <Select
             sx={{
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#d4ff32',
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
               },
             }}
             value={editState.players.one}
@@ -263,7 +266,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <Select
             sx={{
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#d4ff32',
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
               },
             }}
             value={editState.players.two}
@@ -287,7 +293,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <Select
             sx={{
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#d4ff32',
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
               },
             }}
             value={editState.players.three}
@@ -311,7 +320,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <Select
             sx={{
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#d4ff32',
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
               },
             }}
             value={editState.players.four}
@@ -335,7 +347,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <Select
             sx={{
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#d4ff32',
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
               },
             }}
             value={editState.players.five}
