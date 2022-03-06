@@ -2,6 +2,7 @@ import React, { useContext, useReducer } from 'react'
 import { GamesContext } from '../../store/games-context'
 import './GameTableRow.css'
 import StyledTableCell from '../../mui/StyledTableCell'
+import StyledTextField from '../../mui/StyledTextField'
 import { TableRow } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import OpenInBrowserTwoToneIcon from '@mui/icons-material/OpenInBrowserTwoTone'
@@ -179,8 +180,15 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   if (editState.isActive) {
     return (
       <TableRow key={game.id} sx={{ height: '20px' }}>
-        <StyledTableCell className="editing editing-start">
-          <TextField
+        <StyledTableCell
+          className="editing editing-start"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
+          <StyledTextField
             variant="standard"
             value={editState.title}
             onChange={e =>
@@ -188,8 +196,15 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             }
           />
         </StyledTableCell>
-        <StyledTableCell className="editing">
-          <TextField
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
+          <StyledTextField
             variant="standard"
             value={editState.image}
             onChange={e =>
@@ -197,8 +212,15 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             }
           />
         </StyledTableCell>
-        <StyledTableCell className="editing">
-          <TextField
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
+          <StyledTextField
             variant="standard"
             value={editState.link}
             onChange={e =>

@@ -11,7 +11,6 @@ const StyledTableCell = styled(TableCell)({
   [`&.${tableCellClasses.body}`]: {
     borderRight: '1px solid black',
   },
-
   '&:last-child': {
     minWidth: 130,
     borderRight: '0',
