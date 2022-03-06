@@ -10,7 +10,6 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import CheckIcon from '@mui/icons-material/Check'
 import CancelIcon from '@mui/icons-material/Cancel'
-import TextField from '@mui/material/TextField'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 
@@ -229,8 +228,20 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           />
         </StyledTableCell>
         <StyledTableCell className="editing"></StyledTableCell>
-        <StyledTableCell className="editing">
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <Select
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#d4ff32',
+              },
+            }}
             value={editState.players.one}
             onChange={e =>
               dispatch({ type: 'changePlayerOne', payload: e.target.value })
@@ -241,8 +252,20 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell className="editing">
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <Select
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#d4ff32',
+              },
+            }}
             value={editState.players.two}
             onChange={e =>
               dispatch({ type: 'changePlayerTwo', payload: e.target.value })
@@ -253,8 +276,20 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell className="editing">
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <Select
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#d4ff32',
+              },
+            }}
             value={editState.players.three}
             onChange={e =>
               dispatch({ type: 'changePlayerThree', payload: e.target.value })
@@ -265,8 +300,20 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell className="editing">
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <Select
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#d4ff32',
+              },
+            }}
             value={editState.players.four}
             onChange={e =>
               dispatch({ type: 'changePlayerFour', payload: e.target.value })
@@ -277,8 +324,20 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
         </StyledTableCell>
-        <StyledTableCell className="editing">
+        <StyledTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <Select
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#d4ff32',
+              },
+            }}
             value={editState.players.five}
             onChange={e =>
               dispatch({ type: 'changePlayerFive', payload: e.target.value })
