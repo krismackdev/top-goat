@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { GamesContext } from '../../store/games-context'
 import StyledTableCell from '../../mui/StyledTableCell'
 import GameTableRow from '../../components/GameTableRow/GameTableRow'
-import './GamesPage.css'
+import './GamePage.css'
 import {
   Paper,
   Table,
@@ -14,11 +14,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
-const GamesPage: React.FC = () => {
+const GamePage: React.FC = () => {
   const { games, reverseSortTitle, sortByTitle } = useContext(GamesContext)
 
   return (
-    <div className="games-page-container">
+    <div className="game-page-container">
       <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
         <Table size="small">
           <TableHead>
@@ -60,4 +60,4 @@ const GamesPage: React.FC = () => {
   )
 }
 
-export default GamesPage
+export default GamePage

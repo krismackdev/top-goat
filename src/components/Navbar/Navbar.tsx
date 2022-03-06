@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import images from '../../constants/images'
+import { Link } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
   return (
@@ -15,13 +16,13 @@ const Navbar: React.FC = () => {
         <nav>
           <ul>
             <li>
-              <a href="#">Games</a>
+              <Link to="/games">Games</Link>
             </li>
             <li>
-              <a href="#">Matches</a>
+              <Link to="/matches">Matches</Link>
             </li>
             <li>
-              <a href="#">Players</a>
+              <Link to="/players">Players</Link>
             </li>
             <li>
               <div className="header-image-container">
