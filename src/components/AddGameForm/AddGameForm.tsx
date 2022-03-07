@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react'
+import React, { useContext, useReducer, useState } from 'react'
+import { GamesContext } from '../../store/games-context'
 import './AddGameForm.css'
 import {
   Button,
@@ -150,6 +151,8 @@ const addGameStateReducer = (state: GameObject, action: ActionObject) => {
 }
 
 const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
+  const { addNewGame } = useContext(GamesContext)
+  const [formIsInvalid, setFormIsInvalid] = useState(false)
   const [addGameState, dispatch] = useReducer(
     addGameStateReducer,
     initialAddGameState
@@ -157,11 +160,18 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('form submitted')
+    if (
+      addGameState.title.trim() === '' ||
+      addGameState.image.trim() === '' ||
+      addGameState.link.trim() === ''
+    ) {
+      setFormIsInvalid(true)
+      return
+    }
+    addNewGame(addGameState)
+    setFormIsInvalid(false)
     dispatch({ type: 'resetForm', payload: '' })
   }
-
-  console.log('state =', addGameState)
 
   return (
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
@@ -175,6 +185,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             onChange={e =>
               dispatch({ type: 'changeTitle', payload: e.target.value })
             }
+            error={formIsInvalid && addGameState.title.trim().length === 0}
+            helperText={
+              formIsInvalid && addGameState.title.trim().length === 0
+                ? '* this field is required'
+                : ''
+            }
           />
           <TextField
             label="Image URL"
@@ -183,6 +199,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             onChange={e =>
               dispatch({ type: 'changeImage', payload: e.target.value })
             }
+            error={formIsInvalid && addGameState.image.trim().length === 0}
+            helperText={
+              formIsInvalid && addGameState.image.trim().length === 0
+                ? '* this field is required'
+                : ''
+            }
           />
           <TextField
             label="BGG Link"
@@ -190,6 +212,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             value={addGameState.link}
             onChange={e =>
               dispatch({ type: 'changeLink', payload: e.target.value })
+            }
+            error={formIsInvalid && addGameState.link.trim().length === 0}
+            helperText={
+              formIsInvalid && addGameState.link.trim().length === 0
+                ? '* this field is required'
+                : ''
             }
           />
           <Select
@@ -249,7 +277,6 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             <MenuItem value="yes">yes</MenuItem>
           </Select>
           <DialogActions>
-            {/* ADD & CLOSE BUTTON HERE */}
             <Button type="submit" variant="contained">
               Add
             </Button>

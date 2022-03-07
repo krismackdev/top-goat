@@ -7,6 +7,7 @@ import {
   deleteDoc,
   getDocs,
   updateDoc,
+  setDoc,
 } from 'firebase/firestore'
 
 interface GameObject {
@@ -39,14 +40,16 @@ interface SaveableGameObject {
 type GamesContextProviderProps = { children: React.ReactNode }
 
 export const GamesContext = createContext<{
-  games: GameObject[] | undefined
+  addNewGame: (newGame: GameObject) => void
   deleteGame: (id: string) => void
+  games: GameObject[] | undefined
   reverseSortTitle: boolean
   sortByTitle: () => void
   updateGame: (game: GameObject) => void
 }>({
-  games: undefined,
+  addNewGame: () => {},
   deleteGame: () => {},
+  games: undefined,
   reverseSortTitle: false,
   sortByTitle: () => {},
   updateGame: () => {},
@@ -86,6 +89,12 @@ export const GamesContextProvider = ({
     setGamesWithFetchedData()
   }, [])
 
+  const addNewGame = async (newGame: GameObject): Promise<void> => {
+    const { id, ...newGameWithoutId } = newGame
+    await setDoc(doc(db, 'games', newGame.id), newGameWithoutId)
+    setGamesWithFetchedData()
+  }
+
   const deleteGame = async (id: string): Promise<void> => {
     await deleteDoc(doc(db, 'games', id))
     setGamesWithFetchedData()
@@ -118,7 +127,14 @@ export const GamesContextProvider = ({
 
   return (
     <GamesContext.Provider
-      value={{ games, deleteGame, reverseSortTitle, sortByTitle, updateGame }}
+      value={{
+        addNewGame,
+        deleteGame,
+        games,
+        reverseSortTitle,
+        sortByTitle,
+        updateGame,
+      }}
     >
       {children}
     </GamesContext.Provider>
