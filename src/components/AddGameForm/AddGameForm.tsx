@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import './AddGameForm.css'
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -42,7 +43,22 @@ interface ActionObject {
     | 'changePlayerFour'
     | 'changePlayerFive'
     | 'changeTitle'
+    | 'resetForm'
   payload: string
+}
+
+const initialAddGameState: GameObject = {
+  id: uuidv4(),
+  image: '',
+  link: '',
+  title: '',
+  players: {
+    one: 'no',
+    two: 'no',
+    three: 'no',
+    four: 'no',
+    five: 'no',
+  },
 }
 
 const addGameStateReducer = (state: GameObject, action: ActionObject) => {
@@ -128,114 +144,120 @@ const addGameStateReducer = (state: GameObject, action: ActionObject) => {
         }
       }
       return state
+    case 'resetForm':
+      return { ...initialAddGameState, id: uuidv4() }
   }
 }
 
 const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
-  const initialAddGameState: GameObject = {
-    id: uuidv4(),
-    image: '',
-    link: '',
-    title: '',
-    players: {
-      one: 'no',
-      two: 'no',
-      three: 'no',
-      four: 'no',
-      five: 'no',
-    },
-  }
-
   const [addGameState, dispatch] = useReducer(
     addGameStateReducer,
     initialAddGameState
   )
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('form submitted')
+    dispatch({ type: 'resetForm', payload: '' })
+  }
+
+  console.log('state =', addGameState)
+
   return (
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
       <DialogTitle sx={{ textAlign: 'center' }}>Add a new game</DialogTitle>
       <DialogContent>
-        <TextField
-          label="Title"
-          size="small"
-          value={addGameState.title}
-          onChange={e =>
-            dispatch({ type: 'changeTitle', payload: e.target.value })
-          }
-        />
-        <TextField
-          label="Image URL"
-          size="small"
-          value={addGameState.image}
-          onChange={e =>
-            dispatch({ type: 'changeImage', payload: e.target.value })
-          }
-        />
-        <TextField
-          label="BGG Link"
-          size="small"
-          value={addGameState.link}
-          onChange={e =>
-            dispatch({ type: 'changeLink', payload: e.target.value })
-          }
-        />
-        <Select
-          defaultValue="no"
-          size="small"
-          onChange={e =>
-            dispatch({ type: 'changePlayerOne', payload: e.target.value })
-          }
-        >
-          <MenuItem value="no">no</MenuItem>
-          <MenuItem value="ok">ok</MenuItem>
-          <MenuItem value="yes">yes</MenuItem>
-        </Select>
-        <Select
-          defaultValue="no"
-          size="small"
-          onChange={e =>
-            dispatch({ type: 'changePlayerTwo', payload: e.target.value })
-          }
-        >
-          <MenuItem value="no">no</MenuItem>
-          <MenuItem value="ok">ok</MenuItem>
-          <MenuItem value="yes">yes</MenuItem>
-        </Select>
-        <Select
-          defaultValue="no"
-          size="small"
-          onChange={e =>
-            dispatch({ type: 'changePlayerThree', payload: e.target.value })
-          }
-        >
-          <MenuItem value="no">no</MenuItem>
-          <MenuItem value="ok">ok</MenuItem>
-          <MenuItem value="yes">yes</MenuItem>
-        </Select>
-        <Select
-          defaultValue="no"
-          size="small"
-          onChange={e =>
-            dispatch({ type: 'changePlayerFour', payload: e.target.value })
-          }
-        >
-          <MenuItem value="no">no</MenuItem>
-          <MenuItem value="ok">ok</MenuItem>
-          <MenuItem value="yes">yes</MenuItem>
-        </Select>
-        <Select
-          defaultValue="no"
-          size="small"
-          onChange={e =>
-            dispatch({ type: 'changePlayerFive', payload: e.target.value })
-          }
-        >
-          {' '}
-          <MenuItem value="no">no</MenuItem>
-          <MenuItem value="ok">ok</MenuItem>
-          <MenuItem value="yes">yes</MenuItem>
-        </Select>
-        <DialogActions>{/* ADD & CLOSE BUTTON HERE */}</DialogActions>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Title"
+            size="small"
+            value={addGameState.title}
+            onChange={e =>
+              dispatch({ type: 'changeTitle', payload: e.target.value })
+            }
+          />
+          <TextField
+            label="Image URL"
+            size="small"
+            value={addGameState.image}
+            onChange={e =>
+              dispatch({ type: 'changeImage', payload: e.target.value })
+            }
+          />
+          <TextField
+            label="BGG Link"
+            size="small"
+            value={addGameState.link}
+            onChange={e =>
+              dispatch({ type: 'changeLink', payload: e.target.value })
+            }
+          />
+          <Select
+            value={addGameState.players.one}
+            size="small"
+            onChange={e =>
+              dispatch({ type: 'changePlayerOne', payload: e.target.value })
+            }
+          >
+            <MenuItem value="no">no</MenuItem>
+            <MenuItem value="ok">ok</MenuItem>
+            <MenuItem value="yes">yes</MenuItem>
+          </Select>
+          <Select
+            value={addGameState.players.two}
+            size="small"
+            onChange={e =>
+              dispatch({ type: 'changePlayerTwo', payload: e.target.value })
+            }
+          >
+            <MenuItem value="no">no</MenuItem>
+            <MenuItem value="ok">ok</MenuItem>
+            <MenuItem value="yes">yes</MenuItem>
+          </Select>
+          <Select
+            value={addGameState.players.three}
+            size="small"
+            onChange={e =>
+              dispatch({ type: 'changePlayerThree', payload: e.target.value })
+            }
+          >
+            <MenuItem value="no">no</MenuItem>
+            <MenuItem value="ok">ok</MenuItem>
+            <MenuItem value="yes">yes</MenuItem>
+          </Select>
+          <Select
+            value={addGameState.players.four}
+            size="small"
+            onChange={e =>
+              dispatch({ type: 'changePlayerFour', payload: e.target.value })
+            }
+          >
+            <MenuItem value="no">no</MenuItem>
+            <MenuItem value="ok">ok</MenuItem>
+            <MenuItem value="yes">yes</MenuItem>
+          </Select>
+          <Select
+            value={addGameState.players.five}
+            size="small"
+            onChange={e =>
+              dispatch({ type: 'changePlayerFive', payload: e.target.value })
+            }
+          >
+            {' '}
+            <MenuItem value="no">no</MenuItem>
+            <MenuItem value="ok">ok</MenuItem>
+            <MenuItem value="yes">yes</MenuItem>
+          </Select>
+          <DialogActions>
+            {/* ADD & CLOSE BUTTON HERE */}
+            <Button type="submit" variant="contained">
+              Add
+            </Button>
+            <Button variant="outlined" onClick={() => setFormIsActive(false)}>
+              Close
+            </Button>
+          </DialogActions>
+        </form>
       </DialogContent>
     </Dialog>
   )
