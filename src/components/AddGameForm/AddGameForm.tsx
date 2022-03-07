@@ -7,6 +7,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  InputLabel,
   MenuItem,
   Select,
   TextField,
@@ -177,8 +178,9 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
       <DialogTitle sx={{ textAlign: 'center' }}>Add a new game</DialogTitle>
       <DialogContent>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="add-game-form">
           <TextField
+            sx={{ marginBottom: '20px' }}
             label="Title"
             size="small"
             value={addGameState.title}
@@ -193,6 +195,7 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             }
           />
           <TextField
+            sx={{ marginBottom: '20px' }}
             label="Image URL"
             size="small"
             value={addGameState.image}
@@ -207,6 +210,7 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             }
           />
           <TextField
+            sx={{ marginBottom: '20px' }}
             label="BGG Link"
             size="small"
             value={addGameState.link}
@@ -220,9 +224,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
                 : ''
             }
           />
+          <InputLabel id="oneP">Suitable for 1 player?</InputLabel>
           <Select
+            labelId="oneP"
             value={addGameState.players.one}
             size="small"
+            sx={{ marginBottom: '20px' }}
             onChange={e =>
               dispatch({ type: 'changePlayerOne', payload: e.target.value })
             }
@@ -231,9 +238,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             <MenuItem value="ok">ok</MenuItem>
             <MenuItem value="yes">yes</MenuItem>
           </Select>
+          <InputLabel id="twoP">Suitable for 2 players?</InputLabel>
           <Select
+            labelId="twoP"
             value={addGameState.players.two}
             size="small"
+            sx={{ marginBottom: '20px' }}
             onChange={e =>
               dispatch({ type: 'changePlayerTwo', payload: e.target.value })
             }
@@ -242,9 +252,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             <MenuItem value="ok">ok</MenuItem>
             <MenuItem value="yes">yes</MenuItem>
           </Select>
+          <InputLabel id="threeP">Suitable for 3 players?</InputLabel>
           <Select
+            labelId="threeP"
             value={addGameState.players.three}
             size="small"
+            sx={{ marginBottom: '20px' }}
             onChange={e =>
               dispatch({ type: 'changePlayerThree', payload: e.target.value })
             }
@@ -253,9 +266,12 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             <MenuItem value="ok">ok</MenuItem>
             <MenuItem value="yes">yes</MenuItem>
           </Select>
+          <InputLabel id="fourP">Suitable for 4 players?</InputLabel>
           <Select
+            labelId="fourP"
             value={addGameState.players.four}
             size="small"
+            sx={{ marginBottom: '20px' }}
             onChange={e =>
               dispatch({ type: 'changePlayerFour', payload: e.target.value })
             }
@@ -264,14 +280,16 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
             <MenuItem value="ok">ok</MenuItem>
             <MenuItem value="yes">yes</MenuItem>
           </Select>
+          <InputLabel id="fiveP">Suitable for 5+ players?</InputLabel>
           <Select
+            labelId="fiveP"
             value={addGameState.players.five}
             size="small"
+            sx={{ marginBottom: '20px' }}
             onChange={e =>
               dispatch({ type: 'changePlayerFive', payload: e.target.value })
             }
           >
-            {' '}
             <MenuItem value="no">no</MenuItem>
             <MenuItem value="ok">ok</MenuItem>
             <MenuItem value="yes">yes</MenuItem>
