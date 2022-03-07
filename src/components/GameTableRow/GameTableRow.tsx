@@ -51,6 +51,94 @@ interface EditStateObject extends GameObject {
   isActive: boolean
 }
 
+const editStateReducer = (state: EditStateObject, action: ActionObject) => {
+  switch (action.type) {
+    case 'changeImage':
+      return { ...state, image: action.payload! }
+    case 'changeLink':
+      return { ...state, link: action.payload! }
+    case 'changePlayerOne':
+      if (
+        action.payload === 'no' ||
+        action.payload === 'ok' ||
+        action.payload === 'yes'
+      ) {
+        return {
+          ...state,
+          players: {
+            ...state.players,
+            one: action.payload as PlayerSuitability,
+          },
+        }
+      }
+      return state
+    case 'changePlayerTwo':
+      if (
+        action.payload === 'no' ||
+        action.payload === 'ok' ||
+        action.payload === 'yes'
+      ) {
+        return {
+          ...state,
+          players: {
+            ...state.players,
+            two: action.payload as PlayerSuitability,
+          },
+        }
+      }
+      return state
+    case 'changePlayerThree':
+      if (
+        action.payload === 'no' ||
+        action.payload === 'ok' ||
+        action.payload === 'yes'
+      ) {
+        return {
+          ...state,
+          players: {
+            ...state.players,
+            three: action.payload as PlayerSuitability,
+          },
+        }
+      }
+      return state
+    case 'changePlayerFour':
+      if (
+        action.payload === 'no' ||
+        action.payload === 'ok' ||
+        action.payload === 'yes'
+      ) {
+        return {
+          ...state,
+          players: {
+            ...state.players,
+            four: action.payload as PlayerSuitability,
+          },
+        }
+      }
+      return state
+    case 'changePlayerFive':
+      if (
+        action.payload === 'no' ||
+        action.payload === 'ok' ||
+        action.payload === 'yes'
+      ) {
+        return {
+          ...state,
+          players: {
+            ...state.players,
+            five: action.payload as PlayerSuitability,
+          },
+        }
+      }
+      return state
+    case 'changeTitle':
+      return { ...state, title: action.payload! }
+    case 'toggleEditingMode':
+      return { ...state, isActive: !state.isActive }
+  }
+}
+
 const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   const initialEditState = {
     id: game.id,
@@ -67,97 +155,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     title: game.title,
   }
 
-  const editStateReducer = (state: EditStateObject, action: ActionObject) => {
-    switch (action.type) {
-      case 'changeImage':
-        return { ...state, image: action.payload! }
-      case 'changeLink':
-        return { ...state, link: action.payload! }
-      case 'changePlayerOne':
-        if (
-          action.payload === 'no' ||
-          action.payload === 'ok' ||
-          action.payload === 'yes'
-        ) {
-          return {
-            ...state,
-            players: {
-              ...state.players,
-              one: action.payload as PlayerSuitability,
-            },
-          }
-        }
-        return state
-      case 'changePlayerTwo':
-        if (
-          action.payload === 'no' ||
-          action.payload === 'ok' ||
-          action.payload === 'yes'
-        ) {
-          return {
-            ...state,
-            players: {
-              ...state.players,
-              two: action.payload as PlayerSuitability,
-            },
-          }
-        }
-        return state
-      case 'changePlayerThree':
-        if (
-          action.payload === 'no' ||
-          action.payload === 'ok' ||
-          action.payload === 'yes'
-        ) {
-          return {
-            ...state,
-            players: {
-              ...state.players,
-              three: action.payload as PlayerSuitability,
-            },
-          }
-        }
-        return state
-      case 'changePlayerFour':
-        if (
-          action.payload === 'no' ||
-          action.payload === 'ok' ||
-          action.payload === 'yes'
-        ) {
-          return {
-            ...state,
-            players: {
-              ...state.players,
-              four: action.payload as PlayerSuitability,
-            },
-          }
-        }
-        return state
-      case 'changePlayerFive':
-        if (
-          action.payload === 'no' ||
-          action.payload === 'ok' ||
-          action.payload === 'yes'
-        ) {
-          return {
-            ...state,
-            players: {
-              ...state.players,
-              five: action.payload as PlayerSuitability,
-            },
-          }
-        }
-        return state
-      case 'changeTitle':
-        return { ...state, title: action.payload! }
-      case 'toggleEditingMode':
-        return { ...state, isActive: !state.isActive }
-    }
-  }
-
   const [editState, dispatch] = useReducer(editStateReducer, initialEditState)
-
-  console.log('editState =', editState)
 
   const { deleteGame, updateGame } = useContext(GamesContext)
 

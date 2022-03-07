@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { GamesContext } from '../../store/games-context'
 import StyledTableCell from '../../mui/StyledTableCell'
-import GameTableRow from '../../components/GameTableRow/GameTableRow'
+import { AddGameForm, GameTableRow } from '../../components'
 import './GamePage.css'
 import {
   Paper,
@@ -16,9 +16,16 @@ import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 const GamePage: React.FC = () => {
   const { games, reverseSortTitle, sortByTitle } = useContext(GamesContext)
+  const [formIsActive, setFormIsActive] = useState(false)
+
+  const showAddGameForm = () => {
+    setFormIsActive(prev => !prev)
+  }
 
   return (
     <div className="game-page-container">
+      {formIsActive && <AddGameForm setFormIsActive={setFormIsActive} />}
+      <button onClick={showAddGameForm}>Add Game</button>
       <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
         <Table size="small">
           <TableHead>
