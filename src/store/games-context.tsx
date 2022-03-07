@@ -24,19 +24,6 @@ interface GameObject {
   title: string
 }
 
-interface SaveableGameObject {
-  image: string
-  link: string
-  players: {
-    one: 'yes' | 'no' | 'ok'
-    two: 'yes' | 'no' | 'ok'
-    three: 'yes' | 'no' | 'ok'
-    four: 'yes' | 'no' | 'ok'
-    five: 'yes' | 'no' | 'ok'
-  }
-  title: string
-}
-
 type GamesContextProviderProps = { children: React.ReactNode }
 
 export const GamesContext = createContext<{

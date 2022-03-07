@@ -1,6 +1,7 @@
-import React, { useContext, useReducer } from 'react'
+import React, { useContext, useReducer, useState } from 'react'
 import { GamesContext } from '../../store/games-context'
 import './GameTableRow.css'
+import { DeleteGameConfirmation } from '../../components'
 import StyledTableCell from '../../mui/StyledTableCell'
 import StyledTextField from '../../mui/StyledTextField'
 import { TableRow } from '@mui/material'
@@ -140,6 +141,8 @@ const editStateReducer = (state: EditStateObject, action: ActionObject) => {
 }
 
 const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+
   const initialEditState = {
     id: game.id,
     image: game.image,
@@ -157,7 +160,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
 
   const [editState, dispatch] = useReducer(editStateReducer, initialEditState)
 
-  const { deleteGame, updateGame } = useContext(GamesContext)
+  const { updateGame } = useContext(GamesContext)
 
   const getConditionalColor = (val: PlayerSuitability) => {
     switch (val) {
@@ -170,8 +173,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     }
   }
 
-  const handleDelete = (id: string): void => {
-    deleteGame(id)
+  const handleDelete = (): void => {
+    setShowDeleteConfirmation(true)
   }
 
   if (editState.isActive) {
@@ -395,81 +398,86 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     //                                                    //
   } else {
     return (
-      <TableRow key={game.id}>
-        <StyledTableCell>{game.title}</StyledTableCell>
-        <StyledTableCell align="center">
-          <img
-            style={{ maxWidth: '30px' }}
-            src={game.image}
-            alt={`${game.title.replace(/\s+/g, '-')}-pic`}
-          ></img>
-        </StyledTableCell>
-        <StyledTableCell align="center">
-          <a href={game.link} target="_blank" rel="noreferrer">
-            <OpenInBrowserTwoToneIcon />
-          </a>
-        </StyledTableCell>
-        <StyledTableCell align="center">...</StyledTableCell>
-        <StyledTableCell
-          sx={{
-            backgroundColor: `${getConditionalColor(game.players.one)}`,
-          }}
-          align="center"
-        >
-          {game.players.one}
-        </StyledTableCell>
-        <StyledTableCell
-          sx={{
-            backgroundColor: `${getConditionalColor(game.players.two)}`,
-          }}
-          align="center"
-        >
-          {game.players.two}
-        </StyledTableCell>
-        <StyledTableCell
-          sx={{
-            backgroundColor: `${getConditionalColor(game.players.three)}`,
-          }}
-          align="center"
-        >
-          {game.players.three}
-        </StyledTableCell>
-        <StyledTableCell
-          sx={{
-            backgroundColor: `${getConditionalColor(game.players.four)}`,
-          }}
-          align="center"
-        >
-          {game.players.four}
-        </StyledTableCell>
-        <StyledTableCell
-          sx={{
-            backgroundColor: `${getConditionalColor(game.players.five)}`,
-          }}
-          align="center"
-        >
-          {game.players.five}
-        </StyledTableCell>
-        <StyledTableCell align="center">...</StyledTableCell>
-        <StyledTableCell align="center">...</StyledTableCell>
-        <StyledTableCell align="center">
-          <IconButton
-            sx={{ color: 'black' }}
-            onClick={() => handleDelete(game.id)}
+      <>
+        {showDeleteConfirmation && (
+          <DeleteGameConfirmation
+            id={game.id}
+            setShowDeleteConfirmation={setShowDeleteConfirmation}
+          />
+        )}
+        <TableRow key={game.id}>
+          <StyledTableCell>{game.title}</StyledTableCell>
+          <StyledTableCell align="center">
+            <img
+              style={{ maxWidth: '30px' }}
+              src={game.image}
+              alt={`${game.title.replace(/\s+/g, '-')}-pic`}
+            ></img>
+          </StyledTableCell>
+          <StyledTableCell align="center">
+            <a href={game.link} target="_blank" rel="noreferrer">
+              <OpenInBrowserTwoToneIcon />
+            </a>
+          </StyledTableCell>
+          <StyledTableCell align="center">...</StyledTableCell>
+          <StyledTableCell
+            sx={{
+              backgroundColor: `${getConditionalColor(game.players.one)}`,
+            }}
+            align="center"
           >
-            <DeleteIcon />
-          </IconButton>
-        </StyledTableCell>
-        <StyledTableCell align="center">
-          <IconButton
-            disableRipple
-            sx={{ color: 'black' }}
-            onClick={() => dispatch({ type: 'toggleEditingMode' })}
+            {game.players.one}
+          </StyledTableCell>
+          <StyledTableCell
+            sx={{
+              backgroundColor: `${getConditionalColor(game.players.two)}`,
+            }}
+            align="center"
           >
-            <EditIcon />
-          </IconButton>
-        </StyledTableCell>
-      </TableRow>
+            {game.players.two}
+          </StyledTableCell>
+          <StyledTableCell
+            sx={{
+              backgroundColor: `${getConditionalColor(game.players.three)}`,
+            }}
+            align="center"
+          >
+            {game.players.three}
+          </StyledTableCell>
+          <StyledTableCell
+            sx={{
+              backgroundColor: `${getConditionalColor(game.players.four)}`,
+            }}
+            align="center"
+          >
+            {game.players.four}
+          </StyledTableCell>
+          <StyledTableCell
+            sx={{
+              backgroundColor: `${getConditionalColor(game.players.five)}`,
+            }}
+            align="center"
+          >
+            {game.players.five}
+          </StyledTableCell>
+          <StyledTableCell align="center">...</StyledTableCell>
+          <StyledTableCell align="center">...</StyledTableCell>
+          <StyledTableCell align="center">
+            <IconButton sx={{ color: 'black' }} onClick={handleDelete}>
+              <DeleteIcon />
+            </IconButton>
+          </StyledTableCell>
+          <StyledTableCell align="center">
+            <IconButton
+              disableRipple
+              sx={{ color: 'black' }}
+              onClick={() => dispatch({ type: 'toggleEditingMode' })}
+            >
+              <EditIcon />
+            </IconButton>
+          </StyledTableCell>
+        </TableRow>
+      </>
     )
   }
 }
