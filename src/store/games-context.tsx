@@ -62,7 +62,7 @@ export const GamesContextProvider = ({
         let currentGame = doc.data()
         if (currentGame) {
           currentGame = { ...currentGame, id: doc.id }
-          // ************* is it safe to be asserting as GamesState here?
+          // ************* is it safe to be asserting as GameObject here?
           result.push(currentGame as GameObject)
         }
       })
