@@ -75,38 +75,40 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match }) => {
   console.log('match.date =', match.date)
 
   return (
-    <TableRow>
-      <MatchTableCell>{match.playOrder}</MatchTableCell>
-      <MatchTableCell>{match.date}</MatchTableCell>
-      <MatchTableCell>{match.game}</MatchTableCell>
-      <MatchTableCell>{resultDinis}</MatchTableCell>
-      <MatchTableCell>{scoreDinis}</MatchTableCell>
-      <MatchTableCell>{resultKris}</MatchTableCell>
-      <MatchTableCell>{scoreKris}</MatchTableCell>
-      <MatchTableCell>{resultLais}</MatchTableCell>
-      <MatchTableCell>{scoreLais}</MatchTableCell>
-      <MatchTableCell>{resultSusan}</MatchTableCell>
-      <MatchTableCell>{scoreSusan}</MatchTableCell>
-      <MatchTableCell>
-        <IconButton
-          size="small"
-          sx={{ color: 'black' }}
-          // onClick={handleDelete}
-        >
-          <DeleteIcon fontSize="inherit" />
-        </IconButton>
-      </MatchTableCell>
-      <MatchTableCell>
-        <IconButton
-          size="small"
-          disableRipple
-          sx={{ color: 'black' }}
-          // onClick={() => dispatch({ type: 'toggleEditingMode' })}
-        >
-          <EditIcon fontSize="inherit" />
-        </IconButton>
-      </MatchTableCell>
-    </TableRow>
+    <>
+      <TableRow>
+        <MatchTableCell>{match.playOrder}</MatchTableCell>
+        <MatchTableCell>{match.date}</MatchTableCell>
+        <MatchTableCell>{match.game}</MatchTableCell>
+        <MatchTableCell>{resultDinis}</MatchTableCell>
+        <MatchTableCell>{scoreDinis}</MatchTableCell>
+        <MatchTableCell>{resultKris}</MatchTableCell>
+        <MatchTableCell>{scoreKris}</MatchTableCell>
+        <MatchTableCell>{resultLais}</MatchTableCell>
+        <MatchTableCell>{scoreLais}</MatchTableCell>
+        <MatchTableCell>{resultSusan}</MatchTableCell>
+        <MatchTableCell>{scoreSusan}</MatchTableCell>
+        <MatchTableCell>
+          <IconButton
+            size="small"
+            sx={{ color: 'black' }}
+            // onClick={handleDelete}
+          >
+            <DeleteIcon fontSize="inherit" />
+          </IconButton>
+        </MatchTableCell>
+        <MatchTableCell>
+          <IconButton
+            size="small"
+            disableRipple
+            sx={{ color: 'black' }}
+            // onClick={() => dispatch({ type: 'toggleEditingMode' })}
+          >
+            <EditIcon fontSize="inherit" />
+          </IconButton>
+        </MatchTableCell>
+      </TableRow>
+    </>
   )
 }
 

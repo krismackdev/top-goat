@@ -18,14 +18,10 @@ const GamePage: React.FC = () => {
   const { games, reverseSortTitle, sortByTitle } = useContext(GamesContext)
   const [formIsActive, setFormIsActive] = useState(false)
 
-  const showAddGameForm = () => {
-    setFormIsActive(prev => !prev)
-  }
-
   return (
     <div className="game-page-container">
       {formIsActive && <AddGameForm setFormIsActive={setFormIsActive} />}
-      <button onClick={showAddGameForm}>Add Game</button>
+      <button onClick={() => setFormIsActive(true)}>Add Game</button>
       <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
         <Table size="small">
           <TableHead>

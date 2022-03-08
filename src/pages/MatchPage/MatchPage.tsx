@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { MatchesContext } from '../../store/matches-context'
-import { MatchTableRow } from '../../components'
+import { AddMatchForm, MatchTableRow } from '../../components'
 import MatchTableCell from '../../mui/MatchTableCell'
 import './MatchPage.css'
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -13,12 +14,16 @@ import {
 } from '@mui/material'
 
 const MatchPage: React.FC = () => {
+  const [formIsActive, setFormIsActive] = useState(false)
   const { matches } = useContext(MatchesContext)
-
-  console.log('matches =', matches)
 
   return (
     <div className="match-page-container">
+      <Button variant="contained" onClick={() => setFormIsActive(true)}>
+        Add Match
+      </Button>
+      {formIsActive && <AddMatchForm setFormIsActive={setFormIsActive} />}
+
       <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
         <Table size="small">
           <TableHead>

@@ -1,4 +1,5 @@
 export { default as AddGameForm } from './AddGameForm/AddGameForm'
+export { default as AddMatchForm } from './AddMatchForm/AddMatchForm'
 export { default as DeleteGameConfirmation } from './DeleteGameConfirmation/DeleteGameConfirmation'
 export { default as GameTableRow } from './GameTableRow/GameTableRow'
 export { default as MatchTableRow } from './MatchTableRow/MatchTableRow'
