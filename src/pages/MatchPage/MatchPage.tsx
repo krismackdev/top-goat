@@ -26,13 +26,13 @@ const MatchPage: React.FC = () => {
               <MatchTableCell>Number</MatchTableCell>
               <MatchTableCell>Date</MatchTableCell>
               <MatchTableCell>Game</MatchTableCell>
+              <MatchTableCell>Dinis</MatchTableCell>
+              <MatchTableCell>score</MatchTableCell>
               <MatchTableCell>Kris</MatchTableCell>
               <MatchTableCell>score</MatchTableCell>
               <MatchTableCell>Lais</MatchTableCell>
               <MatchTableCell>score</MatchTableCell>
               <MatchTableCell>Susan</MatchTableCell>
-              <MatchTableCell>score</MatchTableCell>
-              <MatchTableCell>Dinis</MatchTableCell>
               <MatchTableCell>score</MatchTableCell>
               <MatchTableCell>Delete</MatchTableCell>
               <MatchTableCell>Edit</MatchTableCell>

@@ -1,6 +1,10 @@
 import React from 'react'
 import MatchTableCell from '../../mui/MatchTableCell'
-import { TableRow } from '@mui/material'
+import { IconButton, TableRow } from '@mui/material'
+import CancelIcon from '@mui/icons-material/Cancel'
+import CheckIcon from '@mui/icons-material/Check'
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
@@ -66,12 +70,14 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match }) => {
       ? '-'
       : match.participants[susan].result
 
-  console.log(match.participants[kris].score)
+  // const handleDelete = () => {}
+
+  console.log('match.date =', match.date)
 
   return (
     <TableRow>
       <MatchTableCell>{match.playOrder}</MatchTableCell>
-      <MatchTableCell>{new Date(match.date).toISOString()}</MatchTableCell>
+      <MatchTableCell>{match.date}</MatchTableCell>
       <MatchTableCell>{match.game}</MatchTableCell>
       <MatchTableCell>{resultDinis}</MatchTableCell>
       <MatchTableCell>{scoreDinis}</MatchTableCell>
@@ -81,8 +87,25 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match }) => {
       <MatchTableCell>{scoreLais}</MatchTableCell>
       <MatchTableCell>{resultSusan}</MatchTableCell>
       <MatchTableCell>{scoreSusan}</MatchTableCell>
-      <MatchTableCell>Delete</MatchTableCell>
-      <MatchTableCell>Edit</MatchTableCell>
+      <MatchTableCell>
+        <IconButton
+          size="small"
+          sx={{ color: 'black' }}
+          // onClick={handleDelete}
+        >
+          <DeleteIcon fontSize="inherit" />
+        </IconButton>
+      </MatchTableCell>
+      <MatchTableCell>
+        <IconButton
+          size="small"
+          disableRipple
+          sx={{ color: 'black' }}
+          // onClick={() => dispatch({ type: 'toggleEditingMode' })}
+        >
+          <EditIcon fontSize="inherit" />
+        </IconButton>
+      </MatchTableCell>
     </TableRow>
   )
 }
