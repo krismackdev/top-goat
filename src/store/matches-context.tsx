@@ -4,19 +4,23 @@ import { collection, getDocs } from 'firebase/firestore'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
-interface MatchPlayerObject {
+interface ParticipantsObject {
+  [prop: string]: PlayerResultObject
+}
+
+interface PlayerResultObject {
   name: string
-  playerId: string
   result: Result
   score: number | 'n/a'
 }
 
 interface MatchObject {
-  date: Date
+  id: string
+  date: string
   game: string
   gameId: string
   playOrder: number
-  players: MatchPlayerObject[]
+  participants: ParticipantsObject
 }
 
 type MatchesContextProviderProps = { children: React.ReactNode }

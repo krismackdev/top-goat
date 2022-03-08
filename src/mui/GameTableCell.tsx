@@ -1,7 +1,7 @@
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import { styled } from '@mui/system'
 
-const StyledTableCell = styled(TableCell)({
+const GameTableCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: 'rgb(48, 43, 43)',
     color: 'white',
@@ -28,4 +28,4 @@ const StyledTableCell = styled(TableCell)({
   },
 })
 
-export default StyledTableCell
+export default GameTableCell

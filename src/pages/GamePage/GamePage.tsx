@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { GamesContext } from '../../store/games-context'
-import StyledTableCell from '../../mui/StyledTableCell'
+import GameTableCell from '../../mui/GameTableCell'
 import { AddGameForm, GameTableRow } from '../../components'
 import './GamePage.css'
 import {
@@ -30,26 +30,26 @@ const GamePage: React.FC = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <StyledTableCell sx={{ minWidth: 232 }} onClick={sortByTitle}>
+              <GameTableCell sx={{ minWidth: 232 }} onClick={sortByTitle}>
                 Game &nbsp;
                 {reverseSortTitle ? (
                   <FontAwesomeIcon icon={faCaretDown} />
                 ) : (
                   <FontAwesomeIcon icon={faCaretUp} />
                 )}
-              </StyledTableCell>
-              <StyledTableCell align="center">Pic</StyledTableCell>
-              <StyledTableCell align="center">Link</StyledTableCell>
-              <StyledTableCell align="center">Played</StyledTableCell>
-              <StyledTableCell align="center">1p</StyledTableCell>
-              <StyledTableCell align="center">2p</StyledTableCell>
-              <StyledTableCell align="center">3p</StyledTableCell>
-              <StyledTableCell align="center">4p</StyledTableCell>
-              <StyledTableCell align="center">5p</StyledTableCell>
-              <StyledTableCell align="center">Last</StyledTableCell>
-              <StyledTableCell align="center">Plays</StyledTableCell>
-              <StyledTableCell align="center">Delete</StyledTableCell>
-              <StyledTableCell align="center">Edit</StyledTableCell>
+              </GameTableCell>
+              <GameTableCell align="center">Pic</GameTableCell>
+              <GameTableCell align="center">Link</GameTableCell>
+              <GameTableCell align="center">Played</GameTableCell>
+              <GameTableCell align="center">1p</GameTableCell>
+              <GameTableCell align="center">2p</GameTableCell>
+              <GameTableCell align="center">3p</GameTableCell>
+              <GameTableCell align="center">4p</GameTableCell>
+              <GameTableCell align="center">5p</GameTableCell>
+              <GameTableCell align="center">Last</GameTableCell>
+              <GameTableCell align="center">Plays</GameTableCell>
+              <GameTableCell align="center">Delete</GameTableCell>
+              <GameTableCell align="center">Edit</GameTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -57,7 +57,7 @@ const GamePage: React.FC = () => {
               games.map(game => <GameTableRow game={game} key={game.id} />)
             ) : (
               <TableRow>
-                <StyledTableCell>NO GAMES FOUND</StyledTableCell>
+                <GameTableCell>NO GAMES FOUND</GameTableCell>
               </TableRow>
             )}
           </TableBody>

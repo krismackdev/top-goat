@@ -2,7 +2,7 @@ import React, { useContext, useReducer, useState } from 'react'
 import { GamesContext } from '../../store/games-context'
 import './GameTableRow.css'
 import { DeleteGameConfirmation } from '../../components'
-import StyledTableCell from '../../mui/StyledTableCell'
+import GameTableCell from '../../mui/GameTableCell'
 import StyledTextField from '../../mui/StyledTextField'
 import { TableRow } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -180,7 +180,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   if (editState.isActive) {
     return (
       <TableRow key={game.id} sx={{ height: '20px' }}>
-        <StyledTableCell
+        <GameTableCell
           className="editing editing-start"
           sx={{
             '&:focus-within': {
@@ -195,8 +195,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
               dispatch({ type: 'changeTitle', payload: e.target.value })
             }
           />
-        </StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -211,8 +211,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
               dispatch({ type: 'changeImage', payload: e.target.value })
             }
           />
-        </StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -227,9 +227,9 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
               dispatch({ type: 'changeLink', payload: e.target.value })
             }
           />
-        </StyledTableCell>
-        <StyledTableCell className="editing"></StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell className="editing"></GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -255,8 +255,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'ok'}>ok</MenuItem>
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
-        </StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -282,8 +282,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'ok'}>ok</MenuItem>
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
-        </StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -309,8 +309,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'ok'}>ok</MenuItem>
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
-        </StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -336,8 +336,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'ok'}>ok</MenuItem>
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
-        </StyledTableCell>
-        <StyledTableCell
+        </GameTableCell>
+        <GameTableCell
           className="editing"
           sx={{
             '&:focus-within': {
@@ -363,14 +363,14 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             <MenuItem value={'ok'}>ok</MenuItem>
             <MenuItem value={'yes'}>yes</MenuItem>
           </Select>
-        </StyledTableCell>
-        <StyledTableCell className="editing"></StyledTableCell>
-        <StyledTableCell className="editing"></StyledTableCell>
-        <StyledTableCell className="editing">
+        </GameTableCell>
+        <GameTableCell className="editing"></GameTableCell>
+        <GameTableCell className="editing"></GameTableCell>
+        <GameTableCell className="editing">
           {/* delete cell is empty during edit by design */}
-        </StyledTableCell>
+        </GameTableCell>
 
-        <StyledTableCell className="editing editing-end" align="center">
+        <GameTableCell className="editing editing-end" align="center">
           <IconButton
             sx={{ color: 'green' }}
             onClick={() => {
@@ -387,7 +387,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           >
             <CancelIcon />
           </IconButton>
-        </StyledTableCell>
+        </GameTableCell>
       </TableRow>
     )
     //                                                    //
@@ -406,68 +406,68 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           />
         )}
         <TableRow key={game.id}>
-          <StyledTableCell>{game.title}</StyledTableCell>
-          <StyledTableCell align="center">
+          <GameTableCell>{game.title}</GameTableCell>
+          <GameTableCell align="center">
             <img
               style={{ maxWidth: '30px' }}
               src={game.image}
               alt={`${game.title.replace(/\s+/g, '-')}-pic`}
             ></img>
-          </StyledTableCell>
-          <StyledTableCell align="center">
+          </GameTableCell>
+          <GameTableCell align="center">
             <a href={game.link} target="_blank" rel="noreferrer">
               <OpenInBrowserTwoToneIcon />
             </a>
-          </StyledTableCell>
-          <StyledTableCell align="center">...</StyledTableCell>
-          <StyledTableCell
+          </GameTableCell>
+          <GameTableCell align="center">...</GameTableCell>
+          <GameTableCell
             sx={{
               backgroundColor: `${getConditionalColor(game.players.one)}`,
             }}
             align="center"
           >
             {game.players.one}
-          </StyledTableCell>
-          <StyledTableCell
+          </GameTableCell>
+          <GameTableCell
             sx={{
               backgroundColor: `${getConditionalColor(game.players.two)}`,
             }}
             align="center"
           >
             {game.players.two}
-          </StyledTableCell>
-          <StyledTableCell
+          </GameTableCell>
+          <GameTableCell
             sx={{
               backgroundColor: `${getConditionalColor(game.players.three)}`,
             }}
             align="center"
           >
             {game.players.three}
-          </StyledTableCell>
-          <StyledTableCell
+          </GameTableCell>
+          <GameTableCell
             sx={{
               backgroundColor: `${getConditionalColor(game.players.four)}`,
             }}
             align="center"
           >
             {game.players.four}
-          </StyledTableCell>
-          <StyledTableCell
+          </GameTableCell>
+          <GameTableCell
             sx={{
               backgroundColor: `${getConditionalColor(game.players.five)}`,
             }}
             align="center"
           >
             {game.players.five}
-          </StyledTableCell>
-          <StyledTableCell align="center">...</StyledTableCell>
-          <StyledTableCell align="center">...</StyledTableCell>
-          <StyledTableCell align="center">
+          </GameTableCell>
+          <GameTableCell align="center">...</GameTableCell>
+          <GameTableCell align="center">...</GameTableCell>
+          <GameTableCell align="center">
             <IconButton sx={{ color: 'black' }} onClick={handleDelete}>
               <DeleteIcon />
             </IconButton>
-          </StyledTableCell>
-          <StyledTableCell align="center">
+          </GameTableCell>
+          <GameTableCell align="center">
             <IconButton
               disableRipple
               sx={{ color: 'black' }}
@@ -475,7 +475,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             >
               <EditIcon />
             </IconButton>
-          </StyledTableCell>
+          </GameTableCell>
         </TableRow>
       </>
     )
