@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './AddMatchForm.css'
 import {
   Button,
@@ -9,11 +9,14 @@ import {
   Divider,
   FormControl,
   FormHelperText,
+  IconButton,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from '@mui/material'
+import AddCircleIcon from '@mui/icons-material/AddCircle'
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 import { GamesContext } from '../../store/games-context'
 
 interface AddMatchFormProps {
@@ -21,6 +24,7 @@ interface AddMatchFormProps {
 }
 
 const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
+  const [numberOfPlayers, setNumberOfPlayers] = useState(1)
   const { games } = useContext(GamesContext)
 
   console.log('games in AMF = ', games)
@@ -53,52 +57,78 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
             </Select>
           </FormControl>
           <br />
-          <>
-            <Divider textAlign="left" sx={{ margin: '15px 0' }}>
-              Player #1
-            </Divider>
 
-            <div className="player-box">
-              <FormControl size="small" sx={{ minWidth: '125px' }}>
-                <InputLabel id="name-label">Name</InputLabel>
-                <Select
-                  label="Name"
-                  labelId="name-label"
-                  sx={{ minHeight: 40 }}
-                >
-                  <MenuItem key={'null'}></MenuItem>
-                  {true
-                    ? ['dinis', 'kris', 'lais', 'susan'].map(player => {
-                        return (
-                          <MenuItem value={player} key={player}>
-                            {player}
-                          </MenuItem>
-                        )
-                      })
-                    : ''}
-                </Select>
-              </FormControl>
+          {/* for # of players, add one below, w/ dynamic fields as needed */}
 
-              <FormControl size="small" sx={{ minWidth: '125px' }}>
-                <InputLabel id="result-label">Result</InputLabel>
-                <Select
-                  label="Result"
-                  labelId="result-label"
-                  sx={{ minHeight: 40 }}
-                >
-                  <MenuItem key={'null'}></MenuItem>
-                  <MenuItem value="win">win</MenuItem>
-                  <MenuItem value="loss">loss</MenuItem>
-                  <MenuItem value="draw">draw</MenuItem>
-                  <MenuItem value="n/a">n/a</MenuItem>
-                </Select>
-              </FormControl>
+          {Array.from({ length: numberOfPlayers }, (v, i) => i + 1).map(n => {
+            return (
+              <>
+                <Divider textAlign="left" sx={{ margin: '15px 0' }}>
+                  {`Player #${n}`}
+                </Divider>
 
-              <div>
-                <TextField label="Score" size="small" type="text" />
-              </div>
-            </div>
-          </>
+                <div className="player-box">
+                  <FormControl size="small" sx={{ minWidth: '125px' }}>
+                    <InputLabel id={`p${n}-name-label`}>Name</InputLabel>
+                    <Select
+                      label="Name"
+                      labelId={`p${n}-name-label`}
+                      sx={{ minHeight: 40 }}
+                    >
+                      <MenuItem key={'null'}></MenuItem>
+                      {true
+                        ? ['dinis', 'kris', 'lais', 'susan'].map(player => {
+                            return (
+                              <MenuItem value={player} key={player}>
+                                {player}
+                              </MenuItem>
+                            )
+                          })
+                        : ''}
+                    </Select>
+                  </FormControl>
+
+                  <FormControl size="small" sx={{ minWidth: '125px' }}>
+                    <InputLabel id={`p${n}-result-label`}>Result</InputLabel>
+                    <Select
+                      label="Result"
+                      labelId={`p${n}-result-label`}
+                      sx={{ minHeight: 40 }}
+                    >
+                      <MenuItem key={'null'}></MenuItem>
+                      <MenuItem value="win">win</MenuItem>
+                      <MenuItem value="loss">loss</MenuItem>
+                      <MenuItem value="draw">draw</MenuItem>
+                      <MenuItem value="n/a">n/a</MenuItem>
+                    </Select>
+                  </FormControl>
+
+                  <div>
+                    <TextField label="Score" size="small" type="text" />
+                  </div>
+                </div>
+              </>
+            )
+          })}
+          <IconButton
+            size="large"
+            onClick={() => setNumberOfPlayers(prev => prev + 1)}
+            color="success"
+          >
+            <AddCircleIcon fontSize="inherit" />
+          </IconButton>
+          {numberOfPlayers > 1 ? (
+            <IconButton
+              size="large"
+              onClick={() => setNumberOfPlayers(prev => prev - 1)}
+              color="error"
+            >
+              <RemoveCircleIcon fontSize="inherit" />
+            </IconButton>
+          ) : (
+            ''
+          )}
+
           <DialogActions>
             <Button variant="contained">Add</Button>
             <Button variant="outlined" onClick={() => setFormIsActive(false)}>
