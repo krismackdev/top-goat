@@ -18,6 +18,7 @@ import {
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 import { GamesContext } from '../../store/games-context'
+import { MatchesContext } from '../../store/matches-context'
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
 
@@ -30,7 +31,7 @@ type Result = 'win' | 'loss' | 'draw' | 'n/a'
 interface PlayerResultObject {
   name: string
   result: Result
-  score: number | 'n/a'
+  score: string
 }
 
 interface ParticipantsObject {
@@ -53,6 +54,7 @@ interface MatchFormActionObject {
     | 'addPlayer'
     | 'removePlayer'
     | 'changePlayerData'
+    | 'resetMatchForm'
   payload: { [prop: string]: string }
 }
 
@@ -107,12 +109,16 @@ const addMatchStateReducer = (
         [action.payload.key]: action.payload.value,
       }
       return stateCopy2
+    case 'resetMatchForm':
+      return { ...initialAddMatchState, id: uuidv4() }
   }
 }
 
 const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
   const [numberOfPlayers, setNumberOfPlayers] = useState(1)
+  const [matchFormIsInvalid, setMatchFormIsInvalid] = useState(false)
   const { games } = useContext(GamesContext)
+  const { addNewMatch } = useContext(MatchesContext)
   const [addMatchState, dispatch] = useReducer(
     addMatchStateReducer,
     initialAddMatchState
@@ -124,6 +130,41 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     throw new Error('DID NOT MATCH!')
   }
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    let namesList: string[] = []
+    let resultsList: Result[] = []
+    let scoresList: string[] = []
+    Object.keys(addMatchState.participants).forEach(playerKey => {
+      namesList.push(addMatchState.participants[playerKey].name)
+      resultsList.push(addMatchState.participants[playerKey].result)
+      scoresList.push(addMatchState.participants[playerKey].score)
+    })
+    console.log(namesList, resultsList, scoresList)
+    if (
+      addMatchState.id.trim() === '' ||
+      addMatchState.date.trim() === '' ||
+      addMatchState.game.trim() === '' ||
+      addMatchState.gameId.trim() === '' ||
+      !namesList.every(name =>
+        ['dinis', 'kris', 'lais', 'susan'].includes(name)
+      ) ||
+      !resultsList.every(result =>
+        ['win', 'loss', 'draw', 'n/a'].includes(result)
+      ) ||
+      scoresList.every(score => {
+        return score !== 'n/a' && isNaN(+score) && score === ''
+      })
+    ) {
+      setMatchFormIsInvalid(true)
+      return
+    }
+    addNewMatch(addMatchState)
+    setMatchFormIsInvalid(false)
+    dispatch({ type: 'resetMatchForm', payload: { x: 'x' } })
+    setNumberOfPlayers(1)
+  }
+
   console.log('addMatchState =', addMatchState)
 
   return (
@@ -131,7 +172,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
       <DialogTitle>Add a new match</DialogTitle>
 
       <DialogContent>
-        <form>
+        <form onSubmit={handleSubmit}>
           <TextField
             size="small"
             type="date"
@@ -142,12 +183,21 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                 payload: { date: e.target.value },
               })
             }
+            error={matchFormIsInvalid && addMatchState.date.trim().length === 0}
+            helperText={
+              matchFormIsInvalid && addMatchState.date.trim().length === 0
+                ? '* this field is required'
+                : ''
+            }
           />
           <br />
           <br />
           <FormControl size="small" sx={{ minWidth: 125 }}>
             <InputLabel id="game-label">Game</InputLabel>
             <Select
+              error={
+                matchFormIsInvalid && addMatchState.game.trim().length === 0
+              }
               sx={{ minHeight: 40 }}
               size="small"
               label="Game"
@@ -174,6 +224,13 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                   </MenuItem>
                 ))}
             </Select>
+            {matchFormIsInvalid && addMatchState.game.trim().length === 0 ? (
+              <FormHelperText sx={{ color: 'red' }}>
+                * this field is required
+              </FormHelperText>
+            ) : (
+              ''
+            )}
           </FormControl>
           <br />
 
@@ -190,6 +247,11 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                   <FormControl size="small" sx={{ minWidth: '125px' }}>
                     <InputLabel id={`p${n}-name-label`}>Name</InputLabel>
                     <Select
+                      error={
+                        matchFormIsInvalid &&
+                        addMatchState.participants[`player${n}`].name.trim()
+                          .length === 0
+                      }
                       label="Name"
                       labelId={`p${n}-name-label`}
                       sx={{ minHeight: 40 }}
@@ -205,7 +267,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                         })
                       }}
                     >
-                      <MenuItem key={'null'}></MenuItem>
+                      <MenuItem key={'null'} value=""></MenuItem>
                       {true
                         ? ['dinis', 'kris', 'lais', 'susan'].map(player => {
                             return (
@@ -216,11 +278,26 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                           })
                         : ''}
                     </Select>
+                    {matchFormIsInvalid &&
+                    addMatchState.participants[`player${n}`].name.trim()
+                      .length === 0 ? (
+                      <FormHelperText sx={{ color: 'red' }}>
+                        * this field is required
+                      </FormHelperText>
+                    ) : (
+                      ''
+                    )}
                   </FormControl>
 
                   <FormControl size="small" sx={{ minWidth: '125px' }}>
                     <InputLabel id={`p${n}-result-label`}>Result</InputLabel>
                     <Select
+                      error={
+                        matchFormIsInvalid &&
+                        !['win', 'loss', 'draw', 'n/a'].includes(
+                          addMatchState.participants[`player${n}`].result.trim()
+                        )
+                      }
                       label="Result"
                       labelId={`p${n}-result-label`}
                       sx={{ minHeight: 40 }}
@@ -236,31 +313,65 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                         })
                       }}
                     >
-                      <MenuItem key={'null'}></MenuItem>
+                      <MenuItem key={'null'} value=""></MenuItem>
                       <MenuItem value="win">win</MenuItem>
                       <MenuItem value="loss">loss</MenuItem>
                       <MenuItem value="draw">draw</MenuItem>
                       <MenuItem value="n/a">n/a</MenuItem>
                     </Select>
+                    {matchFormIsInvalid &&
+                    !['win', 'loss', 'draw', 'n/a'].includes(
+                      addMatchState.participants[`player${n}`].result.trim()
+                    ) ? (
+                      <FormHelperText sx={{ color: 'red' }}>
+                        * this field is required
+                      </FormHelperText>
+                    ) : (
+                      ''
+                    )}
                   </FormControl>
 
                   <div>
-                    <TextField
-                      label="Score"
-                      size="small"
-                      type="text"
-                      value={addMatchState.participants[`player${n}`].score}
-                      onChange={e => {
-                        dispatch({
-                          type: 'changePlayerData',
-                          payload: {
-                            n: `${n}`,
-                            key: 'score',
-                            value: e.target.value,
-                          },
-                        })
-                      }}
-                    />
+                    <FormControl>
+                      <TextField
+                        error={
+                          matchFormIsInvalid &&
+                          addMatchState.participants[`player${n}`].score !==
+                            'n/a' &&
+                          (isNaN(
+                            +addMatchState.participants[`player${n}`].score
+                          ) ||
+                            addMatchState.participants[`player${n}`].score ===
+                              '')
+                        }
+                        label="Score"
+                        size="small"
+                        type="text"
+                        value={addMatchState.participants[`player${n}`].score}
+                        onChange={e => {
+                          dispatch({
+                            type: 'changePlayerData',
+                            payload: {
+                              n: `${n}`,
+                              key: 'score',
+                              value: e.target.value,
+                            },
+                          })
+                        }}
+                      />
+                      {matchFormIsInvalid &&
+                      addMatchState.participants[`player${n}`].score !==
+                        'n/a' &&
+                      (isNaN(+addMatchState.participants[`player${n}`].score) ||
+                        addMatchState.participants[`player${n}`].score ===
+                          '') ? (
+                        <FormHelperText sx={{ color: 'red' }}>
+                          * this field is required
+                        </FormHelperText>
+                      ) : (
+                        ''
+                      )}
+                    </FormControl>
                   </div>
                 </div>
               </>
@@ -298,7 +409,9 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
           )}
 
           <DialogActions>
-            <Button variant="contained">Add</Button>
+            <Button type="submit" variant="contained">
+              Add
+            </Button>
             <Button variant="outlined" onClick={() => setFormIsActive(false)}>
               Close
             </Button>

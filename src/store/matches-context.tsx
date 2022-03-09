@@ -23,11 +23,32 @@ interface MatchObject {
   participants: ParticipantsObject
 }
 
+interface PlayerResultObjectWithScore {
+  name: string
+  result: Result
+  score: string
+}
+
+interface ParticipantObjectWithStringScore {
+  [prop: string]: PlayerResultObjectWithScore
+}
+
+interface MatchObjectWithStringScore {
+  id: string
+  date: string
+  game: string
+  gameId: string
+  playOrder: number
+  participants: ParticipantObjectWithStringScore
+}
+
 type MatchesContextProviderProps = { children: React.ReactNode }
 
 export const MatchesContext = createContext<{
+  addNewMatch: (newGame: MatchObjectWithStringScore) => void
   matches: MatchObject[] | undefined
 }>({
+  addNewMatch: () => {},
   matches: undefined,
 })
 
@@ -64,9 +85,14 @@ export const MatchesContextProvider = ({
     setMatchesWithFetchedData()
   }, [])
 
+  const addNewMatch = (newMatch: MatchObjectWithStringScore) => {
+    console.log('adding...', newMatch)
+  }
+
   return (
     <MatchesContext.Provider
       value={{
+        addNewMatch,
         matches,
       }}
     >
