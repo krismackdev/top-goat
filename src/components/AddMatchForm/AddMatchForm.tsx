@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useReducer, useState } from 'react'
 import './AddMatchForm.css'
 import {
   Button,
@@ -18,16 +18,113 @@ import {
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 import { GamesContext } from '../../store/games-context'
+// @ts-ignore
+import { v4 as uuidv4 } from 'uuid'
 
 interface AddMatchFormProps {
   setFormIsActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+type Result = 'win' | 'loss' | 'draw' | 'n/a'
+
+interface PlayerResultObject {
+  name: string
+  result: Result
+  score: number | 'n/a'
+}
+
+interface ParticipantsObject {
+  [prop: string]: PlayerResultObject
+}
+
+interface MatchObject {
+  id: string
+  date: string
+  game: string
+  gameId: string
+  participants: ParticipantsObject
+  playOrder: number
+}
+
+interface MatchFormActionObject {
+  type:
+    | 'changeDate'
+    | 'changeGame'
+    | 'addPlayer'
+    | 'removePlayer'
+    | 'changePlayerData'
+  payload: { [prop: string]: string }
+}
+
+const initialAddMatchState: MatchObject = {
+  id: uuidv4(),
+  date: '',
+  game: '',
+  gameId: '',
+  participants: {
+    player1: {
+      name: '',
+      result: 'n/a',
+      score: 'n/a',
+    },
+  },
+  playOrder: -1,
+}
+
+const addMatchStateReducer = (
+  state: MatchObject,
+  action: MatchFormActionObject
+): MatchObject => {
+  switch (action.type) {
+    case 'changeDate':
+      return { ...state, date: action.payload.date }
+    case 'changeGame':
+      return {
+        ...state,
+        gameId: action.payload.gameId,
+        game: action.payload.gameTitle,
+      }
+    case 'addPlayer':
+      return {
+        ...state,
+        participants: {
+          ...state.participants,
+          [`player${+action.payload.n}`]: {
+            name: '',
+            result: 'n/a',
+            score: 'n/a',
+          },
+        },
+      }
+    case 'removePlayer':
+      let stateCopy = { ...state }
+      delete stateCopy.participants[`player${action.payload.n}`]
+      return stateCopy
+    case 'changePlayerData':
+      let stateCopy2 = { ...state }
+      stateCopy2.participants[`player${action.payload.n}`] = {
+        ...stateCopy2.participants[`player${action.payload.n}`],
+        [action.payload.key]: action.payload.value,
+      }
+      return stateCopy2
+  }
+}
+
 const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
   const [numberOfPlayers, setNumberOfPlayers] = useState(1)
   const { games } = useContext(GamesContext)
+  const [addMatchState, dispatch] = useReducer(
+    addMatchStateReducer,
+    initialAddMatchState
+  )
 
-  console.log('games in AMF = ', games)
+  // thought i spotted a bug, below throw if it reproduces
+  // otherwise, delete this eventually
+  if (numberOfPlayers !== Object.keys(addMatchState.participants).length) {
+    throw new Error('DID NOT MATCH!')
+  }
+
+  console.log('addMatchState =', addMatchState)
 
   return (
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
@@ -35,7 +132,17 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
 
       <DialogContent>
         <form>
-          <TextField size="small" type="date" />
+          <TextField
+            size="small"
+            type="date"
+            value={addMatchState.date}
+            onChange={e =>
+              dispatch({
+                type: 'changeDate',
+                payload: { date: e.target.value },
+              })
+            }
+          />
           <br />
           <br />
           <FormControl size="small" sx={{ minWidth: 125 }}>
@@ -45,8 +152,20 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
               size="small"
               label="Game"
               labelId="game-label"
+              value={addMatchState.gameId}
+              onChange={e => {
+                dispatch({
+                  type: 'changeGame',
+                  payload: {
+                    gameId: e.target.value,
+                    gameTitle:
+                      games?.find(game => game.id === e.target.value)?.title ??
+                      '',
+                  },
+                })
+              }}
             >
-              <MenuItem key={'null'}></MenuItem>
+              <MenuItem key={'null'} value=""></MenuItem>
               {Array.isArray(games) &&
                 games.length > 0 &&
                 games.map(game => (
@@ -74,6 +193,17 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                       label="Name"
                       labelId={`p${n}-name-label`}
                       sx={{ minHeight: 40 }}
+                      value={addMatchState.participants[`player${n}`].name}
+                      onChange={e => {
+                        dispatch({
+                          type: 'changePlayerData',
+                          payload: {
+                            n: `${n}`,
+                            key: 'name',
+                            value: e.target.value,
+                          },
+                        })
+                      }}
                     >
                       <MenuItem key={'null'}></MenuItem>
                       {true
@@ -94,6 +224,17 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                       label="Result"
                       labelId={`p${n}-result-label`}
                       sx={{ minHeight: 40 }}
+                      value={addMatchState.participants[`player${n}`].result}
+                      onChange={e => {
+                        dispatch({
+                          type: 'changePlayerData',
+                          payload: {
+                            n: `${n}`,
+                            key: 'result',
+                            value: e.target.value,
+                          },
+                        })
+                      }}
                     >
                       <MenuItem key={'null'}></MenuItem>
                       <MenuItem value="win">win</MenuItem>
@@ -104,7 +245,22 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                   </FormControl>
 
                   <div>
-                    <TextField label="Score" size="small" type="text" />
+                    <TextField
+                      label="Score"
+                      size="small"
+                      type="text"
+                      value={addMatchState.participants[`player${n}`].score}
+                      onChange={e => {
+                        dispatch({
+                          type: 'changePlayerData',
+                          payload: {
+                            n: `${n}`,
+                            key: 'score',
+                            value: e.target.value,
+                          },
+                        })
+                      }}
+                    />
                   </div>
                 </div>
               </>
@@ -112,7 +268,13 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
           })}
           <IconButton
             size="large"
-            onClick={() => setNumberOfPlayers(prev => prev + 1)}
+            onClick={() => {
+              dispatch({
+                type: 'addPlayer',
+                payload: { n: `${numberOfPlayers + 1}` },
+              })
+              setNumberOfPlayers(prev => prev + 1)
+            }}
             color="success"
           >
             <AddCircleIcon fontSize="inherit" />
@@ -120,7 +282,13 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
           {numberOfPlayers > 1 ? (
             <IconButton
               size="large"
-              onClick={() => setNumberOfPlayers(prev => prev - 1)}
+              onClick={() => {
+                dispatch({
+                  type: 'removePlayer',
+                  payload: { n: `${numberOfPlayers}` },
+                })
+                setNumberOfPlayers(prev => prev - 1)
+              }}
               color="error"
             >
               <RemoveCircleIcon fontSize="inherit" />

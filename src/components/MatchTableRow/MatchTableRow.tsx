@@ -72,8 +72,6 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match }) => {
 
   // const handleDelete = () => {}
 
-  console.log('match.date =', match.date)
-
   return (
     <>
       <TableRow>
