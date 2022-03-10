@@ -38,39 +38,41 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match }) => {
   const susan = '37c29c04-98f4-47f8-8bad-aeaa8b4c8abc'
 
   const scoreDinis =
-    match.participants[dinis].score === 'n/a'
+    match?.participants?.[dinis]?.score === 'n/a'
       ? '-'
-      : match.participants[dinis].score
+      : match?.participants?.[dinis]?.score ?? '-'
   const scoreKris =
-    match.participants[kris].score === 'n/a'
+    match?.participants?.[kris]?.score === 'n/a'
       ? '-'
-      : match.participants[kris].score
+      : match?.participants?.[kris]?.score ?? '-'
   const scoreLais =
-    match.participants[lais].score === 'n/a'
+    match?.participants?.[lais]?.score === 'n/a'
       ? '-'
-      : match.participants[lais].score
+      : match?.participants?.[lais]?.score ?? '-'
   const scoreSusan =
-    match.participants[susan].score === 'n/a'
+    match?.participants?.[susan]?.score === 'n/a'
       ? '-'
-      : match.participants[susan].score
+      : match?.participants?.[susan]?.score ?? '-'
   const resultDinis =
-    match.participants[dinis].result === 'n/a'
+    match?.participants?.[dinis]?.result === 'n/a'
       ? '-'
-      : match.participants[dinis].result
+      : match?.participants?.[dinis]?.result ?? '-'
   const resultKris =
-    match.participants[kris].result === 'n/a'
+    match?.participants?.[kris]?.result === 'n/a'
       ? '-'
-      : match.participants[kris].result
+      : match?.participants?.[kris]?.result ?? '-'
   const resultLais =
-    match.participants[lais].result === 'n/a'
+    match?.participants?.[lais]?.result === 'n/a'
       ? '-'
-      : match.participants[lais].result
+      : match?.participants?.[lais]?.result ?? '-'
   const resultSusan =
-    match.participants[susan].result === 'n/a'
+    match?.participants?.[susan]?.result === 'n/a'
       ? '-'
-      : match.participants[susan].result
+      : match?.participants?.[susan]?.result ?? '-'
 
   // const handleDelete = () => {}
+
+  console.log('match.date =', match.date)
 
   return (
     <>

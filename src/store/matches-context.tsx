@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, doc, getDocs, setDoc } from 'firebase/firestore'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
@@ -56,8 +56,11 @@ export const MatchesContextProvider = ({
   children,
 }: MatchesContextProviderProps) => {
   const [matches, setMatches] = useState<MatchObject[] | undefined>(undefined)
+  const [currentPlayOrder, setCurrentPlayOrder] = useState<number | undefined>(
+    undefined
+  )
 
-  // this function sets the games state with data from firestore
+  // this function sets the matches state with data from firestore
   const setMatchesWithFetchedData = async () => {
     const fetchMatches = async () => {
       const matchesRef = collection(db, 'matches')
@@ -77,7 +80,13 @@ export const MatchesContextProvider = ({
       })
       return result
     })
-
+    let newCurrentPlayOrder = 0
+    downloadedMatches.forEach(match => {
+      if (match.playOrder > newCurrentPlayOrder) {
+        newCurrentPlayOrder = match.playOrder
+      }
+    })
+    setCurrentPlayOrder(newCurrentPlayOrder)
     setMatches(downloadedMatches)
   }
 
@@ -85,8 +94,16 @@ export const MatchesContextProvider = ({
     setMatchesWithFetchedData()
   }, [])
 
-  const addNewMatch = (newMatch: MatchObjectWithStringScore) => {
+  const addNewMatch = async (newMatch: MatchObjectWithStringScore) => {
     console.log('adding...', newMatch)
+    const { id, ...matchWithoutId } = newMatch
+
+    await setDoc(doc(db, 'matches', id), {
+      ...matchWithoutId,
+      playOrder: currentPlayOrder ? currentPlayOrder + 1 : 1,
+    })
+
+    setMatchesWithFetchedData()
   }
 
   return (

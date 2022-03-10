@@ -366,7 +366,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                         addMatchState.participants[`player${n}`].score ===
                           '') ? (
                         <FormHelperText sx={{ color: 'red' }}>
-                          * this field is required
+                          * enter a number, or n/a for no score
                         </FormHelperText>
                       ) : (
                         ''
