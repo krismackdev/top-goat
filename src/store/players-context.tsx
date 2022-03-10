@@ -40,13 +40,14 @@ export const PlayersContextProvider = ({
       })
       return result
     })
-
     setPlayers(downloadedPlayers)
   }
 
   useEffect(() => {
     setPlayersWithFetchedData()
   }, [])
+
+  console.log('in context, players =', players)
 
   return (
     <PlayersContext.Provider

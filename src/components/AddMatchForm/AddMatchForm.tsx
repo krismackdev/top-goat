@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from 'react'
+import React, { useEffect, useContext, useReducer, useState } from 'react'
 import './AddMatchForm.css'
 import {
   Button,
@@ -19,6 +19,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 import { GamesContext } from '../../store/games-context'
 import { MatchesContext } from '../../store/matches-context'
+import { PlayersContext } from '../../store/players-context'
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
 
@@ -117,12 +118,27 @@ const addMatchStateReducer = (
 const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
   const [numberOfPlayers, setNumberOfPlayers] = useState(1)
   const [matchFormIsInvalid, setMatchFormIsInvalid] = useState(false)
+  const [playerNames, setPlayerNames] = useState<string[] | undefined>(
+    undefined
+  )
   const { games } = useContext(GamesContext)
   const { addNewMatch } = useContext(MatchesContext)
+  const { players } = useContext(PlayersContext)
   const [addMatchState, dispatch] = useReducer(
     addMatchStateReducer,
     initialAddMatchState
   )
+
+  useEffect(() => {
+    let tempPlayerNames: string[] = []
+    players?.forEach(player => {
+      tempPlayerNames.push(player.name)
+    })
+    setPlayerNames(tempPlayerNames)
+  }, [players])
+
+  console.log('players =', players)
+  console.log('playerNames =', playerNames)
 
   // thought i spotted a bug, below throw if it reproduces
   // otherwise, delete this eventually
@@ -146,9 +162,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
       addMatchState.date.trim() === '' ||
       addMatchState.game.trim() === '' ||
       addMatchState.gameId.trim() === '' ||
-      !namesList.every(name =>
-        ['dinis', 'kris', 'lais', 'susan'].includes(name)
-      ) ||
+      !namesList.every(name => playerNames?.includes(name)) ||
       !resultsList.every(result =>
         ['win', 'loss', 'draw', 'n/a'].includes(result)
       ) ||
@@ -159,7 +173,22 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
       setMatchFormIsInvalid(true)
       return
     }
-    addNewMatch(addMatchState)
+
+    // this changes the participants props from player-n's to the containing player's id
+    let newMatchToAdd = { ...addMatchState }
+    Object.keys(newMatchToAdd.participants).forEach(playerN => {
+      if (players) {
+        let { id: pid } = players.find(
+          player => player.name === newMatchToAdd.participants[playerN].name
+        )!
+        newMatchToAdd.participants[pid] = {
+          ...newMatchToAdd.participants[playerN],
+        }
+        delete newMatchToAdd.participants[playerN]
+      }
+    })
+
+    addNewMatch(newMatchToAdd)
     setMatchFormIsInvalid(false)
     dispatch({ type: 'resetMatchForm', payload: { x: 'x' } })
     setNumberOfPlayers(1)
@@ -268,15 +297,13 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                       }}
                     >
                       <MenuItem key={'null'} value=""></MenuItem>
-                      {true
-                        ? ['dinis', 'kris', 'lais', 'susan'].map(player => {
-                            return (
-                              <MenuItem value={player} key={player}>
-                                {player}
-                              </MenuItem>
-                            )
-                          })
-                        : ''}
+                      {Array.isArray(players) &&
+                        players.length > 0 &&
+                        players.map(player => (
+                          <MenuItem value={player.name} key={player.id}>
+                            {player.name}
+                          </MenuItem>
+                        ))}
                     </Select>
                     {matchFormIsInvalid &&
                     addMatchState.participants[`player${n}`].name.trim()
