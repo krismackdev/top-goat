@@ -40,6 +40,11 @@ export const PlayersContextProvider = ({
       })
       return result
     })
+
+    downloadedPlayers.sort((a, b) => {
+      return a.name > b.name ? 1 : -1
+    })
+
     setPlayers(downloadedPlayers)
   }
 
