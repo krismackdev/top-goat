@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/firestore'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
@@ -46,9 +46,11 @@ type MatchesContextProviderProps = { children: React.ReactNode }
 
 export const MatchesContext = createContext<{
   addNewMatch: (newGame: MatchObjectWithStringScore) => void
+  deleteMatch: (id: string) => void
   matches: MatchObject[] | undefined
 }>({
   addNewMatch: () => {},
+  deleteMatch: () => {},
   matches: undefined,
 })
 
@@ -87,12 +89,20 @@ export const MatchesContextProvider = ({
       }
     })
     setCurrentPlayOrder(newCurrentPlayOrder)
+    downloadedMatches.sort((a, b) => {
+      return b.playOrder - a.playOrder
+    })
     setMatches(downloadedMatches)
   }
 
   useEffect(() => {
     setMatchesWithFetchedData()
   }, [])
+
+  const deleteMatch = async (id: string): Promise<void> => {
+    await deleteDoc(doc(db, 'matches', id))
+    setMatchesWithFetchedData()
+  }
 
   const addNewMatch = async (newMatch: MatchObjectWithStringScore) => {
     console.log('adding...', newMatch)
@@ -110,6 +120,7 @@ export const MatchesContextProvider = ({
     <MatchesContext.Provider
       value={{
         addNewMatch,
+        deleteMatch,
         matches,
       }}
     >

@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import MatchTableCell from '../../mui/MatchTableCell'
 import { IconButton, TableRow } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel'
 import CheckIcon from '@mui/icons-material/Check'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
+import { DeleteConfirmation } from '../../components'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
@@ -38,10 +39,21 @@ interface MatchTableRowProps {
 }
 
 const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
-  // const handleDelete = () => {}
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+
+  const handleMatchDelete = (): void => {
+    setShowDeleteConfirmation(true)
+  }
 
   return (
     <>
+      {showDeleteConfirmation && (
+        <DeleteConfirmation
+          id={match.id}
+          type="match"
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
+        />
+      )}
       <TableRow>
         <MatchTableCell>{match.playOrder}</MatchTableCell>
         <MatchTableCell>{match.date}</MatchTableCell>
@@ -64,7 +76,7 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
           <IconButton
             size="small"
             sx={{ color: 'black' }}
-            // onClick={handleDelete}
+            onClick={handleMatchDelete}
           >
             <DeleteIcon fontSize="inherit" />
           </IconButton>

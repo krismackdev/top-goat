@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, useState } from 'react'
 import { GamesContext } from '../../store/games-context'
 import './GameTableRow.css'
-import { DeleteGameConfirmation } from '../../components'
+import { DeleteConfirmation } from '../../components'
 import { GameTableCell, StyledTextField } from '../../mui'
 import { IconButton, MenuItem, Select, TableRow } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel'
@@ -169,7 +169,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     }
   }
 
-  const handleDelete = (): void => {
+  const handleMatchDelete = (): void => {
     setShowDeleteConfirmation(true)
   }
 
@@ -396,7 +396,8 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     return (
       <>
         {showDeleteConfirmation && (
-          <DeleteGameConfirmation
+          <DeleteConfirmation
+            type="game"
             id={game.id}
             setShowDeleteConfirmation={setShowDeleteConfirmation}
           />
@@ -459,7 +460,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <GameTableCell align="center">...</GameTableCell>
           <GameTableCell align="center">...</GameTableCell>
           <GameTableCell align="center">
-            <IconButton sx={{ color: 'black' }} onClick={handleDelete}>
+            <IconButton sx={{ color: 'black' }} onClick={handleMatchDelete}>
               <DeleteIcon />
             </IconButton>
           </GameTableCell>

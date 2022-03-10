@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { GamesContext } from '../../store/games-context'
-import './DeleteGameConfirmation.css'
+import { MatchesContext } from '../../store/matches-context'
+import './DeleteConfirmation.css'
 import {
   Button,
   Dialog,
@@ -9,25 +10,34 @@ import {
   DialogTitle,
 } from '@mui/material'
 
-interface DeleteGameConfirmationProps {
+interface DeleteConfirmationProps {
   setShowDeleteConfirmation: React.Dispatch<React.SetStateAction<boolean>>
   id: string
+  type: 'game' | 'match'
 }
 
-const DeleteGameConfirmation: React.FC<DeleteGameConfirmationProps> = ({
+const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
   setShowDeleteConfirmation,
   id,
+  type,
 }) => {
   const { deleteGame } = useContext(GamesContext)
+  const { deleteMatch } = useContext(MatchesContext)
 
   const handleDelete = () => {
-    deleteGame(id)
+    if (type === 'game') {
+      deleteGame(id)
+    } else if (type === 'match') {
+      deleteMatch(id)
+    }
     setShowDeleteConfirmation(false)
   }
 
   return (
     <Dialog open={true} onClose={() => setShowDeleteConfirmation(false)}>
-      <DialogTitle>Are you sure you want to delete this game?</DialogTitle>
+      <DialogTitle>
+        Are you sure you want to delete this {`${type}`}?
+      </DialogTitle>
       <DialogContent>
         <DialogActions>
           <Button
@@ -45,4 +55,4 @@ const DeleteGameConfirmation: React.FC<DeleteGameConfirmationProps> = ({
   )
 }
 
-export default DeleteGameConfirmation
+export default DeleteConfirmation
