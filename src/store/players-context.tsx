@@ -47,8 +47,6 @@ export const PlayersContextProvider = ({
     setPlayersWithFetchedData()
   }, [])
 
-  console.log('in context, players =', players)
-
   return (
     <PlayersContext.Provider
       value={{

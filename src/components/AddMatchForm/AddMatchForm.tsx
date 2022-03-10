@@ -1,4 +1,10 @@
-import React, { useEffect, useContext, useReducer, useState } from 'react'
+import React, {
+  Fragment,
+  useEffect,
+  useContext,
+  useReducer,
+  useState,
+} from 'react'
 import './AddMatchForm.css'
 import {
   Button,
@@ -137,9 +143,6 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     setPlayerNames(tempPlayerNames)
   }, [players])
 
-  console.log('players =', players)
-  console.log('playerNames =', playerNames)
-
   // thought i spotted a bug, below throw if it reproduces
   // otherwise, delete this eventually
   if (numberOfPlayers !== Object.keys(addMatchState.participants).length) {
@@ -156,7 +159,6 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
       resultsList.push(addMatchState.participants[playerKey].result)
       scoresList.push(addMatchState.participants[playerKey].score)
     })
-    console.log(namesList, resultsList, scoresList)
     if (
       addMatchState.id.trim() === '' ||
       addMatchState.date.trim() === '' ||
@@ -193,8 +195,6 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     dispatch({ type: 'resetMatchForm', payload: { x: 'x' } })
     setNumberOfPlayers(1)
   }
-
-  console.log('addMatchState =', addMatchState)
 
   return (
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
@@ -267,7 +267,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
 
           {Array.from({ length: numberOfPlayers }, (v, i) => i + 1).map(n => {
             return (
-              <>
+              <Fragment key={n}>
                 <Divider textAlign="left" sx={{ margin: '15px 0' }}>
                   {`Player #${n}`}
                 </Divider>
@@ -299,11 +299,23 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                       <MenuItem key={'null'} value=""></MenuItem>
                       {Array.isArray(players) &&
                         players.length > 0 &&
-                        players.map(player => (
-                          <MenuItem value={player.name} key={player.id}>
-                            {player.name}
-                          </MenuItem>
-                        ))}
+                        players
+                          .filter(player => {
+                            return !Object.keys(addMatchState.participants)
+                              .filter(key => {
+                                return `player${n}` !== key
+                              })
+                              .map(
+                                playerN =>
+                                  addMatchState.participants[playerN].name
+                              )
+                              .includes(player.name)
+                          })
+                          .map(player => (
+                            <MenuItem value={player.name} key={player.id}>
+                              {player.name}
+                            </MenuItem>
+                          ))}
                     </Select>
                     {matchFormIsInvalid &&
                     addMatchState.participants[`player${n}`].name.trim()
@@ -401,7 +413,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                     </FormControl>
                   </div>
                 </div>
-              </>
+              </Fragment>
             )
           })}
           <IconButton
