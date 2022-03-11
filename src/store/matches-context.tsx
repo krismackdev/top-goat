@@ -111,9 +111,7 @@ export const MatchesContextProvider = ({
   const addNewMatch = async (
     newMatch: MatchObjectWithStringScore
   ): Promise<void> => {
-    console.log('adding...', newMatch)
     const { id, ...matchWithoutId } = newMatch
-
     await setDoc(doc(db, 'matches', id), {
       ...matchWithoutId,
       playOrder: currentPlayOrder ? currentPlayOrder + 1 : 1,

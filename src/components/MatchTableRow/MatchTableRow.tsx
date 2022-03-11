@@ -129,8 +129,6 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
     initialMatchRowState
   )
 
-  console.log('editMatchRowState =', editMatchRowState)
-
   const handleMatchDelete = (): void => {
     setShowDeleteConfirmation(true)
   }

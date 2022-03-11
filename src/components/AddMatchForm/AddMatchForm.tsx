@@ -196,6 +196,8 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     setNumberOfPlayers(1)
   }
 
+  console.log('addMatchState =', addMatchState)
+
   return (
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
       <DialogTitle>Add a new match</DialogTitle>
@@ -284,7 +286,9 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                       label="Name"
                       labelId={`p${n}-name-label`}
                       sx={{ minHeight: 40 }}
-                      value={addMatchState.participants[`player${n}`].name}
+                      value={
+                        addMatchState.participants[`player${n}`]?.name ?? ''
+                      }
                       onChange={e => {
                         dispatch({
                           type: 'changePlayerData',
@@ -340,7 +344,9 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                       label="Result"
                       labelId={`p${n}-result-label`}
                       sx={{ minHeight: 40 }}
-                      value={addMatchState.participants[`player${n}`].result}
+                      value={
+                        addMatchState.participants[`player${n}`]?.result ?? ''
+                      }
                       onChange={e => {
                         dispatch({
                           type: 'changePlayerData',
@@ -386,7 +392,9 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                         label="Score"
                         size="small"
                         type="text"
-                        value={addMatchState.participants[`player${n}`].score}
+                        value={
+                          addMatchState.participants[`player${n}`]?.score ?? ''
+                        }
                         onChange={e => {
                           dispatch({
                             type: 'changePlayerData',
