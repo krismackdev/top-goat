@@ -45,7 +45,7 @@ interface ParticipantsObject {
   [prop: string]: PlayerResultObject
 }
 
-interface MatchObject {
+interface AddMatchObject {
   id: string
   date: string
   game: string
@@ -65,7 +65,7 @@ interface MatchFormActionObject {
   payload: { [prop: string]: string }
 }
 
-const initialAddMatchState: MatchObject = {
+const initialAddMatchState: AddMatchObject = {
   id: uuidv4(),
   date: '',
   game: '',
@@ -81,9 +81,9 @@ const initialAddMatchState: MatchObject = {
 }
 
 const addMatchStateReducer = (
-  state: MatchObject,
+  state: AddMatchObject,
   action: MatchFormActionObject
-): MatchObject => {
+): AddMatchObject => {
   switch (action.type) {
     case 'changeDate':
       return { ...state, date: action.payload.date }
@@ -352,7 +352,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
                         })
                       }}
                     >
-                      <MenuItem key={'null'} value=""></MenuItem>
+                      <MenuItem value=""></MenuItem>
                       <MenuItem value="win">win</MenuItem>
                       <MenuItem value="loss">loss</MenuItem>
                       <MenuItem value="draw">draw</MenuItem>

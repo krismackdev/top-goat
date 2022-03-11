@@ -108,7 +108,7 @@ export const GamesContextProvider = ({
     // using spread operator below due to firebase issue #5853
     // ... if you use game as is, it causes a typescript error
     const { id, ...gameWithoutId } = { ...game }
-    await updateDoc(doc(db, 'games', game.id), { ...gameWithoutId })
+    await updateDoc(doc(db, 'games', id), { ...gameWithoutId })
     setGamesWithFetchedData()
   }
 

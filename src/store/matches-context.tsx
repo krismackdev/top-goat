@@ -1,6 +1,13 @@
 import { createContext, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
-import { collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/firestore'
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
@@ -11,7 +18,7 @@ interface ParticipantsObject {
 interface PlayerResultObject {
   name: string
   result: Result
-  score: number | 'n/a'
+  score: string
 }
 
 interface MatchObject {
@@ -48,10 +55,12 @@ export const MatchesContext = createContext<{
   addNewMatch: (newGame: MatchObjectWithStringScore) => void
   deleteMatch: (id: string) => void
   matches: MatchObject[] | undefined
+  updateMatch: (match: MatchObject) => void
 }>({
   addNewMatch: () => {},
   deleteMatch: () => {},
   matches: undefined,
+  updateMatch: () => {},
 })
 
 export const MatchesContextProvider = ({
@@ -99,12 +108,9 @@ export const MatchesContextProvider = ({
     setMatchesWithFetchedData()
   }, [])
 
-  const deleteMatch = async (id: string): Promise<void> => {
-    await deleteDoc(doc(db, 'matches', id))
-    setMatchesWithFetchedData()
-  }
-
-  const addNewMatch = async (newMatch: MatchObjectWithStringScore) => {
+  const addNewMatch = async (
+    newMatch: MatchObjectWithStringScore
+  ): Promise<void> => {
     console.log('adding...', newMatch)
     const { id, ...matchWithoutId } = newMatch
 
@@ -116,12 +122,26 @@ export const MatchesContextProvider = ({
     setMatchesWithFetchedData()
   }
 
+  const deleteMatch = async (id: string): Promise<void> => {
+    await deleteDoc(doc(db, 'matches', id))
+    setMatchesWithFetchedData()
+  }
+
+  const updateMatch = async (match: MatchObject): Promise<void> => {
+    // using spread operator below due to firebase issue #5853
+    // ... if you use match as is, it causes a typescript error
+    const { id, ...matchWithoutId } = { ...match }
+    await updateDoc(doc(db, 'matches', id), { ...matchWithoutId })
+    setMatchesWithFetchedData()
+  }
+
   return (
     <MatchesContext.Provider
       value={{
         addNewMatch,
         deleteMatch,
         matches,
+        updateMatch,
       }}
     >
       {children}

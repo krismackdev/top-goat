@@ -44,11 +44,11 @@ interface ActionObject {
   payload?: string
 }
 
-interface EditStateObject extends GameObject {
+interface EditGameObject extends GameObject {
   isActive: boolean
 }
 
-const editStateReducer = (state: EditStateObject, action: ActionObject) => {
+const editGameRowReducer = (state: EditGameObject, action: ActionObject) => {
   switch (action.type) {
     case 'changeImage':
       return { ...state, image: action.payload! }
@@ -139,7 +139,7 @@ const editStateReducer = (state: EditStateObject, action: ActionObject) => {
 const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
-  const initialEditState = {
+  const initialGameRowState: EditGameObject = {
     id: game.id,
     image: game.image,
     isActive: false,
@@ -154,7 +154,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     title: game.title,
   }
 
-  const [editState, dispatch] = useReducer(editStateReducer, initialEditState)
+  const [editGameRowState, dispatch] = useReducer(
+    editGameRowReducer,
+    initialGameRowState
+  )
 
   const { updateGame } = useContext(GamesContext)
 
@@ -173,7 +176,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     setShowDeleteConfirmation(true)
   }
 
-  if (editState.isActive) {
+  if (editGameRowState.isActive) {
     return (
       <TableRow key={game.id} sx={{ height: '20px' }}>
         <GameTableCell
@@ -186,7 +189,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
         >
           <StyledTextField
             variant="standard"
-            value={editState.title}
+            value={editGameRowState.title}
             onChange={e =>
               dispatch({ type: 'changeTitle', payload: e.target.value })
             }
@@ -202,7 +205,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
         >
           <StyledTextField
             variant="standard"
-            value={editState.image}
+            value={editGameRowState.image}
             onChange={e =>
               dispatch({ type: 'changeImage', payload: e.target.value })
             }
@@ -218,7 +221,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
         >
           <StyledTextField
             variant="standard"
-            value={editState.link}
+            value={editGameRowState.link}
             onChange={e =>
               dispatch({ type: 'changeLink', payload: e.target.value })
             }
@@ -242,7 +245,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
                 backgroundColor: '#d4ff32',
               },
             }}
-            value={editState.players.one}
+            value={editGameRowState.players.one}
             onChange={e =>
               dispatch({ type: 'changePlayerOne', payload: e.target.value })
             }
@@ -269,7 +272,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
                 backgroundColor: '#d4ff32',
               },
             }}
-            value={editState.players.two}
+            value={editGameRowState.players.two}
             onChange={e =>
               dispatch({ type: 'changePlayerTwo', payload: e.target.value })
             }
@@ -296,7 +299,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
                 backgroundColor: '#d4ff32',
               },
             }}
-            value={editState.players.three}
+            value={editGameRowState.players.three}
             onChange={e =>
               dispatch({ type: 'changePlayerThree', payload: e.target.value })
             }
@@ -323,7 +326,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
                 backgroundColor: '#d4ff32',
               },
             }}
-            value={editState.players.four}
+            value={editGameRowState.players.four}
             onChange={e =>
               dispatch({ type: 'changePlayerFour', payload: e.target.value })
             }
@@ -350,7 +353,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
                 backgroundColor: '#d4ff32',
               },
             }}
-            value={editState.players.five}
+            value={editGameRowState.players.five}
             onChange={e =>
               dispatch({ type: 'changePlayerFive', payload: e.target.value })
             }
@@ -370,7 +373,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           <IconButton
             sx={{ color: 'green' }}
             onClick={() => {
-              const { isActive, ...updatedGame } = editState
+              const { isActive, ...updatedGame } = editGameRowState
               updateGame(updatedGame)
               dispatch({ type: 'toggleEditingMode' })
             }}
