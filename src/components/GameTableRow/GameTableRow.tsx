@@ -30,7 +30,7 @@ interface GameTableRowProps {
   game: GameObject
 }
 
-interface ActionObject {
+interface GameActionObject {
   type:
     | 'changeImage'
     | 'changeLink'
@@ -48,7 +48,10 @@ interface EditGameObject extends GameObject {
   isActive: boolean
 }
 
-const editGameRowReducer = (state: EditGameObject, action: ActionObject) => {
+const editGameRowReducer = (
+  state: EditGameObject,
+  action: GameActionObject
+) => {
   switch (action.type) {
     case 'changeImage':
       return { ...state, image: action.payload! }
@@ -178,7 +181,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
 
   if (editGameRowState.isActive) {
     return (
-      <TableRow key={game.id} sx={{ height: '20px' }}>
+      <TableRow sx={{ height: '20px' }}>
         <GameTableCell
           className="editing editing-start"
           sx={{

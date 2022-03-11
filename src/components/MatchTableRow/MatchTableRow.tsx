@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useReducer, useState } from 'react'
 import { MatchesContext } from '../../store/matches-context'
 import { GamesContext } from '../../store/games-context'
-import MatchTableCell from '../../mui/MatchTableCell'
+import { MatchTableCell } from '../../mui'
 import {
   IconButton,
   MenuItem,
@@ -110,6 +110,10 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
   const { updateMatch } = useContext(MatchesContext)
   const { games } = useContext(GamesContext)
 
+  const formattedDate = `${match.date.slice(5, 7)}-${match.date.slice(
+    8
+  )}-${match.date.slice(0, 4)}`
+
   const initialMatchRowState: EditMatchObject = {
     id: match.id,
     date: match.date,
@@ -134,9 +138,24 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
   if (editMatchRowState.isActive) {
     return (
       <TableRow>
-        <MatchTableCell>...</MatchTableCell>
-        <MatchTableCell>
+        <MatchTableCell className="editing editing-start"></MatchTableCell>
+        <MatchTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <TextField
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
+              },
+            }}
             size="small"
             type="date"
             value={editMatchRowState.date}
@@ -148,8 +167,23 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
             }
           />
         </MatchTableCell>
-        <MatchTableCell>
+        <MatchTableCell
+          className="editing"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
           <Select
+            sx={{
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                border: '4px solid #d4ff32',
+              },
+              '&:hover': {
+                backgroundColor: '#d4ff32',
+              },
+            }}
             size="small"
             value={editMatchRowState.gameId}
             onChange={e => {
@@ -164,7 +198,6 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
               })
             }}
           >
-            <MenuItem key={'null'} value=""></MenuItem>
             {Array.isArray(games) &&
               games.length > 0 &&
               games.map(game => (
@@ -180,8 +213,23 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
           players.map(player => {
             return (
               <Fragment key={player.id}>
-                <MatchTableCell>
+                <MatchTableCell
+                  className="editing"
+                  sx={{
+                    '&:focus-within': {
+                      backgroundColor: '#d4ff32',
+                    },
+                  }}
+                >
                   <Select
+                    sx={{
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        border: '4px solid #d4ff32',
+                      },
+                      '&:hover': {
+                        backgroundColor: '#d4ff32',
+                      },
+                    }}
                     size="small"
                     value={editMatchRowState.participants[player.id]?.result}
                     onChange={e => {
@@ -202,7 +250,14 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
                     <MenuItem value="n/a">n/a</MenuItem>
                   </Select>
                 </MatchTableCell>
-                <MatchTableCell>
+                <MatchTableCell
+                  className="editing"
+                  sx={{
+                    '&:focus-within': {
+                      backgroundColor: '#d4ff32',
+                    },
+                  }}
+                >
                   <TextField
                     size="small"
                     type="text"
@@ -223,28 +278,30 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
             )
           })}
 
-        <MatchTableCell>...</MatchTableCell>
-        <MatchTableCell sx={{ display: 'flex' }}>
-          <IconButton
-            size="small"
-            sx={{ color: 'green' }}
-            onClick={() => {
-              const { isActive, ...updatedMatch } = editMatchRowState
-              updateMatch(updatedMatch)
-              dispatch({ type: 'toggleEditingMode', payload: { x: 'x' } })
-            }}
-          >
-            <CheckIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            size="small"
-            sx={{ color: 'red' }}
-            onClick={() =>
-              dispatch({ type: 'toggleEditingMode', payload: { x: 'x' } })
-            }
-          >
-            <CancelIcon fontSize="inherit" />
-          </IconButton>
+        <MatchTableCell className="editing"></MatchTableCell>
+        <MatchTableCell className="editing editing-end">
+          <div style={{ display: 'flex' }}>
+            <IconButton
+              size="small"
+              sx={{ color: 'green' }}
+              onClick={() => {
+                const { isActive, ...updatedMatch } = editMatchRowState
+                updateMatch(updatedMatch)
+                dispatch({ type: 'toggleEditingMode', payload: { x: 'x' } })
+              }}
+            >
+              <CheckIcon fontSize="inherit" />
+            </IconButton>
+            <IconButton
+              size="small"
+              sx={{ color: 'red' }}
+              onClick={() =>
+                dispatch({ type: 'toggleEditingMode', payload: { x: 'x' } })
+              }
+            >
+              <CancelIcon fontSize="inherit" />
+            </IconButton>
+          </div>
         </MatchTableCell>
       </TableRow>
     )
@@ -265,9 +322,15 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
             setShowDeleteConfirmation={setShowDeleteConfirmation}
           />
         )}
-        <TableRow>
+        <TableRow
+          sx={{
+            '&:nth-of-type(even)': {
+              backgroundColor: '#f2f2f2',
+            },
+          }}
+        >
           <MatchTableCell>{match.playOrder}</MatchTableCell>
-          <MatchTableCell>{match.date}</MatchTableCell>
+          <MatchTableCell>{formattedDate}</MatchTableCell>
           <MatchTableCell>{match.game}</MatchTableCell>
           {players?.map(player => (
             <Fragment key={player.id}>

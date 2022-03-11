@@ -30,8 +30,8 @@ const MatchPage: React.FC = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <MatchTableCell>Number</MatchTableCell>
-              <MatchTableCell>Date</MatchTableCell>
+              <MatchTableCell sx={{ maxWidth: '40px' }}>#</MatchTableCell>
+              <MatchTableCell sx={{ minWidth: '85px' }}>Date</MatchTableCell>
               <MatchTableCell>Game</MatchTableCell>
               {players?.map(player => (
                 <Fragment key={player.id}>
