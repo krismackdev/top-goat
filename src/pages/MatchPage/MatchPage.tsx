@@ -13,10 +13,12 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 const MatchPage: React.FC = () => {
   const [formIsActive, setFormIsActive] = useState(false)
-  const { matches } = useContext(MatchesContext)
+  const { matches, reverseSortMatch, sortMatches } = useContext(MatchesContext)
   const { players } = useContext(PlayersContext)
 
   return (
@@ -30,20 +32,63 @@ const MatchPage: React.FC = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <MatchTableCell sx={{ maxWidth: '40px' }}>#</MatchTableCell>
+              <MatchTableCell
+                sx={{ minWidth: '60px' }}
+                onClick={() => sortMatches({ field: 'playOrder' })}
+              >
+                # &nbsp;
+                {reverseSortMatch ? (
+                  <FontAwesomeIcon icon={faCaretUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faCaretDown} />
+                )}
+              </MatchTableCell>
               <MatchTableCell sx={{ minWidth: '85px' }}>Date</MatchTableCell>
-              <MatchTableCell>Game</MatchTableCell>
+              <MatchTableCell
+                sx={{ minWidth: '90px' }}
+                onClick={() => sortMatches({ field: 'game' })}
+              >
+                Game &nbsp;
+                {reverseSortMatch ? (
+                  <FontAwesomeIcon icon={faCaretUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faCaretDown} />
+                )}
+              </MatchTableCell>{' '}
               {players?.map(player => (
                 <Fragment key={player.id}>
-                  <MatchTableCell>
+                  <MatchTableCell
+                    onClick={() =>
+                      sortMatches({ playerId: player.id, field: 'result' })
+                    }
+                    sx={{ minWidth: '100px' }}
+                  >
                     {player.name
                       .split('')
                       .map((char, idx) =>
                         idx === 0 ? char.toUpperCase() : char
                       )
-                      .join('')}
+                      .join('')}{' '}
+                    &nbsp;
+                    {reverseSortMatch ? (
+                      <FontAwesomeIcon icon={faCaretUp} />
+                    ) : (
+                      <FontAwesomeIcon icon={faCaretDown} />
+                    )}
                   </MatchTableCell>
-                  <MatchTableCell>score</MatchTableCell>
+                  <MatchTableCell
+                    sx={{ minWidth: '90px' }}
+                    onClick={() =>
+                      sortMatches({ playerId: player.id, field: 'score' })
+                    }
+                  >
+                    score &nbsp;
+                    {reverseSortMatch ? (
+                      <FontAwesomeIcon icon={faCaretUp} />
+                    ) : (
+                      <FontAwesomeIcon icon={faCaretDown} />
+                    )}
+                  </MatchTableCell>
                 </Fragment>
               ))}
               <MatchTableCell>Delete</MatchTableCell>

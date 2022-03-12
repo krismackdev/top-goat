@@ -333,14 +333,10 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
           {players?.map(player => (
             <Fragment key={player.id}>
               <MatchTableCell>
-                {match?.participants?.[player.id]?.result === 'n/a'
-                  ? '-'
-                  : match?.participants?.[player.id]?.result ?? '-'}
+                {match?.participants?.[player.id]?.result ?? '-'}
               </MatchTableCell>
               <MatchTableCell>
-                {match?.participants?.[player.id]?.score === 'n/a'
-                  ? '-'
-                  : match?.participants?.[player.id]?.score ?? '-'}
+                {match?.participants?.[player.id]?.score ?? '-'}
               </MatchTableCell>
             </Fragment>
           ))}
