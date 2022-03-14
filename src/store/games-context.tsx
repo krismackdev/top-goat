@@ -14,6 +14,7 @@ interface GameObject {
   id: string
   image: string
   link: string
+  matchesArray: string[]
   players: {
     one: 'yes' | 'no' | 'ok'
     two: 'yes' | 'no' | 'ok'
@@ -68,7 +69,6 @@ export const GamesContextProvider = ({
       })
       return result
     })
-
     setGames(downloadedGames)
   }
 

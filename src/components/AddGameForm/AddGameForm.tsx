@@ -25,6 +25,7 @@ interface GameObject {
   id: string
   image: string
   link: string
+  matchesArray: string[]
   players: {
     one: PlayerSuitability
     two: PlayerSuitability
@@ -53,6 +54,7 @@ const initialAddGameState: GameObject = {
   id: uuidv4(),
   image: '',
   link: '',
+  matchesArray: [],
   title: '',
   players: {
     one: 'no',

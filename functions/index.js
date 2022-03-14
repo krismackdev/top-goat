@@ -10,24 +10,23 @@ exports.syncMatchArray = functions.firestore
     .onWrite((change, context) => {
       const {before, after} = change;
       const matchId = context.params.matchId;
-      let forGameId;
       functions.logger.log("syncMatchArray RUNNING...");
 
       // handle a new match...
       if (!before.exists) {
-        forGameId = after.data().gameId;
+        const afterGameId = after.data().gameId;
         functions.logger.log("handling a new match...");
-        db.collection("games").doc(`${forGameId}`).update({
-          matches: admin.firestore.FieldValue.arrayUnion(matchId),
+        db.collection("games").doc(`${afterGameId}`).update({
+          matchesArray: admin.firestore.FieldValue.arrayUnion(matchId),
         });
       }
 
       // handle a deleted match...
       if (!after.exists) {
-        forGameId = before.data().gameId;
+        const beforeGameId = before.data().gameId;
         functions.logger.log("handling a deleted match...");
-        db.collection("games").doc(`${forGameId}`).update({
-          matches: admin.firestore.FieldValue.arrayRemove(matchId),
+        db.collection("games").doc(`${beforeGameId}`).update({
+          matchesArray: admin.firestore.FieldValue.arrayRemove(matchId),
         });
       }
 
@@ -39,10 +38,10 @@ exports.syncMatchArray = functions.firestore
           const oldGameId = before.data().gameId;
           const newGameId = after.data().gameId;
           db.collection("games").doc(`${oldGameId}`).update({
-            matches: admin.firestore.FieldValue.arrayRemove(matchId),
+            matchesArray: admin.firestore.FieldValue.arrayRemove(matchId),
           });
           db.collection("games").doc(`${newGameId}`).update({
-            matches: admin.firestore.FieldValue.arrayUnion(matchId),
+            matchesArray: admin.firestore.FieldValue.arrayUnion(matchId),
           });
         }
       }

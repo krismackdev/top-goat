@@ -16,6 +16,7 @@ interface GameObject {
   id: string
   image: string
   link: string
+  matchesArray: string[]
   players: {
     one: PlayerSuitability
     two: PlayerSuitability
@@ -142,11 +143,14 @@ const editGameRowReducer = (
 const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
+  console.log('game =', game)
+
   const initialGameRowState: EditGameObject = {
     id: game.id,
     image: game.image,
     isActive: false,
     link: game.link,
+    matchesArray: game.matchesArray,
     players: {
       one: game.players.one,
       two: game.players.two,
@@ -422,7 +426,9 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
               <OpenInBrowserTwoToneIcon />
             </a>
           </GameTableCell>
-          <GameTableCell align="center">...</GameTableCell>
+          <GameTableCell align="center">
+            {game.matchesArray.length > 0 ? 'yes' : 'no'}
+          </GameTableCell>
           <GameTableCell
             sx={{
               backgroundColor: `${getConditionalColor(game.players.one)}`,
@@ -464,7 +470,9 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             {game.players.five}
           </GameTableCell>
           <GameTableCell align="center">...</GameTableCell>
-          <GameTableCell align="center">...</GameTableCell>
+          <GameTableCell align="center">
+            {game.matchesArray.length}
+          </GameTableCell>
           <GameTableCell align="center">
             <IconButton sx={{ color: 'black' }} onClick={handleMatchDelete}>
               <DeleteIcon />

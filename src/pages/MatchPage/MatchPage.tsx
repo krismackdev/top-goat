@@ -102,7 +102,7 @@ const MatchPage: React.FC = () => {
               ))
             ) : (
               <TableRow>
-                <MatchTableCell>NO GAMES FOUND</MatchTableCell>
+                <MatchTableCell>No matches to show...</MatchTableCell>
               </TableRow>
             )}
           </TableBody>
