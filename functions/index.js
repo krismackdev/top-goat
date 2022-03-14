@@ -11,7 +11,8 @@ exports.syncMatchArray = functions.firestore
       const {before, after} = change;
       const matchId = context.params.matchId;
       let forGameId;
-      // if it is a newly added doc
+      functions.logger.log("I AM RUNNING BEFORE IF!");
+      // for a new match...
       if (!before.exists) {
         forGameId = after.data().gameId;
         functions.logger.log("I AM RUNNING!");
@@ -20,4 +21,5 @@ exports.syncMatchArray = functions.firestore
         });
       }
       // TO ADD: if deleted, if updated...
+      return null;
     });
