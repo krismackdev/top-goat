@@ -86,7 +86,13 @@ const addMatchStateReducer = (
 ): AddMatchObject => {
   switch (action.type) {
     case 'changeDate':
-      return { ...state, date: action.payload.date }
+      return {
+        ...state,
+        date: `${action.payload.date.slice(5)}-${action.payload.date.slice(
+          0,
+          4
+        )}`,
+      }
     case 'changeGame':
       return {
         ...state,
@@ -135,6 +141,8 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     initialAddMatchState
   )
 
+  console.log('date =', addMatchState.date)
+
   useEffect(() => {
     let tempPlayerNames: string[] = []
     players?.forEach(player => {
@@ -147,6 +155,10 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
   // otherwise, delete this eventually
   if (numberOfPlayers !== Object.keys(addMatchState.participants).length) {
     throw new Error('DID NOT MATCH!')
+  }
+
+  const formattedDate = (date: string) => {
+    return `${date.slice(6)}-${date.slice(0, 2)}-${date.slice(3, 5)}`
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -196,8 +208,6 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     setNumberOfPlayers(1)
   }
 
-  console.log('addMatchState =', addMatchState)
-
   return (
     <Dialog open={true} onClose={() => setFormIsActive(false)}>
       <DialogTitle>Add a new match</DialogTitle>
@@ -207,7 +217,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
           <TextField
             size="small"
             type="date"
-            value={addMatchState.date}
+            value={formattedDate(addMatchState.date)}
             onChange={e =>
               dispatch({
                 type: 'changeDate',

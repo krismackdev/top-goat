@@ -24,6 +24,7 @@ type PlayerSuitability = 'yes' | 'no' | 'ok'
 interface GameObject {
   id: string
   image: string
+  lastPlayedDate: string
   link: string
   matchesArray: string[]
   players: {
@@ -54,6 +55,7 @@ const initialAddGameState: GameObject = {
   id: uuidv4(),
   image: '',
   link: '',
+  lastPlayedDate: '',
   matchesArray: [],
   title: '',
   players: {

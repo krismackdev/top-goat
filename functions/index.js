@@ -5,7 +5,7 @@ admin.initializeApp();
 const db = admin.firestore();
 
 
-exports.syncMatchArray = functions.firestore
+exports.gameUpdatesFromMatchWrites = functions.firestore
     .document("matches/{matchId}")
     .onWrite((change, context) => {
       const {before, after} = change;
@@ -44,6 +44,41 @@ exports.syncMatchArray = functions.firestore
             matchesArray: admin.firestore.FieldValue.arrayUnion(matchId),
           });
         }
+      }
+
+      // update the last played date on every
+      // operation except for deletes
+      if (after.exists) {
+        const afterGameId = after.data().gameId;
+        const matchDate = after.data().date;
+        db.collection("games")
+            .doc(`${afterGameId}`)
+            .get()
+            .then((queryDocSnap) => {
+              return queryDocSnap.get("lastPlayedDate");
+            }).then((oldDate) => {
+              if (!oldDate) {
+                db.collection("games").doc(`${afterGameId}`).update({
+                  lastPlayedDate: matchDate,
+                });
+              } else if (+matchDate.slice(6) > +oldDate.slice(6)) {
+                db.collection("games").doc(`${afterGameId}`).update({
+                  lastPlayedDate: matchDate,
+                });
+              } else if (+matchDate.slice(6) === +oldDate.slice(6) &&
+                  +matchDate.slice(0, 2) > +oldDate.slice(0, 2)) {
+                db.collection("games").doc(`${afterGameId}`).update({
+                  lastPlayedDate: matchDate,
+                });
+              } else if (+matchDate.slice(6) === +oldDate.slice(6) &&
+                  +matchDate.slice(0, 2) === +oldDate.slice(0, 2) &&
+                  +matchDate.slice(3, 5) > +oldDate.slice(3, 5) ) {
+                db.collection("games").doc(`${afterGameId}`).update({
+                  lastPlayedDate: matchDate,
+                });
+              }
+            }
+            );
       }
 
       return null;

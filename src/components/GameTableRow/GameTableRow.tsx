@@ -15,6 +15,7 @@ type PlayerSuitability = 'yes' | 'no' | 'ok'
 interface GameObject {
   id: string
   image: string
+  lastPlayedDate: string
   link: string
   matchesArray: string[]
   players: {
@@ -149,6 +150,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     id: game.id,
     image: game.image,
     isActive: false,
+    lastPlayedDate: game.lastPlayedDate,
     link: game.link,
     matchesArray: game.matchesArray,
     players: {
@@ -469,7 +471,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           >
             {game.players.five}
           </GameTableCell>
-          <GameTableCell align="center">...</GameTableCell>
+          <GameTableCell align="center">{game.lastPlayedDate}</GameTableCell>
           <GameTableCell align="center">
             {game.matchesArray.length}
           </GameTableCell>

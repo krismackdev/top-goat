@@ -68,7 +68,13 @@ const editMatchRowReducer = (
     case 'toggleEditingMode':
       return { ...state, isActive: !state.isActive }
     case 'changeDate':
-      return { ...state, date: action.payload?.date }
+      return {
+        ...state,
+        date: `${action.payload?.date.slice(5)}-${action.payload?.date.slice(
+          0,
+          4
+        )}`,
+      }
     case 'changeGame':
       return {
         ...state,
@@ -110,9 +116,9 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
   const { updateMatch } = useContext(MatchesContext)
   const { games } = useContext(GamesContext)
 
-  const formattedDate = `${match.date.slice(5, 7)}-${match.date.slice(
-    8
-  )}-${match.date.slice(0, 4)}`
+  const formattedDate = (date: string) => {
+    return `${date.slice(6)}-${date.slice(0, 2)}-${date.slice(3, 5)}`
+  }
 
   const initialMatchRowState: EditMatchObject = {
     id: match.id,
@@ -156,7 +162,7 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
             }}
             size="small"
             type="date"
-            value={editMatchRowState.date}
+            value={formattedDate(editMatchRowState.date)}
             onChange={e =>
               dispatch({
                 type: 'changeDate',
@@ -328,7 +334,7 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
           }}
         >
           <MatchTableCell>{match.playOrder}</MatchTableCell>
-          <MatchTableCell>{formattedDate}</MatchTableCell>
+          <MatchTableCell>{match.date}</MatchTableCell>
           <MatchTableCell>{match.game}</MatchTableCell>
           {players?.map(player => (
             <Fragment key={player.id}>

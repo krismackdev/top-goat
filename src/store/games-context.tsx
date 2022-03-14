@@ -13,6 +13,7 @@ import {
 interface GameObject {
   id: string
   image: string
+  lastPlayedDate: string
   link: string
   matchesArray: string[]
   players: {
