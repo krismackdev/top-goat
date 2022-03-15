@@ -186,11 +186,36 @@ export const MatchesContextProvider = ({
     }
     let res = [...matches]
 
-    console.log('MFS-GA=', matchFilterState.gamesArray)
-
     // handle games filter
     res = res.filter(match => {
       return matchFilterState.gamesArray.includes(match.game)
+    })
+
+    // handle playedDate filter
+    res = res.filter(match => {
+      if (
+        !matchFilterState.dates.usingStart &&
+        !matchFilterState.dates.usingEnd
+      ) {
+        return match
+      }
+      if (!matchFilterState.dates.usingStart) {
+        return (
+          match.date &&
+          new Date(match.date) <= new Date(matchFilterState.dates.end)
+        )
+      }
+      if (!matchFilterState.dates.usingEnd) {
+        return (
+          match.date &&
+          new Date(match.date) >= new Date(matchFilterState.dates.start)
+        )
+      }
+      return (
+        match.date &&
+        new Date(match.date) >= new Date(matchFilterState.dates.start) &&
+        new Date(match.date) <= new Date(matchFilterState.dates.end)
+      )
     })
 
     return res

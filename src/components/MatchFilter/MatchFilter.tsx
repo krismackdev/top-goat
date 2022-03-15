@@ -2,7 +2,14 @@ import React, { useContext } from 'react'
 import { MatchesContext } from '../../store/matches-context'
 import { GamesContext } from '../../store/games-context'
 
-import { Autocomplete, Button, TextField } from '@mui/material'
+import {
+  Autocomplete,
+  Button,
+  FormControlLabel,
+  FormGroup,
+  Switch,
+  TextField,
+} from '@mui/material'
 import './MatchFilter.css'
 
 interface MatchFilterProps {
@@ -72,9 +79,91 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
     }
   }
 
-  // if (filter === playedDate) {
+  if (filter === 'playedDate') {
+    return (
+      <>
+        <h4 style={{ display: 'inline' }}>Played Date:</h4>
+        <FormGroup sx={{ display: 'inline', marginRight: '10px' }}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={matchFilterState.dates.usingStart}
+                onChange={e => {
+                  setMatchFilterState(prev => {
+                    return {
+                      ...prev,
+                      dates: {
+                        ...prev.dates,
+                        usingStart: !prev.dates.usingStart,
+                      },
+                    }
+                  })
+                }}
+              />
+            }
+            label="from"
+            labelPlacement="start"
+          />
+        </FormGroup>
+        <input
+          type="date"
+          value={matchFilterState.dates.start}
+          disabled={!matchFilterState.dates.usingStart}
+          onChange={e => {
+            setMatchFilterState(prev => {
+              return {
+                ...prev,
+                dates: {
+                  ...prev.dates,
+                  start: e.target.value,
+                },
+              }
+            })
+          }}
+        />
 
-  // }
+        <FormGroup sx={{ display: 'inline', marginRight: '10px' }}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={matchFilterState.dates.usingEnd}
+                onChange={e => {
+                  setMatchFilterState(prev => {
+                    return {
+                      ...prev,
+                      dates: {
+                        ...prev.dates,
+                        usingEnd: !prev.dates.usingEnd,
+                      },
+                    }
+                  })
+                }}
+              />
+            }
+            label="to"
+            labelPlacement="start"
+          />
+        </FormGroup>
+
+        <input
+          type="date"
+          value={matchFilterState.dates.end}
+          disabled={!matchFilterState.dates.usingEnd}
+          onChange={e => {
+            setMatchFilterState(prev => {
+              return {
+                ...prev,
+                dates: {
+                  ...prev.dates,
+                  end: e.target.value,
+                },
+              }
+            })
+          }}
+        />
+      </>
+    )
+  }
   // if (filter === players) {
 
   // }
