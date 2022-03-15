@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { GamesContext } from '../../store/games-context'
+import { FormControlLabel, Switch } from '@mui/material'
+
 import './GameFilter.css'
 
 interface GameFilterProps {
@@ -68,6 +70,80 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
               }
             })
           }
+        />
+      </>
+    )
+  }
+
+  if (
+    filter === 'one' ||
+    filter === 'two' ||
+    filter === 'three' ||
+    filter === 'four' ||
+    filter === 'five'
+  ) {
+    return (
+      <>
+        <h3>{`${filter} player${filter === 'one' ? '' : 's'}:`}</h3>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState[`${filter}`].yes}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    [`${filter}`]: {
+                      ...prev[`${filter}`],
+                      yes: !prev[`${filter}`].yes,
+                    },
+                  }
+                })
+              }
+            />
+          }
+          label="Yes"
+          labelPlacement="start"
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState[`${filter}`].no}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    [`${filter}`]: {
+                      ...prev[`${filter}`],
+                      no: !prev[`${filter}`].no,
+                    },
+                  }
+                })
+              }
+            />
+          }
+          label="No"
+          labelPlacement="start"
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState[`${filter}`].ok}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    [`${filter}`]: {
+                      ...prev[`${filter}`],
+                      ok: !prev[`${filter}`].ok,
+                    },
+                  }
+                })
+              }
+            />
+          }
+          label="Ok"
+          labelPlacement="start"
         />
       </>
     )

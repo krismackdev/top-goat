@@ -200,6 +200,17 @@ export const GamesContextProvider = ({
       })
     }
 
+    // handle one through five filters
+    res = res.filter(game => {
+      return (
+        filterState.one[game.players.one] === true &&
+        filterState.two[game.players.two] === true &&
+        filterState.three[game.players.three] === true &&
+        filterState.four[game.players.four] === true &&
+        filterState.five[game.players.five] === true
+      )
+    })
+
     // return filtered games
     return res
   }, [games, filterState])
