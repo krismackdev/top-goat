@@ -46,8 +46,8 @@ interface FilterStateObject {
   playCount: {
     min: number
     max: number
-    usingMin: false
-    usingMax: false
+    usingMin: boolean
+    usingMax: boolean
   }
   played: {
     value: 'any' | 'yes' | 'no'
@@ -210,7 +210,6 @@ export const GamesContextProvider = ({
     })
 
     // handle lastPlayed filter
-    // convert dates somehow
     res = res.filter(game => {
       if (
         !filterState.lastPlayed.usingStart &&
@@ -236,6 +235,24 @@ export const GamesContextProvider = ({
         new Date(game.lastPlayedDate) >=
           new Date(filterState.lastPlayed.start) &&
         new Date(game.lastPlayedDate) <= new Date(filterState.lastPlayed.end)
+      )
+    })
+
+    // handle playCount filter
+    res = res.filter(game => {
+      if (!filterState.playCount.usingMin && !filterState.playCount.usingMax) {
+        return game
+      }
+      let playCount = game?.matchesArray.length || 0
+      if (filterState.playCount.usingMin && !filterState.playCount.usingMax) {
+        return filterState.playCount.min <= playCount
+      }
+      if (filterState.playCount.usingMax && !filterState.playCount.usingMin) {
+        return filterState.playCount.max >= playCount
+      }
+      return (
+        filterState.playCount.min <= playCount &&
+        filterState.playCount.max >= playCount
       )
     })
 

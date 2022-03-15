@@ -235,6 +235,90 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
     )
   }
 
+  if (filter === 'playCount') {
+    return (
+      <>
+        <h4>Play Count:</h4>
+
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState.playCount.usingMin}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    playCount: {
+                      ...prev.playCount,
+                      usingMin: !prev.playCount.usingMin,
+                    },
+                  }
+                })
+              }
+              size="small"
+            />
+          }
+          label="min"
+          labelPlacement="start"
+        />
+        <input
+          onChange={e =>
+            setFilterState(prev => {
+              return {
+                ...prev,
+                playCount: {
+                  ...prev.playCount,
+                  min: +e.target.value,
+                },
+              }
+            })
+          }
+          type="number"
+          value={filterState.playCount.min}
+          disabled={!filterState.playCount.usingMin}
+        />
+
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState.playCount.usingMax}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    playCount: {
+                      ...prev.playCount,
+                      usingMax: !prev.playCount.usingMax,
+                    },
+                  }
+                })
+              }
+              size="small"
+            />
+          }
+          label="max"
+          labelPlacement="start"
+        />
+        <input
+          onChange={e =>
+            setFilterState(prev => {
+              return {
+                ...prev,
+                playCount: {
+                  ...prev.playCount,
+                  max: +e.target.value,
+                },
+              }
+            })
+          }
+          type="number"
+          value={filterState.playCount.max}
+          disabled={!filterState.playCount.usingMax}
+        />
+      </>
+    )
+  }
+
   return <div>{filter}</div>
 }
 
