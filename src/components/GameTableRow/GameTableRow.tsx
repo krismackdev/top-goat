@@ -471,7 +471,9 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           >
             {game.players.five}
           </GameTableCell>
-          <GameTableCell align="center">{game.lastPlayedDate}</GameTableCell>
+          <GameTableCell align="center">
+            {game.lastPlayedDate === '' ? '---' : game.lastPlayedDate}
+          </GameTableCell>
           <GameTableCell align="center">
             {game.matchesArray.length}
           </GameTableCell>

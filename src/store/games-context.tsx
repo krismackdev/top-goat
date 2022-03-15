@@ -28,19 +28,23 @@ interface GameObject {
 
 type GamesContextProviderProps = { children: React.ReactNode }
 
+interface SortGameArg {
+  [prop: string]: string
+}
+
 export const GamesContext = createContext<{
   addNewGame: (newGame: GameObject) => void
   deleteGame: (id: string) => void
   games: GameObject[] | undefined
-  reverseSortTitle: boolean
-  sortByTitle: () => void
+  reverseSortGames: boolean
+  sortGames: (payload: SortGameArg) => void
   updateGame: (game: GameObject) => void
 }>({
   addNewGame: () => {},
   deleteGame: () => {},
   games: undefined,
-  reverseSortTitle: false,
-  sortByTitle: () => {},
+  reverseSortGames: false,
+  sortGames: () => {},
   updateGame: () => {},
 })
 
@@ -48,7 +52,7 @@ export const GamesContextProvider = ({
   children,
 }: GamesContextProviderProps) => {
   const [games, setGames] = useState<GameObject[] | undefined>(undefined)
-  const [reverseSortTitle, setReverseSortTitle] = useState(false)
+  const [reverseSortGames, setReverseSortGames] = useState(false)
 
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
@@ -88,21 +92,146 @@ export const GamesContextProvider = ({
     setGamesWithFetchedData()
   }
 
-  const sortByTitle = (): void => {
-    setReverseSortTitle(prev => !prev)
-    setGames(prev => {
-      if (prev) {
-        return prev
-          .map(x => x)
-          .sort((a, b) => {
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return reverseSortTitle ? 1 : -1
-            } else {
-              return reverseSortTitle ? -1 : 1
-            }
-          })
-      }
-    })
+  const sortGames = (payload: SortGameArg): void => {
+    switch (payload.field) {
+      case 'title':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case 'played':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.lastPlayedDate === '') {
+                return reverseSortGames ? -1 : 1
+              } else if (b.lastPlayedDate === '') {
+                return reverseSortGames ? 1 : -1
+              }
+              return -1
+            })
+        })
+        break
+      case '1p':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.players.one > b.players.one) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case '2p':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.players.two > b.players.two) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case '3p':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.players.three > b.players.three) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case '4p':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.players.four > b.players.four) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case '5p':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.players.five > b.players.five) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case 'lastPlayedDate':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.lastPlayedDate === '') {
+                return reverseSortGames ? -1 : 1
+              } else if (b.lastPlayedDate === '') {
+                return reverseSortGames ? 1 : -1
+              } else if (
+                +a.lastPlayedDate.slice(6) > +b.lastPlayedDate.slice(6)
+              ) {
+                return reverseSortGames ? 1 : -1
+              } else if (
+                +a.lastPlayedDate.slice(6) === +b.lastPlayedDate.slice(6) &&
+                +a.lastPlayedDate.slice(0, 2) > +b.lastPlayedDate.slice(0, 2)
+              ) {
+                return reverseSortGames ? 1 : -1
+              } else if (
+                +a.lastPlayedDate.slice(6) === +b.lastPlayedDate.slice(6) &&
+                +a.lastPlayedDate.slice(0, 2) ===
+                  +b.lastPlayedDate.slice(0, 2) &&
+                +a.lastPlayedDate.slice(3, 5) > +b.lastPlayedDate.slice(3, 5)
+              ) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+      case 'plays':
+        setGames(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.matchesArray.length > b.matchesArray.length) {
+                return reverseSortGames ? 1 : -1
+              } else {
+                return reverseSortGames ? -1 : 1
+              }
+            })
+        })
+        break
+    }
+    setReverseSortGames(prev => !prev)
   }
 
   const updateGame = async (game: GameObject): Promise<void> => {
@@ -119,8 +248,8 @@ export const GamesContextProvider = ({
         addNewGame,
         deleteGame,
         games,
-        reverseSortTitle,
-        sortByTitle,
+        reverseSortGames,
+        sortGames,
         updateGame,
       }}
     >
