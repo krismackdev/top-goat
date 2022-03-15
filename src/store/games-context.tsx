@@ -1,5 +1,5 @@
 import React from 'react'
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 import { db } from '../firebase/config'
 import {
   collection,
@@ -32,18 +32,114 @@ interface SortGameArg {
   [prop: string]: string
 }
 
+interface FilterAction {
+  type: string
+}
+
+interface FilterStateObject {
+  lastPlayed: {
+    start: string
+    end: string
+    usingStart: boolean
+    usingEnd: boolean
+  }
+  playCount: {
+    min: number
+    max: number
+    usingMin: false
+    usingMax: false
+  }
+  played: {
+    value: 'any' | 'yes' | 'no'
+  }
+  one: {
+    no: boolean
+    ok: boolean
+    yes: boolean
+  }
+  two: {
+    no: boolean
+    ok: boolean
+    yes: boolean
+  }
+  three: {
+    no: boolean
+    ok: boolean
+    yes: boolean
+  }
+  four: {
+    no: boolean
+    ok: boolean
+    yes: boolean
+  }
+  five: {
+    no: boolean
+    ok: boolean
+    yes: boolean
+  }
+}
+
+const initialFilterState: FilterStateObject = {
+  lastPlayed: {
+    start: new Date().toISOString().slice(0, 10),
+    end: new Date().toISOString().slice(0, 10),
+    usingStart: false,
+    usingEnd: false,
+  },
+  playCount: {
+    min: -1,
+    max: 10000000,
+    usingMin: false,
+    usingMax: false,
+  },
+  played: {
+    value: 'any',
+  },
+  one: {
+    yes: true,
+    no: true,
+    ok: true,
+  },
+  two: {
+    yes: true,
+    no: true,
+    ok: true,
+  },
+  three: {
+    yes: true,
+    no: true,
+    ok: true,
+  },
+  four: {
+    yes: true,
+    no: true,
+    ok: true,
+  },
+  five: {
+    yes: true,
+    no: true,
+    ok: true,
+  },
+}
+
 export const GamesContext = createContext<{
   addNewGame: (newGame: GameObject) => void
   deleteGame: (id: string) => void
+  filterState: FilterStateObject
+  filteredGames: GameObject[] | undefined
   games: GameObject[] | undefined
   reverseSortGames: boolean
+  setFilterState: React.Dispatch<React.SetStateAction<FilterStateObject>>
   sortGames: (payload: SortGameArg) => void
   updateGame: (game: GameObject) => void
 }>({
   addNewGame: () => {},
   deleteGame: () => {},
+  filterState: initialFilterState,
+  filteredGames: undefined,
   games: undefined,
   reverseSortGames: false,
+  setFilterState: () => {},
   sortGames: () => {},
   updateGame: () => {},
 })
@@ -52,7 +148,13 @@ export const GamesContextProvider = ({
   children,
 }: GamesContextProviderProps) => {
   const [games, setGames] = useState<GameObject[] | undefined>(undefined)
+  const [filteredGames, setFilteredGames] = useState<GameObject[] | undefined>(
+    undefined
+  )
   const [reverseSortGames, setReverseSortGames] = useState(false)
+  const [filterState, setFilterState] = useState(initialFilterState)
+
+  console.log('filteredGames =', filteredGames)
 
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
@@ -80,6 +182,31 @@ export const GamesContextProvider = ({
   useEffect(() => {
     setGamesWithFetchedData()
   }, [])
+
+  const returnFilteredGames = useCallback(() => {
+    if (!games) {
+      return undefined
+    }
+    let res = [...games]
+
+    // handle played filter
+    if (filterState.played.value === 'no') {
+      res = res.filter(game => {
+        return game.matchesArray.length === 0
+      })
+    } else if (filterState.played.value === 'yes') {
+      res = res.filter(game => {
+        return game.matchesArray.length > 0
+      })
+    }
+
+    // return filtered games
+    return res
+  }, [games, filterState])
+
+  useEffect(() => {
+    setFilteredGames(returnFilteredGames())
+  }, [games, returnFilteredGames])
 
   const addNewGame = async (newGame: GameObject): Promise<void> => {
     const { id, ...newGameWithoutId } = newGame
@@ -247,8 +374,11 @@ export const GamesContextProvider = ({
       value={{
         addNewGame,
         deleteGame,
+        filterState,
+        filteredGames,
         games,
         reverseSortGames,
+        setFilterState,
         sortGames,
         updateGame,
       }}

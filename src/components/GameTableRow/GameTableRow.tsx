@@ -144,8 +144,6 @@ const editGameRowReducer = (
 const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
-  console.log('game =', game)
-
   const initialGameRowState: EditGameObject = {
     id: game.id,
     image: game.image,
