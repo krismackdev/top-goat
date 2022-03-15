@@ -149,6 +149,92 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
     )
   }
 
+  if (filter === 'lastPlayed') {
+    return (
+      <>
+        <h4>Last Played:</h4>
+
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState.lastPlayed.usingStart}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    lastPlayed: {
+                      ...prev.lastPlayed,
+                      usingStart: !prev.lastPlayed.usingStart,
+                    },
+                  }
+                })
+              }
+              size="small"
+            />
+          }
+          label="from"
+          labelPlacement="start"
+        />
+
+        <input
+          type="date"
+          value={filterState.lastPlayed.start}
+          disabled={!filterState.lastPlayed.usingStart}
+          onChange={e =>
+            setFilterState(prev => {
+              return {
+                ...prev,
+                lastPlayed: {
+                  ...prev.lastPlayed,
+                  start: new Date(e.target.value).toISOString().slice(0, 10),
+                },
+              }
+            })
+          }
+        />
+
+        <FormControlLabel
+          control={
+            <Switch
+              checked={filterState.lastPlayed.usingEnd}
+              onChange={e =>
+                setFilterState(prev => {
+                  return {
+                    ...prev,
+                    lastPlayed: {
+                      ...prev.lastPlayed,
+                      usingEnd: !prev.lastPlayed.usingEnd,
+                    },
+                  }
+                })
+              }
+              size="small"
+            />
+          }
+          label="to"
+          labelPlacement="start"
+        />
+
+        <input
+          type="date"
+          value={filterState.lastPlayed.end}
+          disabled={!filterState.lastPlayed.usingEnd}
+          onChange={e =>
+            setFilterState(prev => {
+              return {
+                ...prev,
+                lastPlayed: {
+                  ...prev.lastPlayed,
+                  end: new Date(e.target.value).toISOString().slice(0, 10),
+                },
+              }
+            })
+          }
+        />
+      </>
+    )
+  }
+
   return <div>{filter}</div>
 }
 

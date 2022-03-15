@@ -154,8 +154,6 @@ export const GamesContextProvider = ({
   const [reverseSortGames, setReverseSortGames] = useState(false)
   const [filterState, setFilterState] = useState(initialFilterState)
 
-  console.log('filteredGames =', filteredGames)
-
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
     const fetchGames = async () => {
@@ -208,6 +206,36 @@ export const GamesContextProvider = ({
         filterState.three[game.players.three] === true &&
         filterState.four[game.players.four] === true &&
         filterState.five[game.players.five] === true
+      )
+    })
+
+    // handle lastPlayed filter
+    // convert dates somehow
+    res = res.filter(game => {
+      if (
+        !filterState.lastPlayed.usingStart &&
+        !filterState.lastPlayed.usingEnd
+      ) {
+        return game
+      }
+      if (!filterState.lastPlayed.usingStart) {
+        return (
+          game.lastPlayedDate &&
+          new Date(game.lastPlayedDate) <= new Date(filterState.lastPlayed.end)
+        )
+      }
+      if (!filterState.lastPlayed.usingEnd) {
+        return (
+          game.lastPlayedDate &&
+          new Date(game.lastPlayedDate) >=
+            new Date(filterState.lastPlayed.start)
+        )
+      }
+      return (
+        game.lastPlayedDate &&
+        new Date(game.lastPlayedDate) >=
+          new Date(filterState.lastPlayed.start) &&
+        new Date(game.lastPlayedDate) <= new Date(filterState.lastPlayed.end)
       )
     })
 
