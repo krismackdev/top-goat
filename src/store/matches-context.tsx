@@ -1,4 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
+import { GamesContext } from './games-context'
 import { db } from '../firebase/config'
 import {
   collection,
@@ -53,20 +60,50 @@ interface SortMatchArg {
   [prop: string]: string
 }
 
+interface MatchFilterStateObject {
+  dates: {
+    usingStart: boolean
+    usingEnd: boolean
+    start: string
+    end: string
+  }
+  gamesArray: string[]
+  players: {
+    [prop: string]: 'include' | 'exclude' | 'require'
+  }
+}
+
 type MatchesContextProviderProps = { children: React.ReactNode }
 
 export const MatchesContext = createContext<{
   addNewMatch: (newGame: MatchObjectWithStringScore) => void
   deleteMatch: (id: string) => void
+  filteredMatches: MatchObject[] | undefined
   matches: MatchObject[] | undefined
+  matchFilterState: MatchFilterStateObject
   reverseSortMatch: boolean
+  setMatchFilterState: React.Dispatch<
+    React.SetStateAction<MatchFilterStateObject>
+  >
   sortMatches: (payload: SortMatchArg) => void
   updateMatch: (match: MatchObject) => void
 }>({
   addNewMatch: () => {},
   deleteMatch: () => {},
+  filteredMatches: undefined,
   matches: undefined,
+  matchFilterState: {
+    dates: {
+      usingStart: false,
+      usingEnd: false,
+      start: '',
+      end: '',
+    },
+    gamesArray: [],
+    players: {},
+  },
   reverseSortMatch: false,
+  setMatchFilterState: () => {},
   sortMatches: () => {},
   updateMatch: () => {},
 })
@@ -75,10 +112,36 @@ export const MatchesContextProvider = ({
   children,
 }: MatchesContextProviderProps) => {
   const [matches, setMatches] = useState<MatchObject[] | undefined>(undefined)
+  const [filteredMatches, setFilteredMatches] = useState<
+    MatchObject[] | undefined
+  >(undefined)
   const [currentPlayOrder, setCurrentPlayOrder] = useState<number | undefined>(
     undefined
   )
   const [reverseSortMatch, setReverseSortMatch] = useState(false)
+  const { games } = useContext(GamesContext)
+  const initialMatchFilterState: MatchFilterStateObject = {
+    gamesArray: games?.map((game: any) => game.title) ?? [],
+    players: {},
+    dates: {
+      usingStart: false,
+      usingEnd: false,
+      start: new Date().toISOString().slice(0, 10),
+      end: new Date().toISOString().slice(0, 10),
+    },
+  }
+  const [matchFilterState, setMatchFilterState] = useState(
+    initialMatchFilterState
+  )
+
+  useEffect(() => {
+    setMatchFilterState(prev => {
+      return {
+        ...prev,
+        gamesArray: games?.map((game: any) => game.title) ?? [],
+      }
+    })
+  }, [games])
 
   // this function sets the matches state with data from firestore
   const setMatchesWithFetchedData = async () => {
@@ -116,6 +179,26 @@ export const MatchesContextProvider = ({
   useEffect(() => {
     setMatchesWithFetchedData()
   }, [])
+
+  const returnFilteredMatches = useCallback(() => {
+    if (!matches) {
+      return undefined
+    }
+    let res = [...matches]
+
+    console.log('MFS-GA=', matchFilterState.gamesArray)
+
+    // handle games filter
+    res = res.filter(match => {
+      return matchFilterState.gamesArray.includes(match.game)
+    })
+
+    return res
+  }, [matches, matchFilterState])
+
+  useEffect(() => {
+    setFilteredMatches(returnFilteredMatches())
+  }, [matches, returnFilteredMatches])
 
   const addNewMatch = async (
     newMatch: MatchObjectWithStringScore
@@ -235,8 +318,11 @@ export const MatchesContextProvider = ({
       value={{
         addNewMatch,
         deleteMatch,
+        filteredMatches,
         matches,
+        matchFilterState,
         reverseSortMatch,
+        setMatchFilterState,
         sortMatches,
         updateMatch,
       }}

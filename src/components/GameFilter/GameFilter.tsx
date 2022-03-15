@@ -9,9 +9,7 @@ interface GameFilterProps {
 }
 
 const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
-  const { filterState, setFilterState } = useContext(GamesContext)
-
-  console.log('filterState =', filterState)
+  const { gameFilterState, setGameFilterState } = useContext(GamesContext)
 
   if (filter === 'played') {
     return (
@@ -23,9 +21,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
           name="played"
           id="playedFilterAny"
           value="any"
-          checked={filterState.played.value === 'any'}
+          checked={gameFilterState.played.value === 'any'}
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 played: {
@@ -41,9 +39,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
           name="played"
           id="playedFilterYes"
           value="yes"
-          checked={filterState.played.value === 'yes'}
+          checked={gameFilterState.played.value === 'yes'}
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 played: {
@@ -59,9 +57,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
           name="played"
           id="playedFilterNo"
           value="no"
-          checked={filterState.played.value === 'no'}
+          checked={gameFilterState.played.value === 'no'}
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 played: {
@@ -88,9 +86,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         <FormControlLabel
           control={
             <Switch
-              checked={filterState[`${filter}`].yes}
+              checked={gameFilterState[`${filter}`].yes}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     [`${filter}`]: {
@@ -108,9 +106,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         <FormControlLabel
           control={
             <Switch
-              checked={filterState[`${filter}`].no}
+              checked={gameFilterState[`${filter}`].no}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     [`${filter}`]: {
@@ -128,9 +126,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         <FormControlLabel
           control={
             <Switch
-              checked={filterState[`${filter}`].ok}
+              checked={gameFilterState[`${filter}`].ok}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     [`${filter}`]: {
@@ -157,9 +155,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         <FormControlLabel
           control={
             <Switch
-              checked={filterState.lastPlayed.usingStart}
+              checked={gameFilterState.lastPlayed.usingStart}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     lastPlayed: {
@@ -178,10 +176,10 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
 
         <input
           type="date"
-          value={filterState.lastPlayed.start}
-          disabled={!filterState.lastPlayed.usingStart}
+          value={gameFilterState.lastPlayed.start}
+          disabled={!gameFilterState.lastPlayed.usingStart}
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 lastPlayed: {
@@ -196,9 +194,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         <FormControlLabel
           control={
             <Switch
-              checked={filterState.lastPlayed.usingEnd}
+              checked={gameFilterState.lastPlayed.usingEnd}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     lastPlayed: {
@@ -217,10 +215,10 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
 
         <input
           type="date"
-          value={filterState.lastPlayed.end}
-          disabled={!filterState.lastPlayed.usingEnd}
+          value={gameFilterState.lastPlayed.end}
+          disabled={!gameFilterState.lastPlayed.usingEnd}
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 lastPlayed: {
@@ -243,9 +241,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         <FormControlLabel
           control={
             <Switch
-              checked={filterState.playCount.usingMin}
+              checked={gameFilterState.playCount.usingMin}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     playCount: {
@@ -263,7 +261,7 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         />
         <input
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 playCount: {
@@ -274,16 +272,16 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
             })
           }
           type="number"
-          value={filterState.playCount.min}
-          disabled={!filterState.playCount.usingMin}
+          value={gameFilterState.playCount.min}
+          disabled={!gameFilterState.playCount.usingMin}
         />
 
         <FormControlLabel
           control={
             <Switch
-              checked={filterState.playCount.usingMax}
+              checked={gameFilterState.playCount.usingMax}
               onChange={e =>
-                setFilterState(prev => {
+                setGameFilterState(prev => {
                   return {
                     ...prev,
                     playCount: {
@@ -301,7 +299,7 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
         />
         <input
           onChange={e =>
-            setFilterState(prev => {
+            setGameFilterState(prev => {
               return {
                 ...prev,
                 playCount: {
@@ -312,8 +310,8 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
             })
           }
           type="number"
-          value={filterState.playCount.max}
-          disabled={!filterState.playCount.usingMax}
+          value={gameFilterState.playCount.max}
+          disabled={!gameFilterState.playCount.usingMax}
         />
       </>
     )

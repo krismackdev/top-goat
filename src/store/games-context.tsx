@@ -32,11 +32,7 @@ interface SortGameArg {
   [prop: string]: string
 }
 
-interface FilterAction {
-  type: string
-}
-
-interface FilterStateObject {
+interface GameFilterStateObject {
   lastPlayed: {
     start: string
     end: string
@@ -79,7 +75,7 @@ interface FilterStateObject {
   }
 }
 
-const initialFilterState: FilterStateObject = {
+const initialGameFilterState: GameFilterStateObject = {
   lastPlayed: {
     start: new Date().toISOString().slice(0, 10),
     end: new Date().toISOString().slice(0, 10),
@@ -125,21 +121,23 @@ const initialFilterState: FilterStateObject = {
 export const GamesContext = createContext<{
   addNewGame: (newGame: GameObject) => void
   deleteGame: (id: string) => void
-  filterState: FilterStateObject
+  gameFilterState: GameFilterStateObject
   filteredGames: GameObject[] | undefined
   games: GameObject[] | undefined
   reverseSortGames: boolean
-  setFilterState: React.Dispatch<React.SetStateAction<FilterStateObject>>
+  setGameFilterState: React.Dispatch<
+    React.SetStateAction<GameFilterStateObject>
+  >
   sortGames: (payload: SortGameArg) => void
   updateGame: (game: GameObject) => void
 }>({
   addNewGame: () => {},
   deleteGame: () => {},
-  filterState: initialFilterState,
+  gameFilterState: initialGameFilterState,
   filteredGames: undefined,
   games: undefined,
   reverseSortGames: false,
-  setFilterState: () => {},
+  setGameFilterState: () => {},
   sortGames: () => {},
   updateGame: () => {},
 })
@@ -152,7 +150,7 @@ export const GamesContextProvider = ({
     undefined
   )
   const [reverseSortGames, setReverseSortGames] = useState(false)
-  const [filterState, setFilterState] = useState(initialFilterState)
+  const [gameFilterState, setGameFilterState] = useState(initialGameFilterState)
 
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
@@ -188,11 +186,11 @@ export const GamesContextProvider = ({
     let res = [...games]
 
     // handle played filter
-    if (filterState.played.value === 'no') {
+    if (gameFilterState.played.value === 'no') {
       res = res.filter(game => {
         return game.matchesArray.length === 0
       })
-    } else if (filterState.played.value === 'yes') {
+    } else if (gameFilterState.played.value === 'yes') {
       res = res.filter(game => {
         return game.matchesArray.length > 0
       })
@@ -201,64 +199,75 @@ export const GamesContextProvider = ({
     // handle one through five filters
     res = res.filter(game => {
       return (
-        filterState.one[game.players.one] === true &&
-        filterState.two[game.players.two] === true &&
-        filterState.three[game.players.three] === true &&
-        filterState.four[game.players.four] === true &&
-        filterState.five[game.players.five] === true
+        gameFilterState.one[game.players.one] === true &&
+        gameFilterState.two[game.players.two] === true &&
+        gameFilterState.three[game.players.three] === true &&
+        gameFilterState.four[game.players.four] === true &&
+        gameFilterState.five[game.players.five] === true
       )
     })
 
     // handle lastPlayed filter
     res = res.filter(game => {
       if (
-        !filterState.lastPlayed.usingStart &&
-        !filterState.lastPlayed.usingEnd
+        !gameFilterState.lastPlayed.usingStart &&
+        !gameFilterState.lastPlayed.usingEnd
       ) {
         return game
       }
-      if (!filterState.lastPlayed.usingStart) {
+      if (!gameFilterState.lastPlayed.usingStart) {
         return (
           game.lastPlayedDate &&
-          new Date(game.lastPlayedDate) <= new Date(filterState.lastPlayed.end)
+          new Date(game.lastPlayedDate) <=
+            new Date(gameFilterState.lastPlayed.end)
         )
       }
-      if (!filterState.lastPlayed.usingEnd) {
+      if (!gameFilterState.lastPlayed.usingEnd) {
         return (
           game.lastPlayedDate &&
           new Date(game.lastPlayedDate) >=
-            new Date(filterState.lastPlayed.start)
+            new Date(gameFilterState.lastPlayed.start)
         )
       }
       return (
         game.lastPlayedDate &&
         new Date(game.lastPlayedDate) >=
-          new Date(filterState.lastPlayed.start) &&
-        new Date(game.lastPlayedDate) <= new Date(filterState.lastPlayed.end)
+          new Date(gameFilterState.lastPlayed.start) &&
+        new Date(game.lastPlayedDate) <=
+          new Date(gameFilterState.lastPlayed.end)
       )
     })
 
     // handle playCount filter
     res = res.filter(game => {
-      if (!filterState.playCount.usingMin && !filterState.playCount.usingMax) {
+      if (
+        !gameFilterState.playCount.usingMin &&
+        !gameFilterState.playCount.usingMax
+      ) {
         return game
       }
       let playCount = game?.matchesArray.length || 0
-      if (filterState.playCount.usingMin && !filterState.playCount.usingMax) {
-        return filterState.playCount.min <= playCount
+      if (
+        gameFilterState.playCount.usingMin &&
+        !gameFilterState.playCount.usingMax
+      ) {
+        return gameFilterState.playCount.min <= playCount
       }
-      if (filterState.playCount.usingMax && !filterState.playCount.usingMin) {
-        return filterState.playCount.max >= playCount
+      if (
+        gameFilterState.playCount.usingMax &&
+        !gameFilterState.playCount.usingMin
+      ) {
+        return gameFilterState.playCount.max >= playCount
       }
       return (
-        filterState.playCount.min <= playCount &&
-        filterState.playCount.max >= playCount
+        gameFilterState.playCount.min <= playCount &&
+        gameFilterState.playCount.max >= playCount
       )
     })
 
     // return filtered games
     return res
-  }, [games, filterState])
+  }, [games, gameFilterState])
 
   useEffect(() => {
     setFilteredGames(returnFilteredGames())
@@ -430,11 +439,11 @@ export const GamesContextProvider = ({
       value={{
         addNewGame,
         deleteGame,
-        filterState,
+        gameFilterState,
         filteredGames,
         games,
         reverseSortGames,
-        setFilterState,
+        setGameFilterState,
         sortGames,
         updateGame,
       }}

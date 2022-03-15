@@ -29,8 +29,8 @@ const GamePage: React.FC = () => {
   } = useContext(GamesContext)
   const [formIsActive, setFormIsActive] = useState(false)
   const [gridViewIsActive, setGridViewIsActive] = useState(false)
-  const [showFilters, setShowFilters] = useState(false)
-  const [tabValue, setTabValue] = useState('')
+  const [showGameFilters, setShowGameFilters] = useState(false)
+  const [tabGameValue, setTabGameValue] = useState('')
 
   return (
     <div className="game-page-container">
@@ -48,18 +48,20 @@ const GamePage: React.FC = () => {
         </Button>
         <Button
           variant="contained"
-          onClick={() => setShowFilters(prev => !prev)}
+          onClick={() => setShowGameFilters(prev => !prev)}
         >
-          {showFilters ? 'HIDE' : 'SHOW'} FILTERS
+          {showGameFilters ? 'HIDE' : 'SHOW'} FILTERS
         </Button>
 
-        {showFilters && tabValue !== '' && <GameFilter filter={tabValue} />}
+        {showGameFilters && tabGameValue !== '' && (
+          <GameFilter filter={tabGameValue} />
+        )}
       </Grid>
-      {showFilters && (
+      {showGameFilters && (
         <Tabs
           sx={{ marginBottom: '5px', marginLeft: '5px' }}
-          value={tabValue}
-          onChange={(e, newVal) => setTabValue(newVal)}
+          value={tabGameValue}
+          onChange={(e, newVal) => setTabGameValue(newVal)}
           variant="scrollable"
           scrollButtons="auto"
         >
