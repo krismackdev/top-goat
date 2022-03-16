@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react'
 import { GamesContext } from './games-context'
+import { PlayersContext } from './players-context'
 import { db } from '../firebase/config'
 import {
   collection,
@@ -18,14 +19,14 @@ import {
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
-interface ParticipantsObject {
-  [prop: string]: PlayerResultObject
-}
-
 interface PlayerResultObject {
   name: string
   result: Result
   score: string
+}
+
+interface ParticipantsObject {
+  [prop: string]: PlayerResultObject
 }
 
 interface MatchObject {
@@ -60,6 +61,10 @@ interface SortMatchArg {
   [prop: string]: string
 }
 
+interface MatchFilterPlayersObject {
+  [prop: string]: 'include' | 'exclude' | 'require'
+}
+
 interface MatchFilterStateObject {
   dates: {
     usingStart: boolean
@@ -68,9 +73,7 @@ interface MatchFilterStateObject {
     end: string
   }
   gamesArray: string[]
-  players: {
-    [prop: string]: 'include' | 'exclude' | 'require'
-  }
+  players: MatchFilterPlayersObject
 }
 
 type MatchesContextProviderProps = { children: React.ReactNode }
@@ -120,6 +123,8 @@ export const MatchesContextProvider = ({
   )
   const [reverseSortMatch, setReverseSortMatch] = useState(false)
   const { games } = useContext(GamesContext)
+  const { players } = useContext(PlayersContext)
+
   const initialMatchFilterState: MatchFilterStateObject = {
     gamesArray: games?.map((game: any) => game.title) ?? [],
     players: {},
@@ -130,9 +135,12 @@ export const MatchesContextProvider = ({
       end: new Date().toISOString().slice(0, 10),
     },
   }
+
   const [matchFilterState, setMatchFilterState] = useState(
     initialMatchFilterState
   )
+
+  console.log('MFS = ', matchFilterState)
 
   useEffect(() => {
     setMatchFilterState(prev => {
@@ -142,6 +150,21 @@ export const MatchesContextProvider = ({
       }
     })
   }, [games])
+
+  useEffect(() => {
+    let updatedPlayers: MatchFilterPlayersObject = {}
+    players?.forEach(player => {
+      if (!Object.keys(matchFilterState.players).includes(player.name))
+        updatedPlayers[player.name] = 'include'
+    })
+
+    setMatchFilterState(prev => {
+      return {
+        ...prev,
+        players: updatedPlayers,
+      }
+    })
+  }, [players])
 
   // this function sets the matches state with data from firestore
   const setMatchesWithFetchedData = async () => {
@@ -193,6 +216,11 @@ export const MatchesContextProvider = ({
 
     // handle playedDate filter
     res = res.filter(match => {
+      let dateInComparableFormat =
+        match.date.slice(6) +
+        '-' +
+        match.date.slice(0, 3) +
+        match.date.slice(3, 5)
       if (
         !matchFilterState.dates.usingStart &&
         !matchFilterState.dates.usingEnd
@@ -201,21 +229,56 @@ export const MatchesContextProvider = ({
       }
       if (!matchFilterState.dates.usingStart) {
         return (
-          match.date &&
-          new Date(match.date) <= new Date(matchFilterState.dates.end)
+          dateInComparableFormat &&
+          new Date(dateInComparableFormat) <=
+            new Date(matchFilterState.dates.end)
         )
       }
       if (!matchFilterState.dates.usingEnd) {
         return (
-          match.date &&
-          new Date(match.date) >= new Date(matchFilterState.dates.start)
+          dateInComparableFormat &&
+          new Date(dateInComparableFormat) >=
+            new Date(matchFilterState.dates.start)
         )
       }
       return (
-        match.date &&
-        new Date(match.date) >= new Date(matchFilterState.dates.start) &&
-        new Date(match.date) <= new Date(matchFilterState.dates.end)
+        dateInComparableFormat &&
+        new Date(dateInComparableFormat) >=
+          new Date(matchFilterState.dates.start) &&
+        new Date(dateInComparableFormat) <= new Date(matchFilterState.dates.end)
       )
+    })
+
+    // filter out matches with excluded players
+    res = res.filter(match => {
+      const playersInvolved = Object.keys(match.participants).map(
+        playerId => match.participants[playerId].name
+      )
+      return !playersInvolved.some(
+        player => matchFilterState.players[player] === 'exclude'
+      )
+    })
+
+    // for any required players, filter out matches without them
+    res = res.filter(match => {
+      let requiredPlayers = Object.keys(matchFilterState.players).filter(
+        player => matchFilterState.players[player] === 'require'
+      )
+
+      console.log('requiredPlayers =', requiredPlayers)
+
+      if (requiredPlayers.length > 0) {
+        for (let player of requiredPlayers) {
+          if (
+            !Object.keys(match.participants)
+              .map(playerId => match.participants[playerId].name)
+              .includes(player)
+          ) {
+            return false
+          }
+        }
+      }
+      return true
     })
 
     return res

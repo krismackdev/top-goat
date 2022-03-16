@@ -11,11 +11,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <GamesContextProvider>
-        <MatchesContextProvider>
-          <PlayersContextProvider>
+        <PlayersContextProvider>
+          <MatchesContextProvider>
             <App />
-          </PlayersContextProvider>
-        </MatchesContextProvider>
+          </MatchesContextProvider>
+        </PlayersContextProvider>
       </GamesContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

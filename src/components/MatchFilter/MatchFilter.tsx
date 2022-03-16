@@ -1,16 +1,23 @@
 import React, { useContext } from 'react'
 import { MatchesContext } from '../../store/matches-context'
 import { GamesContext } from '../../store/games-context'
+import { PlayersContext } from '../../store/players-context'
 
 import {
   Autocomplete,
   Button,
+  FormControl,
   FormControlLabel,
   FormGroup,
+  InputLabel,
+  MenuItem,
+  Select,
   Switch,
   TextField,
 } from '@mui/material'
 import './MatchFilter.css'
+
+type MatchFilterPlayerOptions = 'include' | 'exclude' | 'require'
 
 interface MatchFilterProps {
   filter: string
@@ -19,8 +26,9 @@ interface MatchFilterProps {
 const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
   const { matchFilterState, setMatchFilterState } = useContext(MatchesContext)
   const { games } = useContext(GamesContext)
+  const { players } = useContext(PlayersContext)
 
-  console.log('mfs.gamesarray =', matchFilterState.gamesArray)
+  console.log('MFS =', matchFilterState)
 
   if (filter === 'games') {
     if (games) {
@@ -164,11 +172,66 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
       </>
     )
   }
-  // if (filter === players) {
+  if (filter === 'players') {
+    return (
+      <>
+        <h3>Players: </h3>
+        {players
+          ?.map(player => {
+            return player.name
+          })
+          .map(player => {
+            return (
+              <>
+                <FormControl size="small">
+                  <InputLabel
+                    id={`player-label-${player}`}
+                  >{`${player}`}</InputLabel>
+                  <Select
+                    labelId={`player-label-${player}`}
+                    id={`player-${player}`}
+                    value={matchFilterState.players[player]}
+                    label={`${player}`}
+                    // onChange={e => {
+                    //   dispatch(
+                    //     filterMatchesActions.updateFilter({
+                    //       type: 'players',
+                    //       filter: {
+                    //         active: filterSettings.players.active,
+                    //         display: {
+                    //           ...filterSettings.players.display,
+                    //           [player]: e.target.value,
+                    //         },
+                    //       },
+                    //     })
+                    //   )
+                    // }}
+                    onChange={e => {
+                      setMatchFilterState(prev => {
+                        return {
+                          ...prev,
+                          players: {
+                            ...prev.players,
+                            [player]: e.target
+                              .value as MatchFilterPlayerOptions,
+                          },
+                        }
+                      })
+                    }}
+                  >
+                    <MenuItem value="include">include</MenuItem>
+                    <MenuItem value="exclude">exclude</MenuItem>
+                    <MenuItem value="require">require</MenuItem>
+                  </Select>
+                </FormControl>
+              </>
+            )
+          })}
+      </>
+    )
+  }
 
-  // }
-
-  return <div>{filter}</div>
+  return <div></div>
 }
 
 export default MatchFilter
