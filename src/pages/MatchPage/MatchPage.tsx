@@ -25,6 +25,7 @@ const MatchPage: React.FC = () => {
   const [tabMatchValue, setTabMatchValue] = useState('')
   const {
     filteredMatches: matches,
+    resetMatchFilterState,
     reverseSortMatch,
     sortMatches,
   } = useContext(MatchesContext)
@@ -41,6 +42,9 @@ const MatchPage: React.FC = () => {
           onClick={() => setShowMatchFilters(prev => !prev)}
         >
           {showMatchFilters ? 'HIDE' : 'SHOW'} FILTERS
+        </Button>
+        <Button variant="contained" onClick={resetMatchFilterState}>
+          CLEAR FILTERS
         </Button>
 
         {showMatchFilters && tabMatchValue !== '' && (

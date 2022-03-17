@@ -84,6 +84,7 @@ export const MatchesContext = createContext<{
   filteredMatches: MatchObject[] | undefined
   matches: MatchObject[] | undefined
   matchFilterState: MatchFilterStateObject
+  resetMatchFilterState: () => void
   reverseSortMatch: boolean
   setMatchFilterState: React.Dispatch<
     React.SetStateAction<MatchFilterStateObject>
@@ -105,6 +106,7 @@ export const MatchesContext = createContext<{
     gamesArray: [],
     players: {},
   },
+  resetMatchFilterState: () => {},
   reverseSortMatch: false,
   setMatchFilterState: () => {},
   sortMatches: () => {},
@@ -302,6 +304,10 @@ export const MatchesContextProvider = ({
     setMatchesWithFetchedData()
   }
 
+  const resetMatchFilterState = () => {
+    setMatchFilterState(initialMatchFilterState)
+  }
+
   const sortMatches = (payload: SortMatchArg) => {
     switch (payload.field) {
       case 'playOrder':
@@ -406,6 +412,7 @@ export const MatchesContextProvider = ({
         filteredMatches,
         matches,
         matchFilterState,
+        resetMatchFilterState,
         reverseSortMatch,
         setMatchFilterState,
         sortMatches,

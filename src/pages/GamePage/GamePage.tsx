@@ -25,6 +25,7 @@ const GamePage: React.FC = () => {
   const {
     filteredGames: games,
     reverseSortGames,
+    resetGameFilterState,
     sortGames,
   } = useContext(GamesContext)
   const [formIsActive, setFormIsActive] = useState(false)
@@ -52,7 +53,9 @@ const GamePage: React.FC = () => {
         >
           {showGameFilters ? 'HIDE' : 'SHOW'} FILTERS
         </Button>
-
+        <Button variant="contained" onClick={resetGameFilterState}>
+          CLEAR FILTERS
+        </Button>
         {showGameFilters && tabGameValue !== '' && (
           <GameFilter filter={tabGameValue} />
         )}

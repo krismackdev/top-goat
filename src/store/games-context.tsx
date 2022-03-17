@@ -124,6 +124,7 @@ export const GamesContext = createContext<{
   gameFilterState: GameFilterStateObject
   filteredGames: GameObject[] | undefined
   games: GameObject[] | undefined
+  resetGameFilterState: () => void
   reverseSortGames: boolean
   setGameFilterState: React.Dispatch<
     React.SetStateAction<GameFilterStateObject>
@@ -136,6 +137,7 @@ export const GamesContext = createContext<{
   gameFilterState: initialGameFilterState,
   filteredGames: undefined,
   games: undefined,
+  resetGameFilterState: () => {},
   reverseSortGames: false,
   setGameFilterState: () => {},
   sortGames: () => {},
@@ -282,6 +284,10 @@ export const GamesContextProvider = ({
   const deleteGame = async (id: string): Promise<void> => {
     await deleteDoc(doc(db, 'games', id))
     setGamesWithFetchedData()
+  }
+
+  const resetGameFilterState = () => {
+    setGameFilterState(initialGameFilterState)
   }
 
   const sortGames = (payload: SortGameArg): void => {
@@ -442,6 +448,7 @@ export const GamesContextProvider = ({
         gameFilterState,
         filteredGames,
         games,
+        resetGameFilterState,
         reverseSortGames,
         setGameFilterState,
         sortGames,
