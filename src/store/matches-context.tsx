@@ -140,8 +140,6 @@ export const MatchesContextProvider = ({
     initialMatchFilterState
   )
 
-  console.log('MFS = ', matchFilterState)
-
   useEffect(() => {
     setMatchFilterState(prev => {
       return {
@@ -265,8 +263,6 @@ export const MatchesContextProvider = ({
         player => matchFilterState.players[player] === 'require'
       )
 
-      console.log('requiredPlayers =', requiredPlayers)
-
       if (requiredPlayers.length > 0) {
         for (let player of requiredPlayers) {
           if (
@@ -291,6 +287,7 @@ export const MatchesContextProvider = ({
   const addNewMatch = async (
     newMatch: MatchObjectWithStringScore
   ): Promise<void> => {
+    console.log('in ADM, newMatch =', newMatch)
     const { id, ...matchWithoutId } = newMatch
     await setDoc(doc(db, 'matches', id), {
       ...matchWithoutId,

@@ -123,7 +123,17 @@ const addMatchStateReducer = (
       }
       return stateCopy2
     case 'resetMatchForm':
-      return { ...initialAddMatchState, id: uuidv4() }
+      return {
+        ...initialAddMatchState,
+        id: uuidv4(),
+        participants: {
+          player1: {
+            name: '',
+            result: 'n/a',
+            score: 'n/a',
+          },
+        },
+      }
   }
 }
 
@@ -141,7 +151,7 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     initialAddMatchState
   )
 
-  console.log('date =', addMatchState.date)
+  console.log('addMatchState =', addMatchState)
 
   useEffect(() => {
     let tempPlayerNames: string[] = []

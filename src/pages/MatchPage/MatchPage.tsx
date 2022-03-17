@@ -89,7 +89,7 @@ const MatchPage: React.FC = () => {
                 ) : (
                   <FontAwesomeIcon icon={faCaretDown} />
                 )}
-              </MatchTableCell>{' '}
+              </MatchTableCell>
               {players?.map(player => (
                 <Fragment key={player.id}>
                   <MatchTableCell
