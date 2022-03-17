@@ -172,7 +172,9 @@ export const GamesContextProvider = ({
           result.push(currentGame as GameObject)
         }
       })
-      return result
+      return result.sort((a, b) => {
+        return a.title > b.title ? 1 : -1
+      })
     })
     setGames(downloadedGames)
   }

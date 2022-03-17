@@ -20,16 +20,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 const MatchPage: React.FC = () => {
+  const [activeSortingColumn, setActiveSortingColumn] = useState('playOrder')
   const [formIsActive, setFormIsActive] = useState(false)
   const [showMatchFilters, setShowMatchFilters] = useState(false)
   const [tabMatchValue, setTabMatchValue] = useState('')
   const {
     filteredMatches: matches,
     resetMatchFilterState,
-    reverseSortMatch,
+    reverseSortMatches,
     sortMatches,
   } = useContext(MatchesContext)
   const { players } = useContext(PlayersContext)
+
+  const handleMatchColumnSort = (columnName: string) => {
+    if (columnName.slice(0, 6) === 'result') {
+      sortMatches({ playerId: columnName.slice(7), field: 'result' })
+    } else if (columnName.slice(0, 5) === 'score') {
+      sortMatches({ playerId: columnName.slice(6), field: 'score' })
+    } else {
+      sortMatches({ field: columnName })
+    }
+    setActiveSortingColumn(columnName)
+  }
 
   return (
     <div className="match-page-container">
@@ -73,33 +85,39 @@ const MatchPage: React.FC = () => {
             <TableRow>
               <MatchTableCell
                 sx={{ minWidth: '60px' }}
-                onClick={() => sortMatches({ field: 'playOrder' })}
+                onClick={() => handleMatchColumnSort('playOrder')}
               >
                 # &nbsp;
-                {reverseSortMatch ? (
-                  <FontAwesomeIcon icon={faCaretUp} />
+                {activeSortingColumn === 'playOrder' ? (
+                  reverseSortMatches ? (
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretUp} />
+                  )
                 ) : (
-                  <FontAwesomeIcon icon={faCaretDown} />
+                  ''
                 )}
               </MatchTableCell>
               <MatchTableCell sx={{ minWidth: '85px' }}>Date</MatchTableCell>
               <MatchTableCell
                 sx={{ minWidth: '90px' }}
-                onClick={() => sortMatches({ field: 'game' })}
+                onClick={() => handleMatchColumnSort('game')}
               >
                 Game &nbsp;
-                {reverseSortMatch ? (
-                  <FontAwesomeIcon icon={faCaretUp} />
+                {activeSortingColumn === 'game' ? (
+                  reverseSortMatches ? (
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretUp} />
+                  )
                 ) : (
-                  <FontAwesomeIcon icon={faCaretDown} />
+                  ''
                 )}
               </MatchTableCell>
               {players?.map(player => (
                 <Fragment key={player.id}>
                   <MatchTableCell
-                    onClick={() =>
-                      sortMatches({ playerId: player.id, field: 'result' })
-                    }
+                    onClick={() => handleMatchColumnSort(`result-${player.id}`)}
                     sx={{ minWidth: '100px' }}
                   >
                     {player.name
@@ -109,23 +127,29 @@ const MatchPage: React.FC = () => {
                       )
                       .join('')}{' '}
                     &nbsp;
-                    {reverseSortMatch ? (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                    {activeSortingColumn === `result-${player.id}` ? (
+                      reverseSortMatches ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                      ''
                     )}
                   </MatchTableCell>
                   <MatchTableCell
                     sx={{ minWidth: '90px' }}
-                    onClick={() =>
-                      sortMatches({ playerId: player.id, field: 'score' })
-                    }
+                    onClick={() => handleMatchColumnSort(`score-${player.id}`)}
                   >
                     score &nbsp;
-                    {reverseSortMatch ? (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                    {activeSortingColumn === `score-${player.id}` ? (
+                      reverseSortMatches ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                      ''
                     )}
                   </MatchTableCell>
                 </Fragment>

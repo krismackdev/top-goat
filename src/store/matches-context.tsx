@@ -85,7 +85,7 @@ export const MatchesContext = createContext<{
   matches: MatchObject[] | undefined
   matchFilterState: MatchFilterStateObject
   resetMatchFilterState: () => void
-  reverseSortMatch: boolean
+  reverseSortMatches: boolean
   setMatchFilterState: React.Dispatch<
     React.SetStateAction<MatchFilterStateObject>
   >
@@ -107,7 +107,7 @@ export const MatchesContext = createContext<{
     players: {},
   },
   resetMatchFilterState: () => {},
-  reverseSortMatch: false,
+  reverseSortMatches: false,
   setMatchFilterState: () => {},
   sortMatches: () => {},
   updateMatch: () => {},
@@ -123,7 +123,7 @@ export const MatchesContextProvider = ({
   const [currentPlayOrder, setCurrentPlayOrder] = useState<number | undefined>(
     undefined
   )
-  const [reverseSortMatch, setReverseSortMatch] = useState(false)
+  const [reverseSortMatches, setReverseSortMatches] = useState(false)
   const { games } = useContext(GamesContext)
   const { players } = useContext(PlayersContext)
 
@@ -315,7 +315,7 @@ export const MatchesContextProvider = ({
           return prev
             ?.map(x => x)
             .sort((a, b) => {
-              if (reverseSortMatch) {
+              if (reverseSortMatches) {
                 return b.playOrder - a.playOrder
               } else {
                 return a.playOrder - b.playOrder
@@ -328,7 +328,7 @@ export const MatchesContextProvider = ({
           return prev
             ?.map(x => x)
             .sort((a, b) => {
-              if (reverseSortMatch) {
+              if (reverseSortMatches) {
                 return b.game > a.game ? 1 : -1
               } else {
                 return a.game > b.game ? 1 : -1
@@ -342,7 +342,7 @@ export const MatchesContextProvider = ({
             ?.map(x => x)
             .sort((a, b) => {
               let aa, bb
-              if (reverseSortMatch) {
+              if (reverseSortMatches) {
                 aa = a.participants[payload.playerId]?.result ?? 'zzz'
                 bb = b.participants[payload.playerId]?.result ?? 'zzz'
                 return aa > bb ? 1 : -1
@@ -375,7 +375,7 @@ export const MatchesContextProvider = ({
                 case bb === 'n/a':
                   return -1
                 case !isNaN(+aa) && !isNaN(+bb):
-                  return reverseSortMatch
+                  return reverseSortMatches
                     ? +aa > +bb
                       ? 1
                       : -1
@@ -393,7 +393,7 @@ export const MatchesContextProvider = ({
         })
         break
     }
-    setReverseSortMatch(prev => !prev)
+    setReverseSortMatches(prev => !prev)
   }
 
   const updateMatch = async (match: MatchObject): Promise<void> => {
@@ -413,7 +413,7 @@ export const MatchesContextProvider = ({
         matches,
         matchFilterState,
         resetMatchFilterState,
-        reverseSortMatch,
+        reverseSortMatches,
         setMatchFilterState,
         sortMatches,
         updateMatch,

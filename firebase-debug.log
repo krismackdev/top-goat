@@ -1050,3 +1050,729 @@ INFO: Detected non-HTTP/2 connection.
 [debug] [2022-03-17T08:37:44.833Z] Mar 17, 2022 4:37:44 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
 INFO: channel closed
  {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:37:44 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T08:38:21.946Z] Mar 17, 2022 4:38:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:38:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:39:21.952Z] Mar 17, 2022 4:39:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:39:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:40:39.413Z] Mar 17, 2022 4:40:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:40:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:41:39.439Z] Mar 17, 2022 4:41:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:41:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:42:55.412Z] Mar 17, 2022 4:42:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:42:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:43:55.428Z] Mar 17, 2022 4:43:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:43:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:44:41.411Z] Mar 17, 2022 4:44:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:44:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:45:41.427Z] Mar 17, 2022 4:45:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:45:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:46:57.412Z] Mar 17, 2022 4:46:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:46:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:47:43.411Z] Mar 17, 2022 4:47:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:47:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:48:29.411Z] Mar 17, 2022 4:48:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:48:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:49:45.411Z] Mar 17, 2022 4:49:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:49:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:50:31.410Z] Mar 17, 2022 4:50:31 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:50:31 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:51:17.412Z] Mar 17, 2022 4:51:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:51:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:52:33.412Z] Mar 17, 2022 4:52:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:52:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:53:33.428Z] Mar 17, 2022 4:53:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:53:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:54:33.440Z] Mar 17, 2022 4:54:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:54:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:55:49.407Z] Mar 17, 2022 4:55:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:55:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:56:35.407Z] Mar 17, 2022 4:56:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:56:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:57:21.411Z] Mar 17, 2022 4:57:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:57:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:58:37.411Z] Mar 17, 2022 4:58:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:58:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T08:59:23.407Z] Mar 17, 2022 4:59:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 4:59:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:00:09.407Z] Mar 17, 2022 5:00:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:00:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:00:55.408Z] Mar 17, 2022 5:00:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:00:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:01:41.408Z] Mar 17, 2022 5:01:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:01:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:02:57.407Z] Mar 17, 2022 5:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:03:43.407Z] Mar 17, 2022 5:03:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:03:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:04:29.407Z] Mar 17, 2022 5:04:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:04:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:05:45.407Z] Mar 17, 2022 5:05:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:05:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:06:31.407Z] Mar 17, 2022 5:06:31 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:06:31 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:07:17.408Z] Mar 17, 2022 5:07:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:07:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:08:03.407Z] Mar 17, 2022 5:08:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:08:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:08:49.407Z] Mar 17, 2022 5:08:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:08:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:09:49.414Z] Mar 17, 2022 5:09:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:09:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:10:35.407Z] Mar 17, 2022 5:10:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:10:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:11:51.407Z] Mar 17, 2022 5:11:51 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:11:51 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:12:37.411Z] Mar 17, 2022 5:12:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:12:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:13:53.411Z] Mar 17, 2022 5:13:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:13:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:15:09.412Z] Mar 17, 2022 5:15:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:15:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:16:09.421Z] Mar 17, 2022 5:16:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:16:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:16:55.411Z] Mar 17, 2022 5:16:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:16:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:17:41.411Z] Mar 17, 2022 5:17:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:17:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:18:27.412Z] Mar 17, 2022 5:18:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:18:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:19:43.412Z] Mar 17, 2022 5:19:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:19:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:20:29.407Z] Mar 17, 2022 5:20:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:20:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:21:15.411Z] Mar 17, 2022 5:21:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:21:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:22:01.411Z] Mar 17, 2022 5:22:01 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:22:01 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:22:47.410Z] Mar 17, 2022 5:22:47 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:22:47 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:23:47.427Z] Mar 17, 2022 5:23:47 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:23:47 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:25:03.411Z] Mar 17, 2022 5:25:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:25:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:26:19.409Z] Mar 17, 2022 5:26:19 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:26:19 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:27:05.411Z] Mar 17, 2022 5:27:05 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:27:05 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:28:21.422Z] Mar 17, 2022 5:28:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:28:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:29:07.412Z] Mar 17, 2022 5:29:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:29:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:30:23.407Z] Mar 17, 2022 5:30:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:30:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:31:09.408Z] Mar 17, 2022 5:31:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:31:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:31:55.407Z] Mar 17, 2022 5:31:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:31:55 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:32:41.407Z] Mar 17, 2022 5:32:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:32:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:33:27.407Z] Mar 17, 2022 5:33:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:33:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:34:27.418Z] Mar 17, 2022 5:34:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:34:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:35:43.408Z] Mar 17, 2022 5:35:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:35:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:36:43.415Z] Mar 17, 2022 5:36:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:36:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:37:59.407Z] Mar 17, 2022 5:37:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:37:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:39:10.929Z] Mar 17, 2022 5:39:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:39:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:39:10.957Z] Mar 17, 2022 5:39:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:39:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:39:10.983Z] Mar 17, 2022 5:39:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:39:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:39:11.025Z] Mar 17, 2022 5:39:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:39:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:39:15.407Z] Mar 17, 2022 5:39:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:39:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:40:01.407Z] Mar 17, 2022 5:40:01 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:40:01 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:40:11.009Z] Mar 17, 2022 5:40:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:40:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:40:11.011Z] Mar 17, 2022 5:40:11 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:40:11 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:41:01.414Z] Mar 17, 2022 5:41:01 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:41:01 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:42:17.407Z] Mar 17, 2022 5:42:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:42:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:43:17.413Z] Mar 17, 2022 5:43:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:43:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:43:36.668Z] Mar 17, 2022 5:43:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:43:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:43:36.917Z] Mar 17, 2022 5:43:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:43:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:43:36.943Z] Mar 17, 2022 5:43:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:43:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:43:37.122Z] Mar 17, 2022 5:43:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:43:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:44:17.419Z] Mar 17, 2022 5:44:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:44:36.968Z] Mar 17, 2022 5:44:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:44:36.970Z] Mar 17, 2022 5:44:36 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:36 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:44:56.852Z] Mar 17, 2022 5:44:56 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:56 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:44:57.109Z] Mar 17, 2022 5:44:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:44:57.137Z] Mar 17, 2022 5:44:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:44:57.303Z] Mar 17, 2022 5:44:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:44:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:00.435Z] Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:00.519Z] Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:00.541Z] Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:00.722Z] Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:03.407Z] Mar 17, 2022 5:45:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:07.634Z] Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:07.720Z] Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:07.752Z] Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:07.937Z] Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:45:49.407Z] Mar 17, 2022 5:45:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:45:49 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:46:07.777Z] Mar 17, 2022 5:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:46:07.779Z] Mar 17, 2022 5:46:07 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:07 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:46:14.858Z] Mar 17, 2022 5:46:14 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:14 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:46:15.170Z] Mar 17, 2022 5:46:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:46:15.208Z] Mar 17, 2022 5:46:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:46:15.392Z] Mar 17, 2022 5:46:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:46:35.407Z] Mar 17, 2022 5:46:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:46:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:47:15.232Z] Mar 17, 2022 5:47:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:47:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:47:15.234Z] Mar 17, 2022 5:47:15 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:47:15 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:47:51.407Z] Mar 17, 2022 5:47:51 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:47:51 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:48:02.656Z] Mar 17, 2022 5:48:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:48:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:48:02.927Z] Mar 17, 2022 5:48:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:48:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:48:02.957Z] Mar 17, 2022 5:48:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:48:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:48:03.316Z] Mar 17, 2022 5:48:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:48:03 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:48:37.407Z] Mar 17, 2022 5:48:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:48:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:02.982Z] Mar 17, 2022 5:49:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:02.984Z] Mar 17, 2022 5:49:02 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:02 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:49:09.519Z] Mar 17, 2022 5:49:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:09.825Z] Mar 17, 2022 5:49:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:09.854Z] Mar 17, 2022 5:49:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:09 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:10.038Z] Mar 17, 2022 5:49:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:37.413Z] Mar 17, 2022 5:49:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:57.809Z] Mar 17, 2022 5:49:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:58.115Z] Mar 17, 2022 5:49:58 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:58 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:58.155Z] Mar 17, 2022 5:49:58 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:58 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:49:58.332Z] Mar 17, 2022 5:49:58 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:49:58 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:50:23.407Z] Mar 17, 2022 5:50:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:50:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:50:43.360Z] Mar 17, 2022 5:50:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:50:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:50:45.872Z] Mar 17, 2022 5:50:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:50:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:50:46.133Z] Mar 17, 2022 5:50:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:50:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:50:46.165Z] Mar 17, 2022 5:50:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:50:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:50:46.328Z] Mar 17, 2022 5:50:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:50:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:51:39.407Z] Mar 17, 2022 5:51:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:51:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:51:46.189Z] Mar 17, 2022 5:51:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:51:46 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:51:46.191Z] Mar 17, 2022 5:51:46 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:51:46 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:52:39.415Z] Mar 17, 2022 5:52:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:52:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:53:25.409Z] Mar 17, 2022 5:53:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:53:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:35.626Z] Mar 17, 2022 5:54:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:36.120Z] Mar 17, 2022 5:54:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:36.177Z] Mar 17, 2022 5:54:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:36.441Z] Mar 17, 2022 5:54:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:41.409Z] Mar 17, 2022 5:54:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:52.487Z] Mar 17, 2022 5:54:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:53.007Z] Mar 17, 2022 5:54:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:53.069Z] Mar 17, 2022 5:54:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:54:53.424Z] Mar 17, 2022 5:54:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:54:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:55:41.420Z] Mar 17, 2022 5:55:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:55:41 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:55:53.117Z] Mar 17, 2022 5:55:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:55:53 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:55:53.122Z] Mar 17, 2022 5:55:53 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:55:53 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:56:12.048Z] Mar 17, 2022 5:56:12 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:56:12 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:56:12.752Z] Mar 17, 2022 5:56:12 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:56:12 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:56:12.804Z] Mar 17, 2022 5:56:12 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:56:12 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:56:13.135Z] Mar 17, 2022 5:56:13 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:56:13 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:56:27.409Z] Mar 17, 2022 5:56:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:56:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:57:11.091Z] Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:57:11.523Z] Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:57:11.567Z] Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:57:11.898Z] Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:57:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:57:27.418Z] Mar 17, 2022 5:57:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:57:27 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:58:11.600Z] Mar 17, 2022 5:58:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:58:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:58:11.605Z] Mar 17, 2022 5:58:11 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:58:11 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T09:58:43.409Z] Mar 17, 2022 5:58:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:58:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T09:59:29.409Z] Mar 17, 2022 5:59:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 5:59:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:00:15.408Z] Mar 17, 2022 6:00:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:00:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:01:15.419Z] Mar 17, 2022 6:01:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:01:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:29.087Z] Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:29.573Z] Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:29.665Z] Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:29.972Z] Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:31.409Z] Mar 17, 2022 6:02:31 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:31 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:56.913Z] Mar 17, 2022 6:02:56 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:56 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:57.476Z] Mar 17, 2022 6:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:57.567Z] Mar 17, 2022 6:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:02:57.850Z] Mar 17, 2022 6:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:02:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:03:17.409Z] Mar 17, 2022 6:03:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:03:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:03:42.914Z] Mar 17, 2022 6:03:42 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:03:42 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:03:50.782Z] Mar 17, 2022 6:03:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:03:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:03:50.806Z] Mar 17, 2022 6:03:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:03:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:03:50.924Z] Mar 17, 2022 6:03:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:03:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:03:51.174Z] Mar 17, 2022 6:03:51 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:03:51 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:04:17.422Z] Mar 17, 2022 6:04:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:04:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:04:36.203Z] Mar 17, 2022 6:04:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:04:36 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:04:50.958Z] Mar 17, 2022 6:04:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:04:50 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:04:50.961Z] Mar 17, 2022 6:04:50 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:04:50 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T10:05:17.431Z] Mar 17, 2022 6:05:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:05:17 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:06:33.409Z] Mar 17, 2022 6:06:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:06:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:07:19.409Z] Mar 17, 2022 6:07:19 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:07:19 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:08:19.420Z] Mar 17, 2022 6:08:19 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:08:19 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:08:44.945Z] Mar 17, 2022 6:08:44 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:08:44 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:08:44.987Z] Mar 17, 2022 6:08:44 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:08:44 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:08:45.078Z] Mar 17, 2022 6:08:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:08:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:08:45.353Z] Mar 17, 2022 6:08:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:08:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:09:05.409Z] Mar 17, 2022 6:09:05 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:09:05 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:09:30.387Z] Mar 17, 2022 6:09:30 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:09:30 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:09:45.409Z] Mar 17, 2022 6:09:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:09:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:09:45.418Z] Mar 17, 2022 6:09:45 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:09:45 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T10:10:05.422Z] Mar 17, 2022 6:10:05 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:10:05 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:11:21.411Z] Mar 17, 2022 6:11:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:11:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:12:37.407Z] Mar 17, 2022 6:12:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:12:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:13:23.407Z] Mar 17, 2022 6:13:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:13:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:14:39.407Z] Mar 17, 2022 6:14:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:14:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:15:25.407Z] Mar 17, 2022 6:15:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:15:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:16:11.406Z] Mar 17, 2022 6:16:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:16:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:17:11.414Z] Mar 17, 2022 6:17:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:17:11 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:17:57.407Z] Mar 17, 2022 6:17:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:17:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:18:43.407Z] Mar 17, 2022 6:18:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:18:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:19:24.901Z] Mar 17, 2022 6:19:24 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:19:24 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:19:25.108Z] Mar 17, 2022 6:19:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:19:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:19:25.154Z] Mar 17, 2022 6:19:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:19:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:19:25.223Z] Mar 17, 2022 6:19:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:19:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:19:43.412Z] Mar 17, 2022 6:19:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:19:43 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:20:10.327Z] Mar 17, 2022 6:20:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:20:10 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:20:25.208Z] Mar 17, 2022 6:20:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:20:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:20:25.210Z] Mar 17, 2022 6:20:25 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:20:25 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2022-03-17T10:20:29.407Z] Mar 17, 2022 6:20:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:20:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:29.411Z] Mar 17, 2022 6:21:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:57.584Z] Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:57.591Z] Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:57.596Z] Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:57.606Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-03-17T10:21:57.606Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-03-17T10:21:57.606Z] Accepted request POST /functions/projects/top-goat/triggers/us-central1-gameUpdatesFromMatchWrites-0 --> us-central1-gameUpdatesFromMatchWrites-0 {"metadata":{"emulator":{"name":"functions"},"message":"Accepted request POST /functions/projects/top-goat/triggers/us-central1-gameUpdatesFromMatchWrites-0 --> us-central1-gameUpdatesFromMatchWrites-0"}}
+[debug] [2022-03-17T10:21:57.606Z] [worker-pool] submitWork(triggerId=us-central1-gameUpdatesFromMatchWrites) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-gameUpdatesFromMatchWrites)"}}
+[debug] [2022-03-17T10:21:57.607Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: Assigning socketPath: /tmp/fire_emu_23598.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: Assigning socketPath: /tmp/fire_emu_23598.sock"}}
+[debug] [2022-03-17T10:21:57.607Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: BUSY"}}
+[debug] [2022-03-17T10:21:57.607Z] [runtime-status] [23598] Beginning invocation function gameUpdatesFromMatchWrites! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Beginning invocation function gameUpdatesFromMatchWrites!"}}
+[info] i  functions: Beginning execution of "gameUpdatesFromMatchWrites" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"Beginning execution of \"gameUpdatesFromMatchWrites\""}}
+[debug] [2022-03-17T10:21:57.607Z] [runtime-status] [23598] Running gameUpdatesFromMatchWrites in signature event {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Running gameUpdatesFromMatchWrites in signature event"}}
+[debug] [2022-03-17T10:21:57.608Z] [runtime-status] [23598] ProcessBackground {"data":{"value":{"name":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402","fields":{"date":{"stringValue":"03-04-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"4"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"loss"},"score":{"stringValue":"100"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:11:55.459279Z","updateTime":"2022-03-17T10:21:57.603151Z"},"oldValue":{"name":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402","fields":{"date":{"stringValue":"03-04-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"4"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"loss"},"score":{"stringValue":"n/a"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:11:55.459279Z","updateTime":"2022-03-17T08:11:55.459279Z"},"updateMask":{}},"context":{"eventId":"41f8a62d-c6a9-42f4-9721-34354fd88906","timestamp":"2022-03-17T10:21:57.603Z","eventType":"providers/cloud.firestore/eventTypes/document.write","resource":{"name":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402","service":"firestore.googleapis.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] ProcessBackground {\"data\":{\"value\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\",\"fields\":{\"date\":{\"stringValue\":\"03-04-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"4\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"loss\"},\"score\":{\"stringValue\":\"100\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:11:55.459279Z\",\"updateTime\":\"2022-03-17T10:21:57.603151Z\"},\"oldValue\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\",\"fields\":{\"date\":{\"stringValue\":\"03-04-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"4\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"loss\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:11:55.459279Z\",\"updateTime\":\"2022-03-17T08:11:55.459279Z\"},\"updateMask\":{}},\"context\":{\"eventId\":\"41f8a62d-c6a9-42f4-9721-34354fd88906\",\"timestamp\":\"2022-03-17T10:21:57.603Z\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\",\"service\":\"firestore.googleapis.com\"}}}"}}
+[debug] [2022-03-17T10:21:57.608Z] [runtime-status] [23598] ProcessBackground: lifting resource.name from resource {"name":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402","service":"firestore.googleapis.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] ProcessBackground: lifting resource.name from resource {\"name\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\",\"service\":\"firestore.googleapis.com\"}"}}
+[debug] [2022-03-17T10:21:57.608Z] [runtime-status] [23598] RunBackground {"data":{"value":{"name":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402","fields":{"date":{"stringValue":"03-04-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"4"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"loss"},"score":{"stringValue":"100"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:11:55.459279Z","updateTime":"2022-03-17T10:21:57.603151Z"},"oldValue":{"name":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402","fields":{"date":{"stringValue":"03-04-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"4"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"loss"},"score":{"stringValue":"n/a"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:11:55.459279Z","updateTime":"2022-03-17T08:11:55.459279Z"},"updateMask":{}},"context":{"eventId":"41f8a62d-c6a9-42f4-9721-34354fd88906","timestamp":"2022-03-17T10:21:57.603Z","eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] RunBackground {\"data\":{\"value\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\",\"fields\":{\"date\":{\"stringValue\":\"03-04-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"4\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"loss\"},\"score\":{\"stringValue\":\"100\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:11:55.459279Z\",\"updateTime\":\"2022-03-17T10:21:57.603151Z\"},\"oldValue\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\",\"fields\":{\"date\":{\"stringValue\":\"03-04-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"4\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"loss\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:11:55.459279Z\",\"updateTime\":\"2022-03-17T08:11:55.459279Z\"},\"updateMask\":{}},\"context\":{\"eventId\":\"41f8a62d-c6a9-42f4-9721-34354fd88906\",\"timestamp\":\"2022-03-17T10:21:57.603Z\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":\"projects/top-goat/databases/(default)/documents/matches/6d9ebc90-a4b2-45cf-8237-18ee485bd402\"}}"}}
+[info] >  {"severity":"INFO","message":"syncMatchArray RUNNING..."} {"user":{"severity":"INFO","message":"syncMatchArray RUNNING..."},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"syncMatchArray RUNNING...\"}"}}
+[info] >  {"severity":"INFO","message":"handling an updated match..."} {"user":{"severity":"INFO","message":"handling an updated match..."},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"handling an updated match...\"}"}}
+[debug] [2022-03-17T10:21:57.608Z] [runtime-status] [23598] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Ephemeral server survived."}}
+[info] i  functions: Finished "gameUpdatesFromMatchWrites" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"Finished \"gameUpdatesFromMatchWrites\" in ~1s"}}
+[debug] [2022-03-17T10:21:57.609Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: IDLE"}}
+[debug] [2022-03-17T10:21:57.609Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-03-17T10:21:57.614Z] Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:57.623Z] Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:21:57.677Z] Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:21:57 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:04.240Z] Mar 17, 2022 6:22:04 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:04 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:04.250Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-03-17T10:22:04.250Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-03-17T10:22:04.250Z] Accepted request POST /functions/projects/top-goat/triggers/us-central1-gameUpdatesFromMatchWrites-0 --> us-central1-gameUpdatesFromMatchWrites-0 {"metadata":{"emulator":{"name":"functions"},"message":"Accepted request POST /functions/projects/top-goat/triggers/us-central1-gameUpdatesFromMatchWrites-0 --> us-central1-gameUpdatesFromMatchWrites-0"}}
+[debug] [2022-03-17T10:22:04.250Z] [worker-pool] submitWork(triggerId=us-central1-gameUpdatesFromMatchWrites) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-gameUpdatesFromMatchWrites)"}}
+[debug] [2022-03-17T10:22:04.250Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: Assigning socketPath: /tmp/fire_emu_23598.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: Assigning socketPath: /tmp/fire_emu_23598.sock"}}
+[debug] [2022-03-17T10:22:04.250Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: BUSY"}}
+[debug] [2022-03-17T10:22:04.251Z] [runtime-status] [23598] Beginning invocation function gameUpdatesFromMatchWrites! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Beginning invocation function gameUpdatesFromMatchWrites!"}}
+[info] i  functions: Beginning execution of "gameUpdatesFromMatchWrites" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"Beginning execution of \"gameUpdatesFromMatchWrites\""}}
+[debug] [2022-03-17T10:22:04.252Z] [runtime-status] [23598] Running gameUpdatesFromMatchWrites in signature event {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Running gameUpdatesFromMatchWrites in signature event"}}
+[debug] [2022-03-17T10:22:04.252Z] [runtime-status] [23598] ProcessBackground {"data":{"value":{"name":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a","fields":{"date":{"stringValue":"04-05-2022"},"gameId":{"stringValue":"7fe7f86f-1843-45b7-a7f0-f7d81315e75d"},"game":{"stringValue":"azul"},"playOrder":{"integerValue":"8"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"50"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:21:22.378840Z","updateTime":"2022-03-17T10:22:04.246664Z"},"oldValue":{"name":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a","fields":{"date":{"stringValue":"04-05-2022"},"gameId":{"stringValue":"7fe7f86f-1843-45b7-a7f0-f7d81315e75d"},"game":{"stringValue":"azul"},"playOrder":{"integerValue":"8"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"n/a"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:21:22.378840Z","updateTime":"2022-03-17T08:21:22.378840Z"},"updateMask":{}},"context":{"eventId":"15d69bfd-1e14-4abf-9522-bca27e7e2eaa","timestamp":"2022-03-17T10:22:04.246Z","eventType":"providers/cloud.firestore/eventTypes/document.write","resource":{"name":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a","service":"firestore.googleapis.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] ProcessBackground {\"data\":{\"value\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\",\"fields\":{\"date\":{\"stringValue\":\"04-05-2022\"},\"gameId\":{\"stringValue\":\"7fe7f86f-1843-45b7-a7f0-f7d81315e75d\"},\"game\":{\"stringValue\":\"azul\"},\"playOrder\":{\"integerValue\":\"8\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"50\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:21:22.378840Z\",\"updateTime\":\"2022-03-17T10:22:04.246664Z\"},\"oldValue\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\",\"fields\":{\"date\":{\"stringValue\":\"04-05-2022\"},\"gameId\":{\"stringValue\":\"7fe7f86f-1843-45b7-a7f0-f7d81315e75d\"},\"game\":{\"stringValue\":\"azul\"},\"playOrder\":{\"integerValue\":\"8\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:21:22.378840Z\",\"updateTime\":\"2022-03-17T08:21:22.378840Z\"},\"updateMask\":{}},\"context\":{\"eventId\":\"15d69bfd-1e14-4abf-9522-bca27e7e2eaa\",\"timestamp\":\"2022-03-17T10:22:04.246Z\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\",\"service\":\"firestore.googleapis.com\"}}}"}}
+[debug] [2022-03-17T10:22:04.252Z] [runtime-status] [23598] ProcessBackground: lifting resource.name from resource {"name":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a","service":"firestore.googleapis.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] ProcessBackground: lifting resource.name from resource {\"name\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\",\"service\":\"firestore.googleapis.com\"}"}}
+[debug] [2022-03-17T10:22:04.252Z] [runtime-status] [23598] RunBackground {"data":{"value":{"name":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a","fields":{"date":{"stringValue":"04-05-2022"},"gameId":{"stringValue":"7fe7f86f-1843-45b7-a7f0-f7d81315e75d"},"game":{"stringValue":"azul"},"playOrder":{"integerValue":"8"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"50"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:21:22.378840Z","updateTime":"2022-03-17T10:22:04.246664Z"},"oldValue":{"name":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a","fields":{"date":{"stringValue":"04-05-2022"},"gameId":{"stringValue":"7fe7f86f-1843-45b7-a7f0-f7d81315e75d"},"game":{"stringValue":"azul"},"playOrder":{"integerValue":"8"},"participants":{"mapValue":{"fields":{"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"n/a"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:21:22.378840Z","updateTime":"2022-03-17T08:21:22.378840Z"},"updateMask":{}},"context":{"eventId":"15d69bfd-1e14-4abf-9522-bca27e7e2eaa","timestamp":"2022-03-17T10:22:04.246Z","eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] RunBackground {\"data\":{\"value\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\",\"fields\":{\"date\":{\"stringValue\":\"04-05-2022\"},\"gameId\":{\"stringValue\":\"7fe7f86f-1843-45b7-a7f0-f7d81315e75d\"},\"game\":{\"stringValue\":\"azul\"},\"playOrder\":{\"integerValue\":\"8\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"50\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:21:22.378840Z\",\"updateTime\":\"2022-03-17T10:22:04.246664Z\"},\"oldValue\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\",\"fields\":{\"date\":{\"stringValue\":\"04-05-2022\"},\"gameId\":{\"stringValue\":\"7fe7f86f-1843-45b7-a7f0-f7d81315e75d\"},\"game\":{\"stringValue\":\"azul\"},\"playOrder\":{\"integerValue\":\"8\"},\"participants\":{\"mapValue\":{\"fields\":{\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:21:22.378840Z\",\"updateTime\":\"2022-03-17T08:21:22.378840Z\"},\"updateMask\":{}},\"context\":{\"eventId\":\"15d69bfd-1e14-4abf-9522-bca27e7e2eaa\",\"timestamp\":\"2022-03-17T10:22:04.246Z\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":\"projects/top-goat/databases/(default)/documents/matches/b4397a54-e268-4c90-907e-299dcd63390a\"}}"}}
+[debug] [2022-03-17T10:22:04.252Z] [runtime-status] [23598] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Ephemeral server survived."}}
+[info] i  functions: Finished "gameUpdatesFromMatchWrites" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"Finished \"gameUpdatesFromMatchWrites\" in ~1s"}}
+[debug] [2022-03-17T10:22:04.253Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: IDLE"}}
+[debug] [2022-03-17T10:22:04.253Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] >  {"severity":"INFO","message":"syncMatchArray RUNNING..."} {"user":{"severity":"INFO","message":"syncMatchArray RUNNING..."},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"syncMatchArray RUNNING...\"}"}}
+[info] >  {"severity":"INFO","message":"handling an updated match..."} {"user":{"severity":"INFO","message":"handling an updated match..."},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"handling an updated match...\"}"}}
+[debug] [2022-03-17T10:22:04.256Z] Mar 17, 2022 6:22:04 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:04 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:04.305Z] Mar 17, 2022 6:22:04 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:04 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:14.940Z] Mar 17, 2022 6:22:14 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:14 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:14.947Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-03-17T10:22:14.947Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-03-17T10:22:14.948Z] Accepted request POST /functions/projects/top-goat/triggers/us-central1-gameUpdatesFromMatchWrites-0 --> us-central1-gameUpdatesFromMatchWrites-0 {"metadata":{"emulator":{"name":"functions"},"message":"Accepted request POST /functions/projects/top-goat/triggers/us-central1-gameUpdatesFromMatchWrites-0 --> us-central1-gameUpdatesFromMatchWrites-0"}}
+[debug] [2022-03-17T10:22:14.948Z] [worker-pool] submitWork(triggerId=us-central1-gameUpdatesFromMatchWrites) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-gameUpdatesFromMatchWrites)"}}
+[debug] [2022-03-17T10:22:14.948Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: Assigning socketPath: /tmp/fire_emu_23598.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: Assigning socketPath: /tmp/fire_emu_23598.sock"}}
+[debug] [2022-03-17T10:22:14.948Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: BUSY"}}
+[debug] [2022-03-17T10:22:14.948Z] [runtime-status] [23598] Beginning invocation function gameUpdatesFromMatchWrites! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Beginning invocation function gameUpdatesFromMatchWrites!"}}
+[info] i  functions: Beginning execution of "gameUpdatesFromMatchWrites" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"Beginning execution of \"gameUpdatesFromMatchWrites\""}}
+[debug] [2022-03-17T10:22:14.949Z] [runtime-status] [23598] Running gameUpdatesFromMatchWrites in signature event {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Running gameUpdatesFromMatchWrites in signature event"}}
+[debug] [2022-03-17T10:22:14.949Z] [runtime-status] [23598] ProcessBackground {"data":{"value":{"name":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72","fields":{"date":{"stringValue":"04-03-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"6"},"participants":{"mapValue":{"fields":{"KcMQHD6k81fStgVe4rBs":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"n/a"},"name":{"stringValue":"dinis"}}}},"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"loss"},"score":{"stringValue":"77"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:18:02.808752Z","updateTime":"2022-03-17T10:22:14.945405Z"},"oldValue":{"name":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72","fields":{"date":{"stringValue":"04-03-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"6"},"participants":{"mapValue":{"fields":{"KcMQHD6k81fStgVe4rBs":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"n/a"},"name":{"stringValue":"dinis"}}}}}}}},"createTime":"2022-03-17T08:18:02.808752Z","updateTime":"2022-03-17T08:18:02.808752Z"},"updateMask":{}},"context":{"eventId":"7954def7-0040-460c-b9c1-d2a649bde984","timestamp":"2022-03-17T10:22:14.945Z","eventType":"providers/cloud.firestore/eventTypes/document.write","resource":{"name":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72","service":"firestore.googleapis.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] ProcessBackground {\"data\":{\"value\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\",\"fields\":{\"date\":{\"stringValue\":\"04-03-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"6\"},\"participants\":{\"mapValue\":{\"fields\":{\"KcMQHD6k81fStgVe4rBs\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"dinis\"}}}},\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"loss\"},\"score\":{\"stringValue\":\"77\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:18:02.808752Z\",\"updateTime\":\"2022-03-17T10:22:14.945405Z\"},\"oldValue\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\",\"fields\":{\"date\":{\"stringValue\":\"04-03-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"6\"},\"participants\":{\"mapValue\":{\"fields\":{\"KcMQHD6k81fStgVe4rBs\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"dinis\"}}}}}}}},\"createTime\":\"2022-03-17T08:18:02.808752Z\",\"updateTime\":\"2022-03-17T08:18:02.808752Z\"},\"updateMask\":{}},\"context\":{\"eventId\":\"7954def7-0040-460c-b9c1-d2a649bde984\",\"timestamp\":\"2022-03-17T10:22:14.945Z\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\",\"service\":\"firestore.googleapis.com\"}}}"}}
+[debug] [2022-03-17T10:22:14.950Z] [runtime-status] [23598] ProcessBackground: lifting resource.name from resource {"name":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72","service":"firestore.googleapis.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] ProcessBackground: lifting resource.name from resource {\"name\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\",\"service\":\"firestore.googleapis.com\"}"}}
+[debug] [2022-03-17T10:22:14.950Z] [runtime-status] [23598] RunBackground {"data":{"value":{"name":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72","fields":{"date":{"stringValue":"04-03-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"6"},"participants":{"mapValue":{"fields":{"KcMQHD6k81fStgVe4rBs":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"n/a"},"name":{"stringValue":"dinis"}}}},"UFp8gNPJFaIzKK7C5DaY":{"mapValue":{"fields":{"result":{"stringValue":"loss"},"score":{"stringValue":"77"},"name":{"stringValue":"susan"}}}}}}}},"createTime":"2022-03-17T08:18:02.808752Z","updateTime":"2022-03-17T10:22:14.945405Z"},"oldValue":{"name":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72","fields":{"date":{"stringValue":"04-03-2022"},"gameId":{"stringValue":"c9fc21e1-9543-44e5-a052-c3ce38df2d06"},"game":{"stringValue":"uno"},"playOrder":{"integerValue":"6"},"participants":{"mapValue":{"fields":{"KcMQHD6k81fStgVe4rBs":{"mapValue":{"fields":{"result":{"stringValue":"win"},"score":{"stringValue":"n/a"},"name":{"stringValue":"dinis"}}}}}}}},"createTime":"2022-03-17T08:18:02.808752Z","updateTime":"2022-03-17T08:18:02.808752Z"},"updateMask":{}},"context":{"eventId":"7954def7-0040-460c-b9c1-d2a649bde984","timestamp":"2022-03-17T10:22:14.945Z","eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] RunBackground {\"data\":{\"value\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\",\"fields\":{\"date\":{\"stringValue\":\"04-03-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"6\"},\"participants\":{\"mapValue\":{\"fields\":{\"KcMQHD6k81fStgVe4rBs\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"dinis\"}}}},\"UFp8gNPJFaIzKK7C5DaY\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"loss\"},\"score\":{\"stringValue\":\"77\"},\"name\":{\"stringValue\":\"susan\"}}}}}}}},\"createTime\":\"2022-03-17T08:18:02.808752Z\",\"updateTime\":\"2022-03-17T10:22:14.945405Z\"},\"oldValue\":{\"name\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\",\"fields\":{\"date\":{\"stringValue\":\"04-03-2022\"},\"gameId\":{\"stringValue\":\"c9fc21e1-9543-44e5-a052-c3ce38df2d06\"},\"game\":{\"stringValue\":\"uno\"},\"playOrder\":{\"integerValue\":\"6\"},\"participants\":{\"mapValue\":{\"fields\":{\"KcMQHD6k81fStgVe4rBs\":{\"mapValue\":{\"fields\":{\"result\":{\"stringValue\":\"win\"},\"score\":{\"stringValue\":\"n/a\"},\"name\":{\"stringValue\":\"dinis\"}}}}}}}},\"createTime\":\"2022-03-17T08:18:02.808752Z\",\"updateTime\":\"2022-03-17T08:18:02.808752Z\"},\"updateMask\":{}},\"context\":{\"eventId\":\"7954def7-0040-460c-b9c1-d2a649bde984\",\"timestamp\":\"2022-03-17T10:22:14.945Z\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.write\",\"resource\":\"projects/top-goat/databases/(default)/documents/matches/c3c24f2e-e8b8-40b4-9205-b6a6a3118c72\"}}"}}
+[info] >  {"severity":"INFO","message":"syncMatchArray RUNNING..."} {"user":{"severity":"INFO","message":"syncMatchArray RUNNING..."},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"syncMatchArray RUNNING...\"}"}}
+[info] >  {"severity":"INFO","message":"handling an updated match..."} {"user":{"severity":"INFO","message":"handling an updated match..."},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"handling an updated match...\"}"}}
+[debug] [2022-03-17T10:22:14.951Z] [runtime-status] [23598] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"[runtime-status] [23598] Ephemeral server survived."}}
+[info] i  functions: Finished "gameUpdatesFromMatchWrites" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-gameUpdatesFromMatchWrites"},"extension":{},"message":"Finished \"gameUpdatesFromMatchWrites\" in ~1s"}}
+[debug] [2022-03-17T10:22:14.951Z] [worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-gameUpdatesFromMatchWrites-685e39e5-ce33-4aae-917c-fb1e1d679360]: IDLE"}}
+[debug] [2022-03-17T10:22:14.951Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-03-17T10:22:14.954Z] Mar 17, 2022 6:22:14 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:14 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:15.004Z] Mar 17, 2022 6:22:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:15 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-17T10:22:29.416Z] Mar 17, 2022 6:22:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 17, 2022 6:22:29 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}

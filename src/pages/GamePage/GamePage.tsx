@@ -32,6 +32,12 @@ const GamePage: React.FC = () => {
   const [gridViewIsActive, setGridViewIsActive] = useState(false)
   const [showGameFilters, setShowGameFilters] = useState(false)
   const [tabGameValue, setTabGameValue] = useState('')
+  const [activeSortingColumn, setActiveSortingColumn] = useState('title')
+
+  const handleGameColumnSort = (columnName: string) => {
+    sortGames({ field: columnName })
+    setActiveSortingColumn(columnName)
+  }
 
   return (
     <div className="game-page-container">
@@ -87,13 +93,17 @@ const GamePage: React.FC = () => {
                 <TableRow>
                   <GameTableCell
                     sx={{ minWidth: '232' }}
-                    onClick={() => sortGames({ field: 'title' })}
+                    onClick={() => handleGameColumnSort('title')}
                   >
                     Game &nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === 'title' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                 </TableRow>
@@ -124,13 +134,17 @@ const GamePage: React.FC = () => {
                 <TableRow>
                   <GameTableCell
                     sx={{ minWidth: 232 }}
-                    onClick={() => sortGames({ field: 'title' })}
+                    onClick={() => handleGameColumnSort('title')}
                   >
                     Game &nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === 'title' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell align="center">Pic</GameTableCell>
@@ -138,97 +152,129 @@ const GamePage: React.FC = () => {
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 100 }}
-                    onClick={() => sortGames({ field: 'played' })}
+                    onClick={() => handleGameColumnSort('played')}
                   >
                     Played&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === 'played' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 70 }}
-                    onClick={() => sortGames({ field: '1p' })}
+                    onClick={() => handleGameColumnSort('1p')}
                   >
                     1p&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === '1p' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 70 }}
-                    onClick={() => sortGames({ field: '2p' })}
+                    onClick={() => handleGameColumnSort('2p')}
                   >
                     2p&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === '2p' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 70 }}
-                    onClick={() => sortGames({ field: '3p' })}
+                    onClick={() => handleGameColumnSort('3p')}
                   >
                     3p&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === '3p' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 70 }}
-                    onClick={() => sortGames({ field: '4p' })}
+                    onClick={() => handleGameColumnSort('4p')}
                   >
                     4p&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === '4p' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 70 }}
-                    onClick={() => sortGames({ field: '5p' })}
+                    onClick={() => handleGameColumnSort('5p')}
                   >
                     5p&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === '5p' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 110 }}
-                    onClick={() => sortGames({ field: 'lastPlayedDate' })}
+                    onClick={() => handleGameColumnSort('lastPlayedDate')}
                   >
                     Last&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === 'lastPlayedDate' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell
                     align="center"
                     sx={{ minWidth: 90 }}
-                    onClick={() => sortGames({ field: 'plays' })}
+                    onClick={() => handleGameColumnSort('plays')}
                   >
                     Plays&nbsp;
-                    {reverseSortGames ? (
-                      <FontAwesomeIcon icon={faCaretDown} />
+                    {activeSortingColumn === 'plays' ? (
+                      reverseSortGames ? (
+                        <FontAwesomeIcon icon={faCaretDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretUp} />
+                      )
                     ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
+                      ''
                     )}
                   </GameTableCell>
                   <GameTableCell align="center">Delete</GameTableCell>
