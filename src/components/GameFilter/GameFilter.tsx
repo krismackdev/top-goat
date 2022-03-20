@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { GamesContext } from '../../store/games-context'
 import { FormControlLabel, Switch } from '@mui/material'
 
 import './GameFilter.css'
+import { useEffect } from 'react'
 
 interface GameFilterProps {
   filter: string
@@ -10,6 +11,27 @@ interface GameFilterProps {
 
 const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
   const { gameFilterState, setGameFilterState } = useContext(GamesContext)
+  const [minValue, setMinValue] = useState(0)
+  const [maxValue, setMaxValue] = useState(1000000)
+
+  console.log('gamefilterstate =', gameFilterState)
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() => {
+      setGameFilterState(prev => {
+        return {
+          ...prev,
+          playCount: {
+            ...prev.playCount,
+            min: minValue,
+            max: maxValue,
+          },
+        }
+      })
+    }, 50)
+
+    return () => clearTimeout(timeOutId)
+  }, [minValue, maxValue])
 
   if (filter === 'played') {
     return (
@@ -260,19 +282,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
           labelPlacement="start"
         />
         <input
-          onChange={e =>
-            setGameFilterState(prev => {
-              return {
-                ...prev,
-                playCount: {
-                  ...prev.playCount,
-                  min: +e.target.value,
-                },
-              }
-            })
-          }
+          onChange={e => setMinValue(+e.target.value)}
           type="number"
-          value={gameFilterState.playCount.min}
+          value={minValue}
           disabled={!gameFilterState.playCount.usingMin}
         />
 
@@ -298,19 +310,9 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
           labelPlacement="start"
         />
         <input
-          onChange={e =>
-            setGameFilterState(prev => {
-              return {
-                ...prev,
-                playCount: {
-                  ...prev.playCount,
-                  max: +e.target.value,
-                },
-              }
-            })
-          }
+          onChange={e => setMaxValue(+e.target.value)}
           type="number"
-          value={gameFilterState.playCount.max}
+          value={maxValue}
           disabled={!gameFilterState.playCount.usingMax}
         />
       </>
