@@ -51,22 +51,6 @@ interface ActionObject {
   payload: string
 }
 
-const initialAddGameState: GameObject = {
-  id: uuidv4(),
-  image: '',
-  link: '',
-  lastPlayedDate: '',
-  matchesArray: [],
-  title: '',
-  players: {
-    one: 'no',
-    two: 'no',
-    three: 'no',
-    four: 'no',
-    five: 'no',
-  },
-}
-
 const addGameStateReducer = (state: GameObject, action: ActionObject) => {
   switch (action.type) {
     case 'changeTitle':
@@ -151,17 +135,48 @@ const addGameStateReducer = (state: GameObject, action: ActionObject) => {
       }
       return state
     case 'resetForm':
-      return { ...initialAddGameState, id: uuidv4() }
+      return {
+        id: uuidv4(),
+        image: '',
+        link: '',
+        lastPlayedDate: '',
+        matchesArray: [] as string[],
+        title: '',
+        players: {
+          one: 'no' as PlayerSuitability,
+          two: 'no' as PlayerSuitability,
+          three: 'no' as PlayerSuitability,
+          four: 'no' as PlayerSuitability,
+          five: 'no' as PlayerSuitability,
+        },
+      }
   }
 }
 
 const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
   const { addNewGame } = useContext(GamesContext)
   const [formIsInvalid, setFormIsInvalid] = useState(false)
+  const initialAddGameState: GameObject = {
+    id: uuidv4(),
+    image: '',
+    link: '',
+    lastPlayedDate: '',
+    matchesArray: [],
+    title: '',
+    players: {
+      one: 'no',
+      two: 'no',
+      three: 'no',
+      four: 'no',
+      five: 'no',
+    },
+  }
   const [addGameState, dispatch] = useReducer(
     addGameStateReducer,
     initialAddGameState
   )
+
+  console.log('addGameState =', addGameState)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
