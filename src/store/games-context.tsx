@@ -129,6 +129,7 @@ export const GamesContext = createContext<{
   setGameFilterState: React.Dispatch<
     React.SetStateAction<GameFilterStateObject>
   >
+  setGamesWithFetchedData: () => void
   sortGames: (payload: SortGameArg) => void
   updateGame: (game: GameObject) => void
 }>({
@@ -140,6 +141,7 @@ export const GamesContext = createContext<{
   resetGameFilterState: () => {},
   reverseSortGames: false,
   setGameFilterState: () => {},
+  setGamesWithFetchedData: () => {},
   sortGames: () => {},
   updateGame: () => {},
 })
@@ -453,6 +455,7 @@ export const GamesContextProvider = ({
         resetGameFilterState,
         reverseSortGames,
         setGameFilterState,
+        setGamesWithFetchedData,
         sortGames,
         updateGame,
       }}

@@ -46,9 +46,9 @@ exports.gameUpdatesFromMatchWrites = functions.firestore
         }
       }
 
+      if (after.exists) {
       // update the last played date on every
       // operation except for deletes
-      if (after.exists) {
         const afterGameId = after.data().gameId;
         const matchDate = after.data().date;
         db.collection("games")
@@ -79,7 +79,49 @@ exports.gameUpdatesFromMatchWrites = functions.firestore
               }
             }
             );
+      } else {
+        // update the last played date only for deletes
+        const beforeGameId = before.data().gameId;
+        const oldDate = before.data().date;
+        const matchId = context.params.matchId;
+        db.collection("games")
+            .doc(`${beforeGameId}`)
+            .get()
+            .then((queryDocSnap) => {
+              return queryDocSnap.get("matchesArray");
+            }).then((matchesArray) => {
+              let latestDate = oldDate;
+              for (const currentMatchId of matchesArray) {
+                if (currentMatchId !== matchId) {
+                  db.collection("matches")
+                      .doc(currentMatchId)
+                      .get()
+                      .then((queryDocSnap) => {
+                        return queryDocSnap.get("date");
+                      }).then((date) => {
+                        if (latestDate === oldDate) {
+                          latestDate = date;
+                        } else if (+date.slice(6) > +latestDate.slice(6)) {
+                          latestDate = date;
+                        } else if (+date.slice(6) ===
+                        +latestDate.slice(6) && +date.slice(0, 2) >
+                        +latestDate.slice(0, 2)) {
+                          latestDate = date;
+                        } else if (+date.slice(6) ===
+                        +latestDate.slice(6) && +date.slice(0, 2) ===
+                        +latestDate.slice(0, 2) && +date.slice(3, 5) >
+                        +latestDate.slice(3, 5) ) {
+                          latestDate = date;
+                        }
+                        db.collection("games").doc(`${beforeGameId}`)
+                            .update({lastPlayedDate: latestDate});
+                      });
+                }
+              }
+            }
+            );
       }
+
 
       return null;
     });

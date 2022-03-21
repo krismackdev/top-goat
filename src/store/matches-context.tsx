@@ -124,7 +124,7 @@ export const MatchesContextProvider = ({
     undefined
   )
   const [reverseSortMatches, setReverseSortMatches] = useState(false)
-  const { games } = useContext(GamesContext)
+  const { games, setGamesWithFetchedData } = useContext(GamesContext)
   const { players } = useContext(PlayersContext)
 
   const initialMatchFilterState: MatchFilterStateObject = {
@@ -295,13 +295,14 @@ export const MatchesContextProvider = ({
       ...matchWithoutId,
       playOrder: currentPlayOrder ? currentPlayOrder + 1 : 1,
     })
-
-    setMatchesWithFetchedData()
+    await setMatchesWithFetchedData()
+    setGamesWithFetchedData()
   }
 
   const deleteMatch = async (id: string): Promise<void> => {
     await deleteDoc(doc(db, 'matches', id))
-    setMatchesWithFetchedData()
+    await setMatchesWithFetchedData()
+    setGamesWithFetchedData()
   }
 
   const resetMatchFilterState = () => {
@@ -401,7 +402,8 @@ export const MatchesContextProvider = ({
     // ... if you use match as is, it causes a typescript error
     const { id, ...matchWithoutId } = { ...match }
     await updateDoc(doc(db, 'matches', id), { ...matchWithoutId })
-    setMatchesWithFetchedData()
+    await setMatchesWithFetchedData()
+    setGamesWithFetchedData()
   }
 
   return (
