@@ -48,6 +48,7 @@ interface MatchActionObject {
     | 'changeGame'
     | 'changePlayerResult'
     | 'changePlayerScore'
+    | 'changePlayeOrder'
   payload: { [prop: string]: string }
 }
 
@@ -107,6 +108,11 @@ const editMatchRowReducer = (
           },
         },
       }
+    case 'changePlayeOrder':
+      return {
+        ...state,
+        playOrder: +action.payload.playOrder,
+      }
   }
 }
 
@@ -142,7 +148,26 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
   if (editMatchRowState.isActive) {
     return (
       <TableRow>
-        <MatchTableCell className="editing editing-start"></MatchTableCell>
+        <MatchTableCell
+          className="editing editing-start"
+          sx={{
+            '&:focus-within': {
+              backgroundColor: '#d4ff32',
+            },
+          }}
+        >
+          <TextField
+            size="small"
+            type="number"
+            value={editMatchRowState.playOrder}
+            onChange={e => {
+              dispatch({
+                type: 'changePlayeOrder',
+                payload: { playOrder: e.target.value },
+              })
+            }}
+          />
+        </MatchTableCell>
         <MatchTableCell
           className="editing"
           sx={{

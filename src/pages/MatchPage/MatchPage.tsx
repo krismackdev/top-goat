@@ -90,9 +90,9 @@ const MatchPage: React.FC = () => {
                 # &nbsp;
                 {activeSortingColumn === 'playOrder' ? (
                   reverseSortMatches ? (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  ) : (
                     <FontAwesomeIcon icon={faCaretUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretDown} />
                   )
                 ) : (
                   ''
@@ -106,9 +106,9 @@ const MatchPage: React.FC = () => {
                 Game &nbsp;
                 {activeSortingColumn === 'game' ? (
                   reverseSortMatches ? (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  ) : (
                     <FontAwesomeIcon icon={faCaretUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretDown} />
                   )
                 ) : (
                   ''
@@ -129,9 +129,9 @@ const MatchPage: React.FC = () => {
                     &nbsp;
                     {activeSortingColumn === `result-${player.id}` ? (
                       reverseSortMatches ? (
-                        <FontAwesomeIcon icon={faCaretDown} />
-                      ) : (
                         <FontAwesomeIcon icon={faCaretUp} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretDown} />
                       )
                     ) : (
                       ''
@@ -144,9 +144,9 @@ const MatchPage: React.FC = () => {
                     score &nbsp;
                     {activeSortingColumn === `score-${player.id}` ? (
                       reverseSortMatches ? (
-                        <FontAwesomeIcon icon={faCaretDown} />
-                      ) : (
                         <FontAwesomeIcon icon={faCaretUp} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCaretDown} />
                       )
                     ) : (
                       ''
