@@ -91,20 +91,67 @@ const GamePage: React.FC = () => {
             <>
               <TableHead>
                 <TableRow>
-                  <GameTableCell
-                    sx={{ minWidth: '232' }}
-                    onClick={() => handleGameColumnSort('title')}
-                  >
-                    Game &nbsp;
-                    {activeSortingColumn === 'title' ? (
-                      reverseSortGames ? (
-                        <FontAwesomeIcon icon={faCaretDown} />
+                  <GameTableCell sx={{ display: 'flex' }}>
+                    <div
+                      onClick={() => handleGameColumnSort('title')}
+                      style={{ minWidth: 100 }}
+                    >
+                      Game &nbsp;
+                      {activeSortingColumn === 'title' ? (
+                        reverseSortGames ? (
+                          <FontAwesomeIcon icon={faCaretDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faCaretUp} />
+                        )
                       ) : (
-                        <FontAwesomeIcon icon={faCaretUp} />
-                      )
-                    ) : (
-                      ''
-                    )}
+                        ''
+                      )}
+                    </div>
+                    <div
+                      onClick={() => handleGameColumnSort('played')}
+                      style={{ minWidth: 100 }}
+                    >
+                      Played &nbsp;
+                      {activeSortingColumn === 'played' ? (
+                        reverseSortGames ? (
+                          <FontAwesomeIcon icon={faCaretDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faCaretUp} />
+                        )
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                    <div
+                      onClick={() => handleGameColumnSort('lastPlayedDate')}
+                      style={{ minWidth: 100 }}
+                    >
+                      Last &nbsp;
+                      {activeSortingColumn === 'lastPlayedDate' ? (
+                        reverseSortGames ? (
+                          <FontAwesomeIcon icon={faCaretDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faCaretUp} />
+                        )
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                    <div
+                      onClick={() => handleGameColumnSort('plays')}
+                      style={{ minWidth: 100 }}
+                    >
+                      Plays &nbsp;
+                      {activeSortingColumn === 'plays' ? (
+                        reverseSortGames ? (
+                          <FontAwesomeIcon icon={faCaretDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faCaretUp} />
+                        )
+                      ) : (
+                        ''
+                      )}
+                    </div>
                   </GameTableCell>
                 </TableRow>
               </TableHead>
