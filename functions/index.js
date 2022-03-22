@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 
 const admin = require("firebase-admin");
+const { match } = require("assert");
 admin.initializeApp();
 const db = admin.firestore();
 
@@ -126,5 +127,46 @@ exports.gameUpdatesFromMatchWrites = functions.firestore
             }
             );
       }
+      // on any operation, reorder the playOrders of every match
+      db.collection("matches").get()
+          .then((querySnapShot) => {
+            const docs = querySnapShot.docs;
+            let arrayOfMatches = [];
+            for (const doc of docs) {
+              arrayOfMatches.push({...doc.data(), id: doc.id});
+            }
+            arrayOfMatches.sort((a, b) => {
+              // SORT BY DATE FIRST, PLAY ORDER 2ND 
+              if (+a.date.slice(6) < +b.date.slice(6)) {
+                return -1;
+              } else if (+a.date.slice(6) === +b.date.slice(6) && 
+                +a.date.slice(0, 2) < +b.date.slice(0, 2)) {
+                return -1;
+              } else if (+a.date.slice(6) ===
+              +b.date.slice(6) && +a.date.slice(0, 2) ===
+              +b.date.slice(0, 2) && +a.date.slice(3, 5) <
+              +b.date.slice(3, 5)) {
+                return -1;
+              } else if (+a.date.slice(6) ===
+              +b.date.slice(6) && +a.date.slice(0, 2) ===
+              +b.date.slice(0, 2) && +a.date.slice(3, 5) ===
+              +b.date.slice(3, 5) && a.playOrder < b.playOrder) {
+                return -1
+              } else {
+                return 1
+              }
+            })
+            let currentPlayOrder = 0
+            arrayOfMatches = arrayOfMatches.map(match =>  {
+              currentPlayOrder++
+              return {...match, playOrder: currentPlayOrder}
+            })
+            functions.logger.log("arrayOfMatches =", arrayOfMatches);
+            arrayOfMatches.forEach(({ id, playOrder }) => {
+              db.collection("matches").doc(`${id}`)
+                .update({playOrder: playOrder});
+            })
+          });
+          
       return null;
     });
