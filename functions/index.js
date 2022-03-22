@@ -90,38 +90,41 @@ exports.gameUpdatesFromMatchWrites = functions.firestore
             .then((queryDocSnap) => {
               return queryDocSnap.get("matchesArray");
             }).then((matchesArray) => {
-              let latestDate = oldDate;
-              for (const currentMatchId of matchesArray) {
-                if (currentMatchId !== matchId) {
-                  db.collection("matches")
-                      .doc(currentMatchId)
-                      .get()
-                      .then((queryDocSnap) => {
-                        return queryDocSnap.get("date");
-                      }).then((date) => {
-                        if (latestDate === oldDate) {
-                          latestDate = date;
-                        } else if (+date.slice(6) > +latestDate.slice(6)) {
-                          latestDate = date;
-                        } else if (+date.slice(6) ===
-                        +latestDate.slice(6) && +date.slice(0, 2) >
-                        +latestDate.slice(0, 2)) {
-                          latestDate = date;
-                        } else if (+date.slice(6) ===
-                        +latestDate.slice(6) && +date.slice(0, 2) ===
-                        +latestDate.slice(0, 2) && +date.slice(3, 5) >
-                        +latestDate.slice(3, 5) ) {
-                          latestDate = date;
-                        }
-                        db.collection("games").doc(`${beforeGameId}`)
-                            .update({lastPlayedDate: latestDate});
-                      });
+              if (matchesArray.length === 0) {
+                db.collection("games").doc(`${beforeGameId}`)
+                    .update({lastPlayedDate: ""});
+              } else {
+                let latestDate = oldDate;
+                for (const currentMatchId of matchesArray) {
+                  if (currentMatchId !== matchId) {
+                    db.collection("matches")
+                        .doc(currentMatchId)
+                        .get()
+                        .then((queryDocSnap) => {
+                          return queryDocSnap.get("date");
+                        }).then((date) => {
+                          if (latestDate === oldDate) {
+                            latestDate = date;
+                          } else if (+date.slice(6) > +latestDate.slice(6)) {
+                            latestDate = date;
+                          } else if (+date.slice(6) ===
+                          +latestDate.slice(6) && +date.slice(0, 2) >
+                          +latestDate.slice(0, 2)) {
+                            latestDate = date;
+                          } else if (+date.slice(6) ===
+                          +latestDate.slice(6) && +date.slice(0, 2) ===
+                          +latestDate.slice(0, 2) && +date.slice(3, 5) >
+                          +latestDate.slice(3, 5) ) {
+                            latestDate = date;
+                          }
+                          db.collection("games").doc(`${beforeGameId}`)
+                              .update({lastPlayedDate: latestDate});
+                        });
+                  }
                 }
               }
             }
             );
       }
-
-
       return null;
     });
