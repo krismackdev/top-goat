@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import { Navbar, PrivateRoute } from './components'
 import { AuthPage, GamePage, MatchPage } from './pages'
@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Navbar />
+      {user && <Navbar />}
       <Routes>
         <Route path="/login" element={<AuthPage />} />
         <Route path="/" element={<PrivateRoute user={user} />}>

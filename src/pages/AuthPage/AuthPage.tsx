@@ -3,7 +3,6 @@ import './AuthPage.css'
 import { auth } from '../../firebase/config'
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
@@ -14,7 +13,8 @@ const AuthPage: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
 
-  const handleSignup = async () => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     const user = await createUserWithEmailAndPassword(
       auth,
       signupEmail,
@@ -22,7 +22,8 @@ const AuthPage: React.FC = () => {
     )
   }
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     const user = await signInWithEmailAndPassword(
       auth,
       loginEmail,

@@ -427,7 +427,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             </a>
           </GameTableCell>
           <GameTableCell align="center">
-            {game.matchesArray.length > 0 ? 'yes' : 'no'}
+            {game?.matchesArray?.length > 0 ? 'yes' : 'no'}
           </GameTableCell>
           <GameTableCell
             sx={{
@@ -473,7 +473,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
             {game.lastPlayedDate === '' ? '---' : game.lastPlayedDate}
           </GameTableCell>
           <GameTableCell align="center">
-            {game.matchesArray.length}
+            {game?.matchesArray?.length}
           </GameTableCell>
           <GameTableCell align="center">
             <IconButton sx={{ color: 'black' }} onClick={handleMatchDelete}>
