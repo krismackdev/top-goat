@@ -32,3 +32,12 @@
 #signup-text {
   text-decoration: underline;
 }
+
+#p2 {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#p2:hover {
+  color: green;
+}
