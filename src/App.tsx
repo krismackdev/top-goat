@@ -8,11 +8,12 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null)
-  console.log('user =', user?.email)
 
   onAuthStateChanged(auth, currentUser => {
     setUser(currentUser)
   })
+
+  console.log('current user =', auth.currentUser)
 
   return (
     <>

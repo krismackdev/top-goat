@@ -1,14 +1,17 @@
 import React from 'react'
 import { createContext, useCallback, useEffect, useState } from 'react'
-import { db } from '../firebase/config'
+import { auth, db } from '../firebase/config'
 import {
   collection,
   doc,
   deleteDoc,
   getDocs,
-  updateDoc,
+  query,
   setDoc,
+  updateDoc,
+  where,
 } from 'firebase/firestore'
+import { onAuthStateChanged, User as firebaseUser } from 'firebase/auth'
 
 interface GameObject {
   id: string
@@ -16,6 +19,7 @@ interface GameObject {
   lastPlayedDate: string
   link: string
   matchesArray: string[]
+  owner: string
   players: {
     one: 'yes' | 'no' | 'ok'
     two: 'yes' | 'no' | 'ok'
@@ -155,12 +159,27 @@ export const GamesContextProvider = ({
   )
   const [reverseSortGames, setReverseSortGames] = useState(false)
   const [gameFilterState, setGameFilterState] = useState(initialGameFilterState)
+  const [user, setUser] = useState<firebaseUser | null>(null)
+
+  onAuthStateChanged(auth, currentUser => {
+    setUser(currentUser)
+  })
+
+  console.log('games in context =', games)
 
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
     const fetchGames = async () => {
       const gamesRef = collection(db, 'games')
-      const gamesCollection = await getDocs(gamesRef)
+      const gamesQuery = query(
+        gamesRef,
+        where(
+          'owner',
+          '==',
+          auth.currentUser !== null ? auth.currentUser.uid : ''
+        )
+      )
+      const gamesCollection = await getDocs(gamesQuery)
       return gamesCollection
     }
 
@@ -184,6 +203,10 @@ export const GamesContextProvider = ({
   useEffect(() => {
     setGamesWithFetchedData()
   }, [])
+
+  useEffect(() => {
+    setGamesWithFetchedData()
+  }, [user])
 
   const returnFilteredGames = useCallback(() => {
     if (!games) {

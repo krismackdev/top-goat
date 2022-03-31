@@ -18,6 +18,7 @@ interface GameObject {
   lastPlayedDate: string
   link: string
   matchesArray: string[]
+  owner: string
   players: {
     one: PlayerSuitability
     two: PlayerSuitability
@@ -151,6 +152,7 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
     lastPlayedDate: game.lastPlayedDate,
     link: game.link,
     matchesArray: game.matchesArray,
+    owner: game.owner,
     players: {
       one: game.players.one,
       two: game.players.two,

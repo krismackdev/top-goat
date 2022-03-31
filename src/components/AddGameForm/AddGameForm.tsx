@@ -14,6 +14,7 @@ import {
 } from '@mui/material'
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
+import { auth } from '../../firebase/config'
 
 interface AddGameFormProps {
   setFormIsActive: React.Dispatch<React.SetStateAction<boolean>>
@@ -27,6 +28,7 @@ interface GameObject {
   lastPlayedDate: string
   link: string
   matchesArray: string[]
+  owner: string
   players: {
     one: PlayerSuitability
     two: PlayerSuitability
@@ -142,6 +144,7 @@ const addGameStateReducer = (state: GameObject, action: ActionObject) => {
         lastPlayedDate: '',
         matchesArray: [] as string[],
         title: '',
+        owner: auth?.currentUser?.uid ?? '',
         players: {
           one: 'no' as PlayerSuitability,
           two: 'no' as PlayerSuitability,
@@ -163,6 +166,7 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
     lastPlayedDate: '',
     matchesArray: [],
     title: '',
+    owner: auth?.currentUser?.uid ?? '',
     players: {
       one: 'no',
       two: 'no',

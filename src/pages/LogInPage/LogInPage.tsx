@@ -7,28 +7,24 @@ import {
   sendPasswordResetEmail,
   signOut,
   signInWithEmailAndPassword,
+  User as firebaseUser,
 } from 'firebase/auth'
 import { Button, TextField } from '@mui/material'
-import * as firebase from 'firebase/auth'
 
 const LogInPage: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const [enteredResetEmail, setEnteredResetEmail] = useState('')
   const [resetPasswordActive, setResetPasswordActive] = useState(false)
-  const [user, setUser] = useState<firebase.User | null>(null)
+  const [user, setUser] = useState<firebaseUser | null>(null)
 
   onAuthStateChanged(auth, currentUser => {
     setUser(currentUser)
   })
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const user = await signInWithEmailAndPassword(
-      auth,
-      loginEmail,
-      loginPassword
-    )
+    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
   }
 
   const handleReset = async () => {

@@ -2,21 +2,39 @@ import React, { useState } from 'react'
 import styles from './SignUpPage.module.css'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/config'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  User as firebaseUser,
+} from 'firebase/auth'
 import { Button, TextField } from '@mui/material'
 
 const SignUpPage = () => {
   const [signupEmail, setSignupEmail] = useState('')
   const [signupPassword, setSignupPassword] = useState('')
+  const [user, setUser] = useState<firebaseUser | null>(null)
 
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+  onAuthStateChanged(auth, currentUser => {
+    setUser(currentUser)
+  })
+
+  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const user = await createUserWithEmailAndPassword(
-      auth,
-      signupEmail,
-      signupPassword
+    createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+  }
+
+  if (user) {
+    return (
+      <>
+        <h2>You are logged in as: {user.email}</h2>
+        <Button onClick={() => signOut(auth)} variant="contained">
+          Logout
+        </Button>
+      </>
     )
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
