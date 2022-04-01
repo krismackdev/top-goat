@@ -13,8 +13,6 @@ const App: React.FC = () => {
     setUser(currentUser)
   })
 
-  console.log('current user =', auth.currentUser)
-
   return (
     <>
       {user && <Navbar />}

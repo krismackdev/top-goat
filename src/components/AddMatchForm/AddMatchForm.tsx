@@ -67,22 +67,6 @@ interface MatchFormActionObject {
   payload: { [prop: string]: string }
 }
 
-const initialAddMatchState: AddMatchObject = {
-  id: uuidv4(),
-  date: '',
-  game: '',
-  gameId: '',
-  owner: auth?.currentUser?.uid ?? '',
-  participants: {
-    player1: {
-      name: '',
-      result: 'n/a',
-      score: 'n/a',
-    },
-  },
-  playOrder: -1,
-}
-
 const addMatchStateReducer = (
   state: AddMatchObject,
   action: MatchFormActionObject
@@ -127,8 +111,11 @@ const addMatchStateReducer = (
       return stateCopy2
     case 'resetMatchForm':
       return {
-        ...initialAddMatchState,
         id: uuidv4(),
+        date: '',
+        game: '',
+        gameId: '',
+        owner: auth?.currentUser?.uid ?? '',
         participants: {
           player1: {
             name: '',
@@ -136,6 +123,7 @@ const addMatchStateReducer = (
             score: 'n/a',
           },
         },
+        playOrder: -1,
       }
   }
 }
@@ -149,6 +137,22 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
   const { games } = useContext(GamesContext)
   const { addNewMatch } = useContext(MatchesContext)
   const { players } = useContext(PlayersContext)
+  const initialAddMatchState: AddMatchObject = {
+    id: uuidv4(),
+    date: '',
+    game: '',
+    gameId: '',
+    owner: auth?.currentUser?.uid ?? '',
+    participants: {
+      player1: {
+        name: '',
+        result: 'n/a',
+        score: 'n/a',
+      },
+    },
+    playOrder: -1,
+  }
+
   const [addMatchState, dispatch] = useReducer(
     addMatchStateReducer,
     initialAddMatchState

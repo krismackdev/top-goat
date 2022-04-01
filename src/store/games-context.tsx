@@ -165,8 +165,6 @@ export const GamesContextProvider = ({
     setUser(currentUser)
   })
 
-  console.log('games in context =', games)
-
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
     const fetchGames = async () => {
