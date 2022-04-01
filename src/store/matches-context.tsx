@@ -179,7 +179,6 @@ export const MatchesContextProvider = ({
   const setMatchesWithFetchedData = async () => {
     const fetchMatches = async () => {
       const matchesRef = collection(db, 'matches')
-
       const matchesQuery = query(
         matchesRef,
         where(

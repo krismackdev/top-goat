@@ -1,10 +1,12 @@
 import { createContext, useEffect, useState } from 'react'
-import { db } from '../firebase/config'
-import { collection, getDocs } from 'firebase/firestore'
+import { auth, db } from '../firebase/config'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { onAuthStateChanged, User as firebaseUser } from 'firebase/auth'
 
 interface PlayerObject {
   id: string
   name: string
+  owner: string
 }
 
 type PlayersContextProviderProps = { children: React.ReactNode }
@@ -19,12 +21,25 @@ export const PlayersContextProvider = ({
   children,
 }: PlayersContextProviderProps) => {
   const [players, setPlayers] = useState<PlayerObject[] | undefined>(undefined)
+  const [user, setUser] = useState<firebaseUser | null>(null)
+
+  onAuthStateChanged(auth, currentUser => {
+    setUser(currentUser)
+  })
 
   // this function sets the players state with data from firestore
   const setPlayersWithFetchedData = async () => {
     const fetchPlayers = async () => {
       const playersRef = collection(db, 'players')
-      const playersCollection = await getDocs(playersRef)
+      const playersQuery = query(
+        playersRef,
+        where(
+          'owner',
+          '==',
+          auth.currentUser !== null ? auth.currentUser.uid : ''
+        )
+      )
+      const playersCollection = await getDocs(playersQuery)
       return playersCollection
     }
 
@@ -51,6 +66,10 @@ export const PlayersContextProvider = ({
   useEffect(() => {
     setPlayersWithFetchedData()
   }, [])
+
+  useEffect(() => {
+    setPlayersWithFetchedData()
+  }, [user])
 
   return (
     <PlayersContext.Provider
