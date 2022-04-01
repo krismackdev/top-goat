@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react'
 import './AddMatchForm.css'
+import { auth } from '../../firebase/config'
 import {
   Button,
   Dialog,
@@ -50,6 +51,7 @@ interface AddMatchObject {
   date: string
   game: string
   gameId: string
+  owner: string
   participants: ParticipantsObject
   playOrder: number
 }
@@ -70,6 +72,7 @@ const initialAddMatchState: AddMatchObject = {
   date: '',
   game: '',
   gameId: '',
+  owner: auth?.currentUser?.uid ?? '',
   participants: {
     player1: {
       name: '',

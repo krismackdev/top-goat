@@ -7,15 +7,18 @@ import {
 } from 'react'
 import { GamesContext } from './games-context'
 import { PlayersContext } from './players-context'
-import { db } from '../firebase/config'
+import { auth, db } from '../firebase/config'
 import {
   collection,
   deleteDoc,
   doc,
   getDocs,
+  query,
   setDoc,
   updateDoc,
+  where,
 } from 'firebase/firestore'
+import { onAuthStateChanged, User as firebaseUser } from 'firebase/auth'
 
 type Result = 'win' | 'loss' | 'draw' | 'n/a'
 
@@ -34,6 +37,7 @@ interface MatchObject {
   date: string
   game: string
   gameId: string
+  owner: string
   playOrder: number
   participants: ParticipantsObject
 }
@@ -126,6 +130,11 @@ export const MatchesContextProvider = ({
   const [reverseSortMatches, setReverseSortMatches] = useState(false)
   const { games, setGamesWithFetchedData } = useContext(GamesContext)
   const { players } = useContext(PlayersContext)
+  const [user, setUser] = useState<firebaseUser | null>(null)
+
+  onAuthStateChanged(auth, currentUser => {
+    setUser(currentUser)
+  })
 
   const initialMatchFilterState: MatchFilterStateObject = {
     gamesArray: games?.map((game: any) => game.title) ?? [],
@@ -170,7 +179,16 @@ export const MatchesContextProvider = ({
   const setMatchesWithFetchedData = async () => {
     const fetchMatches = async () => {
       const matchesRef = collection(db, 'matches')
-      const matchesCollection = await getDocs(matchesRef)
+
+      const matchesQuery = query(
+        matchesRef,
+        where(
+          'owner',
+          '==',
+          auth.currentUser !== null ? auth.currentUser.uid : ''
+        )
+      )
+      const matchesCollection = await getDocs(matchesQuery)
       return matchesCollection
     }
 
@@ -202,6 +220,10 @@ export const MatchesContextProvider = ({
   useEffect(() => {
     setMatchesWithFetchedData()
   }, [])
+
+  useEffect(() => {
+    setMatchesWithFetchedData()
+  }, [user])
 
   const returnFilteredMatches = useCallback(() => {
     if (!matches) {

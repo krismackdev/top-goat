@@ -32,6 +32,7 @@ interface MatchObject {
   date: string
   game: string
   gameId: string
+  owner: string
   playOrder: number
   participants: ParticipantsObject
 }
@@ -132,6 +133,7 @@ const MatchTableRow: React.FC<MatchTableRowProps> = ({ match, players }) => {
     game: match.game,
     gameId: match.gameId,
     isActive: false,
+    owner: match.owner,
     playOrder: match.playOrder,
     participants: match.participants,
   }
