@@ -1,8 +1,5 @@
 import React, { useContext } from 'react'
-import { MatchesContext } from '../../store/matches-context'
-import { GamesContext } from '../../store/games-context'
-import { PlayersContext } from '../../store/players-context'
-
+import { GamesContext, MatchesContext, PlayersContext } from '../../store'
 import {
   Autocomplete,
   Button,

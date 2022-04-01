@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
-import { GamesContext } from '../../store/games-context'
+import { GamesContext } from '../../store'
 import { FormControlLabel, Switch } from '@mui/material'
-
 import './GameFilter.css'
 import { useEffect } from 'react'
 

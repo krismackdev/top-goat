@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useState } from 'react'
-import { MatchesContext } from '../../store/matches-context'
-import { PlayersContext } from '../../store/players-context'
+import { MatchesContext, PlayersContext } from '../../store'
 import { AddMatchForm, MatchFilter, MatchTableRow } from '../../components'
 import MatchTableCell from '../../mui/MatchTableCell'
 import './MatchPage.css'

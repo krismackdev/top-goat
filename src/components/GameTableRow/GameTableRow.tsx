@@ -1,5 +1,5 @@
 import React, { useContext, useReducer, useState } from 'react'
-import { GamesContext } from '../../store/games-context'
+import { GamesContext } from '../../store'
 import './GameTableRow.css'
 import { DeleteConfirmation } from '../../components'
 import { GameTableCell, StyledTextField } from '../../mui'

@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useReducer, useState } from 'react'
-import { MatchesContext } from '../../store/matches-context'
-import { GamesContext } from '../../store/games-context'
+import { GamesContext, MatchesContext } from '../../store'
 import { MatchTableCell } from '../../mui'
 import {
   IconButton,

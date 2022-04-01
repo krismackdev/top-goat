@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { GamesContext } from '../../store/games-context'
+import { GamesContext } from '../../store'
 import GameTableCell from '../../mui/GameTableCell'
 import { AddGameForm, GameFilter, GameTableRow } from '../../components'
 import './GamePage.css'

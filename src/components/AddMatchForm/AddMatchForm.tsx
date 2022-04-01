@@ -24,9 +24,7 @@ import {
 } from '@mui/material'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
-import { GamesContext } from '../../store/games-context'
-import { MatchesContext } from '../../store/matches-context'
-import { PlayersContext } from '../../store/players-context'
+import { GamesContext, MatchesContext, PlayersContext } from '../../store'
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
 

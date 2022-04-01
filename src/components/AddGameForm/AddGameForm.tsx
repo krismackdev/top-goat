@@ -1,5 +1,5 @@
 import React, { useContext, useReducer, useState } from 'react'
-import { GamesContext } from '../../store/games-context'
+import { GamesContext } from '../../store'
 import './AddGameForm.css'
 import {
   Button,

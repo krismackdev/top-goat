@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
-import { GamesContext } from '../../store/games-context'
-import { MatchesContext } from '../../store/matches-context'
+import { GamesContext, MatchesContext } from '../../store'
 import './DeleteConfirmation.css'
 import {
   Button,
