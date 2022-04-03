@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { GamesContext, MatchesContext } from '../../store'
+import { GamesContext, MatchesContext, PlayersContext } from '../../store'
 import './DeleteConfirmation.css'
 import {
   Button,
@@ -12,7 +12,7 @@ import {
 interface DeleteConfirmationProps {
   setShowDeleteConfirmation: React.Dispatch<React.SetStateAction<boolean>>
   id: string
-  type: 'game' | 'match'
+  type: 'game' | 'match' | 'player'
 }
 
 const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
@@ -22,12 +22,19 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
 }) => {
   const { deleteGame } = useContext(GamesContext)
   const { deleteMatch } = useContext(MatchesContext)
+  const { deletePlayer } = useContext(PlayersContext)
 
   const handleDelete = () => {
-    if (type === 'game') {
-      deleteGame(id)
-    } else if (type === 'match') {
-      deleteMatch(id)
+    switch (type) {
+      case 'game':
+        deleteGame(id)
+        break
+      case 'match':
+        deleteMatch(id)
+        break
+      case 'player':
+        deletePlayer(id)
+        break
     }
     setShowDeleteConfirmation(false)
   }

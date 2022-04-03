@@ -1,6 +1,13 @@
 import { createContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase/config'
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore'
 import { onAuthStateChanged, User as firebaseUser } from 'firebase/auth'
 
 interface PlayerObject {
@@ -13,8 +20,10 @@ interface PlayerObject {
 type PlayersContextProviderProps = { children: React.ReactNode }
 
 export const PlayersContext = createContext<{
+  deletePlayer: (id: string) => void
   players: PlayerObject[] | undefined
 }>({
+  deletePlayer: () => {},
   players: undefined,
 })
 
@@ -64,6 +73,11 @@ export const PlayersContextProvider = ({
     setPlayers(downloadedPlayers)
   }
 
+  const deletePlayer = async (id: string): Promise<void> => {
+    await deleteDoc(doc(db, 'players', id))
+    setPlayersWithFetchedData()
+  }
+
   useEffect(() => {
     setPlayersWithFetchedData()
   }, [])
@@ -75,6 +89,7 @@ export const PlayersContextProvider = ({
   return (
     <PlayersContext.Provider
       value={{
+        deletePlayer,
         players,
       }}
     >
