@@ -7,6 +7,7 @@ interface PlayerObject {
   id: string
   name: string
   owner: string
+  score: number
 }
 
 type PlayersContextProviderProps = { children: React.ReactNode }

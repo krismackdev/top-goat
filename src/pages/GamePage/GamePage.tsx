@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { GamesContext } from '../../store'
-import GameTableCell from '../../mui/GameTableCell'
+import { GameTableCell } from '../../mui'
 import { AddGameForm, GameFilter, GameTableRow } from '../../components'
-import './GamePage.css'
+import styles from './GamePage.module.css'
 import {
   Button,
   Grid,
@@ -40,7 +40,7 @@ const GamePage: React.FC = () => {
   }
 
   return (
-    <div className="game-page-container">
+    <div className={styles['game-page-container']}>
       {formIsActive && <AddGameForm setFormIsActive={setFormIsActive} />}
       <Grid container rowSpacing={1} columnSpacing={1}>
         <IconButton onClick={() => setGridViewIsActive(prev => !prev)}>
@@ -163,7 +163,7 @@ const GamePage: React.FC = () => {
                           <Grid item xs={6} sm={4} md={3} lg={2}>
                             <a href={game.link}>
                               <img
-                                className="game-page-image-container"
+                                className={styles['game-page-image-container']}
                                 src={game.image}
                                 alt="game cover"
                               />
