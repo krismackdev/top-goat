@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  updateDoc,
   query,
   where,
 } from 'firebase/firestore'
@@ -17,14 +18,24 @@ interface PlayerObject {
   score: number
 }
 
+interface SortPlayerArg {
+  field: string
+}
+
 type PlayersContextProviderProps = { children: React.ReactNode }
 
 export const PlayersContext = createContext<{
   deletePlayer: (id: string) => void
   players: PlayerObject[] | undefined
+  reverseSortPlayers: boolean
+  sortPlayers: (payload: SortPlayerArg) => void
+  updatePlayer: (player: PlayerObject) => void
 }>({
   deletePlayer: () => {},
   players: undefined,
+  reverseSortPlayers: false,
+  sortPlayers: () => {},
+  updatePlayer: () => {},
 })
 
 export const PlayersContextProvider = ({
@@ -32,6 +43,7 @@ export const PlayersContextProvider = ({
 }: PlayersContextProviderProps) => {
   const [players, setPlayers] = useState<PlayerObject[] | undefined>(undefined)
   const [user, setUser] = useState<firebaseUser | null>(null)
+  const [reverseSortPlayers, setReverseSortPlayers] = useState(false)
 
   onAuthStateChanged(auth, currentUser => {
     setUser(currentUser)
@@ -78,6 +90,45 @@ export const PlayersContextProvider = ({
     setPlayersWithFetchedData()
   }
 
+  const sortPlayers = (payload: SortPlayerArg): void => {
+    switch (payload.field) {
+      case 'player':
+        setPlayers(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                return reverseSortPlayers ? 1 : -1
+              } else {
+                return reverseSortPlayers ? -1 : 1
+              }
+            })
+        })
+        break
+      case 'score':
+        setPlayers(prev => {
+          return prev
+            ?.map(x => x)
+            .sort((a, b) => {
+              if (+a.score <= +b.score) {
+                return reverseSortPlayers ? -1 : 1
+              } else {
+                return reverseSortPlayers ? 1 : -1
+              }
+            })
+        })
+        break
+    }
+    setReverseSortPlayers(prev => !prev)
+  }
+
+  const updatePlayer = async (player: PlayerObject): Promise<void> => {
+    // using spread operator below due to firebase issue #5853
+    // ... if you use player as is, it causes a typescript error
+    const { id, ...playerWithoutId } = { ...player }
+    await updateDoc(doc(db, 'players', id), { ...playerWithoutId })
+    setPlayersWithFetchedData()
+  }
   useEffect(() => {
     setPlayersWithFetchedData()
   }, [])
@@ -91,6 +142,9 @@ export const PlayersContextProvider = ({
       value={{
         deletePlayer,
         players,
+        reverseSortPlayers,
+        sortPlayers,
+        updatePlayer,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { PlayersContext } from '../../store'
 import styles from './PlayerPage.module.css'
 import { GameTableCell as PlayerTableCell } from '../../mui'
@@ -11,9 +11,18 @@ import {
   TableRow,
 } from '@mui/material'
 import { PlayerTableRow } from '../../components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 const PlayerPage = () => {
-  const { players } = useContext(PlayersContext)
+  const [activeSortingColumn, setActiveSortingColumn] = useState('player')
+  const { players, reverseSortPlayers, sortPlayers } =
+    useContext(PlayersContext)
+
+  const handlePlayerColumnSort = (columnName: string) => {
+    sortPlayers({ field: columnName })
+    setActiveSortingColumn(columnName)
+  }
 
   return (
     <div className={styles['player-page-container']}>
@@ -23,36 +32,34 @@ const PlayerPage = () => {
             <TableRow>
               <PlayerTableCell
                 sx={{ minWidth: 232 }}
-                // onClick={() => handleGameColumnSort('title')}
+                onClick={() => handlePlayerColumnSort('player')}
               >
-                Name
-                {/* &nbsp;
-                {activeSortingColumn === 'title' ? (
-                  reverseSortGames ? (
+                Player &nbsp;
+                {activeSortingColumn === 'player' ? (
+                  reverseSortPlayers ? (
                     <FontAwesomeIcon icon={faCaretDown} />
                   ) : (
                     <FontAwesomeIcon icon={faCaretUp} />
                   )
                 ) : (
                   ''
-                )} */}
+                )}
               </PlayerTableCell>
               <PlayerTableCell
                 align="center"
                 sx={{ minWidth: 100 }}
-                // onClick={() => handleGameColumnSort('played')}
+                onClick={() => handlePlayerColumnSort('score')}
               >
-                Score
-                {/* &nbsp;
-                {activeSortingColumn === 'played' ? (
-                  reverseSortGames ? (
+                Score &nbsp;
+                {activeSortingColumn === 'score' ? (
+                  reverseSortPlayers ? (
                     <FontAwesomeIcon icon={faCaretDown} />
                   ) : (
                     <FontAwesomeIcon icon={faCaretUp} />
                   )
                 ) : (
                   ''
-                )} */}
+                )}
               </PlayerTableCell>
               <PlayerTableCell align="center">Delete</PlayerTableCell>
               <PlayerTableCell align="center">Edit</PlayerTableCell>

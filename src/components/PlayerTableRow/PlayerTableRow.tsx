@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { DeleteConfirmation } from '../../components'
+import { PlayersContext } from '../../store'
 import { IconButton, TableRow } from '@mui/material'
 import { GameTableCell as PlayerTableCell, StyledTextField } from '../../mui'
 import CancelIcon from '@mui/icons-material/Cancel'
@@ -22,6 +23,7 @@ const PlayerTableRow: React.FC<PlayerTableRowProps> = ({ player }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [editedPlayerName, setEditedPlayerName] = useState(player.name)
+  const { updatePlayer } = useContext(PlayersContext)
 
   const handlePlayerDelete = (): void => {
     setShowDeleteConfirmation(true)
@@ -44,7 +46,9 @@ const PlayerTableRow: React.FC<PlayerTableRowProps> = ({ player }) => {
             onChange={e => setEditedPlayerName(e.target.value)}
           />
         </PlayerTableCell>
-        <PlayerTableCell className="editing">{player.score}</PlayerTableCell>
+        <PlayerTableCell className="editing">
+          {/* score cell is empty during edit by design */}
+        </PlayerTableCell>
         <PlayerTableCell className="editing">
           {/* delete cell is empty during edit by design */}
         </PlayerTableCell>
@@ -53,7 +57,7 @@ const PlayerTableRow: React.FC<PlayerTableRowProps> = ({ player }) => {
           <IconButton
             sx={{ color: 'green' }}
             onClick={() => {
-              //             updatePlayer(updatedPlayer)
+              updatePlayer({ ...player, name: editedPlayerName })
               setIsEditing(false)
             }}
           >
