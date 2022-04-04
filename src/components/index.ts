@@ -1,5 +1,6 @@
 export { default as AddGameForm } from './AddGameForm/AddGameForm'
 export { default as AddMatchForm } from './AddMatchForm/AddMatchForm'
+export { default as AddPlayerForm } from './AddPlayerForm/AddPlayerForm'
 export { default as DeleteConfirmation } from './DeleteConfirmation/DeleteConfirmation'
 export { default as GameFilter } from './GameFilter/GameFilter'
 export { default as GameTableRow } from './GameTableRow/GameTableRow'

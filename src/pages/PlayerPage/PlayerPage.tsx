@@ -3,6 +3,7 @@ import { PlayersContext } from '../../store'
 import styles from './PlayerPage.module.css'
 import { GameTableCell as PlayerTableCell } from '../../mui'
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -10,12 +11,13 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
-import { PlayerTableRow } from '../../components'
+import { AddPlayerForm, PlayerTableRow } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 const PlayerPage = () => {
   const [activeSortingColumn, setActiveSortingColumn] = useState('player')
+  const [formIsActive, setFormIsActive] = useState(false)
   const { players, reverseSortPlayers, sortPlayers } =
     useContext(PlayersContext)
 
@@ -26,6 +28,12 @@ const PlayerPage = () => {
 
   return (
     <div className={styles['player-page-container']}>
+      <Button variant="contained" onClick={() => setFormIsActive(true)}>
+        Add Player
+      </Button>
+
+      {formIsActive && <AddPlayerForm setFormIsActive={setFormIsActive} />}
+
       <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
         <Table size="small">
           <TableHead>

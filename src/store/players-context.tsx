@@ -5,11 +5,14 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  setDoc,
   updateDoc,
   query,
   where,
 } from 'firebase/firestore'
 import { onAuthStateChanged, User as firebaseUser } from 'firebase/auth'
+// @ts-ignore
+import { v4 as uuidv4 } from 'uuid'
 
 interface PlayerObject {
   id: string
@@ -25,12 +28,14 @@ interface SortPlayerArg {
 type PlayersContextProviderProps = { children: React.ReactNode }
 
 export const PlayersContext = createContext<{
+  addNewPlayer: (newPlayerName: string) => void
   deletePlayer: (id: string) => void
   players: PlayerObject[] | undefined
   reverseSortPlayers: boolean
   sortPlayers: (payload: SortPlayerArg) => void
   updatePlayer: (player: PlayerObject) => void
 }>({
+  addNewPlayer: () => {},
   deletePlayer: () => {},
   players: undefined,
   reverseSortPlayers: false,
@@ -83,6 +88,16 @@ export const PlayersContextProvider = ({
     })
 
     setPlayers(downloadedPlayers)
+  }
+
+  const addNewPlayer = async (newPlayerName: string): Promise<void> => {
+    const newPlayer = {
+      name: newPlayerName,
+      owner: auth?.currentUser?.uid,
+      score: 0,
+    }
+    await setDoc(doc(db, 'players', uuidv4()), newPlayer)
+    setPlayersWithFetchedData()
   }
 
   const deletePlayer = async (id: string): Promise<void> => {
@@ -140,6 +155,7 @@ export const PlayersContextProvider = ({
   return (
     <PlayersContext.Provider
       value={{
+        addNewPlayer,
         deletePlayer,
         players,
         reverseSortPlayers,
