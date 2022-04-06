@@ -95,6 +95,7 @@ export const PlayersContextProvider = ({
       name: newPlayerName,
       owner: auth?.currentUser?.uid,
       score: 0,
+      scoreMap: {},
     }
     await setDoc(doc(db, 'players', uuidv4()), newPlayer)
     setPlayersWithFetchedData()

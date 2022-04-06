@@ -5,13 +5,52 @@ const { match } = require("assert");
 admin.initializeApp();
 const db = admin.firestore();
 
-
-exports.gameUpdatesFromMatchWrites = functions.firestore
+// update players' scores on every match write
+exports.updateScores = functions.firestore
     .document("matches/{matchId}")
     .onWrite((change, context) => {
       const {before, after} = change;
       const matchId = context.params.matchId;
-      functions.logger.log("syncMatchArray RUNNING...");
+      functions.logger.log("updateScores RUNNING...");
+
+      // handle a new match...
+      if (!before.exists) {
+        functions.logger.log("handling a new match...");
+        const newMatchPlayers = Object.entries(after.data().participants);
+        const totalNumberOfPlayers = newMatchPlayers.length
+        for (const player of newMatchPlayers) {
+          let newScore;
+          if (player[1].result === 'n/a') {
+            continue
+          }
+          if (player[1].result === 'loss') {
+            newScore = -1 * ( 1 / totalNumberOfPlayers )
+          } else if (player[1].result === 'win') {
+            newScore = 1 + ( -1 * ( 1 / totalNumberOfPlayers ) )
+          }
+          db.collection("players")
+          .doc(`${player[0]}`)
+          .get()
+          .then((queryDocSnap) => {
+            return queryDocSnap.get("scoreMap");
+          }).then((scoreMap) => {
+            let newScoreMap = {...scoreMap, [`${matchId}`]: newScore}
+            db.collection("players").doc(`${player[0]}`)
+            .update({
+              scoreMap: newScoreMap,
+              score: (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1)
+            });
+            })
+        }
+      }
+})
+
+exports.gameUpdatesOnMatchWrites = functions.firestore
+    .document("matches/{matchId}")
+    .onWrite((change, context) => {
+      const {before, after} = change;
+      const matchId = context.params.matchId;
+      functions.logger.log("gameUpdatesOnMatchWrites RUNNING...");
 
       // handle a new match...
       if (!before.exists) {
@@ -91,7 +130,7 @@ exports.gameUpdatesFromMatchWrites = functions.firestore
             .then((queryDocSnap) => {
               return queryDocSnap.get("matchesArray");
             }).then((matchesArray) => {
-              if (matchesArray.length === 0) {
+              if (matchesArray?.length === 0) {
                 db.collection("games").doc(`${beforeGameId}`)
                     .update({lastPlayedDate: ""});
               } else {
@@ -161,7 +200,6 @@ exports.gameUpdatesFromMatchWrites = functions.firestore
               currentPlayOrder++
               return {...match, playOrder: currentPlayOrder}
             })
-            functions.logger.log("arrayOfMatches =", arrayOfMatches);
             arrayOfMatches.forEach(({ id, playOrder }) => {
               db.collection("matches").doc(`${id}`)
                 .update({playOrder: playOrder});
