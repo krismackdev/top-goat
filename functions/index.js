@@ -43,6 +43,28 @@ exports.updateScores = functions.firestore
             })
         }
       }
+
+      // handle a deleted match...
+      if (!after.exists) {
+        functions.logger.log("handling a deleted match...");
+        const oldMatchPlayers = Object.entries(before.data().participants);
+        for (const player of oldMatchPlayers) {
+          db.collection("players")
+          .doc(`${player[0]}`)
+          .get()
+          .then((queryDocSnap) => {
+            return queryDocSnap.get("scoreMap");
+          }).then((scoreMap) => {
+            let newScoreMap = {...scoreMap}
+            delete newScoreMap[`${matchId}`]
+            db.collection("players").doc(`${player[0]}`)
+            .update({
+              scoreMap: newScoreMap,
+              score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
+            });
+          })
+      }
+    }
 })
 
 exports.gameUpdatesOnMatchWrites = functions.firestore
