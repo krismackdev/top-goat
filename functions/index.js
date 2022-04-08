@@ -17,7 +17,12 @@ exports.updateScores = functions.firestore
       if (!before.exists) {
         functions.logger.log("handling a new match...");
         const newMatchPlayers = Object.entries(after.data().participants);
-        const totalNumberOfPlayers = newMatchPlayers.length
+
+        // this excludes players with n/a results from being counted for scoring purposes
+        const totalNumberOfPlayers = newMatchPlayers.filter(entry => {
+          return entry[1].result === 'win' || entry[1].result === 'loss'
+        }).length
+
         for (const player of newMatchPlayers) {
           let newScore;
           if (player[1].result === 'n/a') {
@@ -98,16 +103,22 @@ exports.updateScores = functions.firestore
           .doc(`${playerId}`)
           .get()
           .then((queryDocSnap) => {
-            return queryDocSnap.get("scoreMap");
+             return queryDocSnap.get("scoreMap");
           }).then((scoreMap) => {
+
+            // this excludes players with n/a results from being counted for scoring purposes
+            const totalNumberOfPlayers = Object.entries(newParticipants).filter(entry => {
+              return entry[1].result === 'win' || entry[1].result === 'loss'
+            }).length
+
             let newScore;
             if (newParticipants[playerId].result === 'loss') {             
-              newScore = -1 * ( 1 / Object.keys(newParticipants).length )
+              newScore = -1 * ( 1 / totalNumberOfPlayers )
             } else if (newParticipants[playerId].result === 'win') {
-              newScore = 1 + ( -1 * ( 1 / Object.keys(newParticipants).length ) )
+              newScore = 1 + ( -1 * ( 1 / totalNumberOfPlayers ) )
             }
             let newScoreMap = {...scoreMap};
-            if (typeof newScore !== 'undefined') {
+            if (typeof newScore !== 'undefined' && totalNumberOfPlayers !== 1) {
               newScoreMap[`${matchId}`] = newScore
             } else {
               delete newScoreMap[`${matchId}`]
@@ -117,17 +128,8 @@ exports.updateScores = functions.firestore
               scoreMap: newScoreMap,
               score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
             });
-
-
-
-
-
-
-
-
           })
         }
-
       }
     return null
 })
