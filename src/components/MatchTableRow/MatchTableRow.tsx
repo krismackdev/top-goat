@@ -83,17 +83,28 @@ const editMatchRowReducer = (
         game: action.payload?.gameTitle,
       }
     case 'changePlayerResult':
-      return {
-        ...state,
-        participants: {
-          ...state.participants,
-          [`${action.payload.playerId}`]: {
-            name: action.payload.playerName!,
-            result: action.payload.result as Result,
-            score:
-              state.participants?.[action.payload.playerId]?.score ?? 'n/a',
+      if (action.payload.result === '') {
+        let updatedParticipants = { ...state.participants }
+        delete updatedParticipants[`${action.payload.playerId}`]
+        return {
+          ...state,
+          participants: {
+            ...updatedParticipants,
           },
-        },
+        }
+      } else {
+        return {
+          ...state,
+          participants: {
+            ...state.participants,
+            [`${action.payload.playerId}`]: {
+              name: action.payload.playerName!,
+              result: action.payload.result as Result,
+              score:
+                state.participants?.[action.payload.playerId]?.score ?? 'n/a',
+            },
+          },
+        }
       }
     case 'changePlayerScore':
       return {

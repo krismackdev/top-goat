@@ -1,5 +1,6 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase/config'
+import { MatchesContext } from './matches-context'
 import {
   collection,
   deleteDoc,
@@ -49,6 +50,7 @@ export const PlayersContextProvider = ({
   const [players, setPlayers] = useState<PlayerObject[] | undefined>(undefined)
   const [user, setUser] = useState<firebaseUser | null>(null)
   const [reverseSortPlayers, setReverseSortPlayers] = useState(false)
+  const { matches } = useContext(MatchesContext)
 
   onAuthStateChanged(auth, currentUser => {
     setUser(currentUser)
@@ -152,6 +154,10 @@ export const PlayersContextProvider = ({
   useEffect(() => {
     setPlayersWithFetchedData()
   }, [user])
+
+  useEffect(() => {
+    setPlayersWithFetchedData()
+  }, [matches])
 
   return (
     <PlayersContext.Provider

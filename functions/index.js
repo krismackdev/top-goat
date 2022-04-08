@@ -63,8 +63,73 @@ exports.updateScores = functions.firestore
               score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
             });
           })
+        }
       }
-    }
+
+      // handle an updated match...
+      if (before.exists && after.exists) {
+        functions.logger.log("handling THEE updated match...");
+        const oldParticipants = before.data().participants;
+        const newParticipants = after.data().participants;
+
+        // first, remove all the scores from players who have been deleted
+        for (const playerId of Object.keys(oldParticipants)) {
+          if (!(playerId in newParticipants)) {
+            db.collection("players")
+            .doc(`${playerId}`)
+            .get()
+            .then((queryDocSnap) => {
+              return queryDocSnap.get("scoreMap");
+            }).then((scoreMap) => {
+              let newScoreMap = {...scoreMap}
+              delete newScoreMap[`${matchId}`]
+              db.collection("players").doc(`${playerId}`)
+              .update({
+                scoreMap: newScoreMap,
+                score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
+              });
+            })
+          }
+        }
+
+        // next, iterate all current players, and give them updated score
+        for (const playerId of Object.keys(newParticipants)) {
+          db.collection("players")
+          .doc(`${playerId}`)
+          .get()
+          .then((queryDocSnap) => {
+            return queryDocSnap.get("scoreMap");
+          }).then((scoreMap) => {
+            let newScore;
+            if (newParticipants[playerId].result === 'loss') {             
+              newScore = -1 * ( 1 / Object.keys(newParticipants).length )
+            } else if (newParticipants[playerId].result === 'win') {
+              newScore = 1 + ( -1 * ( 1 / Object.keys(newParticipants).length ) )
+            }
+            let newScoreMap = {...scoreMap};
+            if (typeof newScore !== 'undefined') {
+              newScoreMap[`${matchId}`] = newScore
+            } else {
+              delete newScoreMap[`${matchId}`]
+            }
+            db.collection("players").doc(`${playerId}`)
+            .update({
+              scoreMap: newScoreMap,
+              score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
+            });
+
+
+
+
+
+
+
+
+          })
+        }
+
+      }
+    return null
 })
 
 exports.gameUpdatesOnMatchWrites = functions.firestore
