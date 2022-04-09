@@ -6,6 +6,7 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  onSnapshot,
   setDoc,
   updateDoc,
   query,
@@ -158,6 +159,12 @@ export const PlayersContextProvider = ({
   useEffect(() => {
     setPlayersWithFetchedData()
   }, [matches])
+
+  useEffect(() => {
+    onSnapshot(collection(db, 'players'), () => {
+      setPlayersWithFetchedData()
+    })
+  }, [])
 
   return (
     <PlayersContext.Provider
