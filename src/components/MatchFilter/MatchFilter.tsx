@@ -25,8 +25,6 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
   const { games } = useContext(GamesContext)
   const { players } = useContext(PlayersContext)
 
-  console.log('MFS =', matchFilterState)
-
   if (filter === 'games') {
     if (games) {
       return (

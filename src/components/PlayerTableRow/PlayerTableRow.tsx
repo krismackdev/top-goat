@@ -9,6 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 
 interface PlayerObject {
+  matchesPlayed: string[]
   name: string
   id: string
   owner: string
@@ -23,7 +24,7 @@ const PlayerTableRow: React.FC<PlayerTableRowProps> = ({ player }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [editedPlayerName, setEditedPlayerName] = useState(player.name)
-  const { updatePlayer } = useContext(PlayersContext)
+  const { updatePlayerName } = useContext(PlayersContext)
 
   const handlePlayerDelete = (): void => {
     setShowDeleteConfirmation(true)
@@ -57,7 +58,7 @@ const PlayerTableRow: React.FC<PlayerTableRowProps> = ({ player }) => {
           <IconButton
             sx={{ color: 'green' }}
             onClick={() => {
-              updatePlayer({ ...player, name: editedPlayerName })
+              updatePlayerName({ ...player, name: editedPlayerName })
               setIsEditing(false)
             }}
           >

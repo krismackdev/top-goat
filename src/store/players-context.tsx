@@ -18,6 +18,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 interface PlayerObject {
   id: string
+  matchesPlayed: string[]
   name: string
   owner: string
   score: number
@@ -35,14 +36,14 @@ export const PlayersContext = createContext<{
   players: PlayerObject[] | undefined
   reverseSortPlayers: boolean
   sortPlayers: (payload: SortPlayerArg) => void
-  updatePlayer: (player: PlayerObject) => void
+  updatePlayerName: (player: PlayerObject) => void
 }>({
   addNewPlayer: () => {},
   deletePlayer: () => {},
   players: undefined,
   reverseSortPlayers: false,
   sortPlayers: () => {},
-  updatePlayer: () => {},
+  updatePlayerName: () => {},
 })
 
 export const PlayersContextProvider = ({
@@ -59,45 +60,46 @@ export const PlayersContextProvider = ({
 
   // this function sets the players state with data from firestore
   const setPlayersWithFetchedData = async () => {
-    const fetchPlayers = async () => {
-      const playersRef = collection(db, 'players')
-      const playersQuery = query(
-        playersRef,
-        where(
-          'owner',
-          '==',
-          auth.currentUser !== null ? auth.currentUser.uid : ''
+    if (auth.currentUser === null) {
+      return
+    } else {
+      const fetchPlayers = async () => {
+        const playersRef = collection(db, 'players')
+        const playersQuery = query(
+          playersRef,
+          where('owner', '==', auth?.currentUser?.uid)
         )
-      )
-      const playersCollection = await getDocs(playersQuery)
-      return playersCollection
-    }
+        const playersCollection = await getDocs(playersQuery)
+        return playersCollection
+      }
 
-    const downloadedPlayers = await fetchPlayers().then(res => {
-      const result: PlayerObject[] = []
-      res.docs.forEach(doc => {
-        let currentPlayer = doc.data()
-        if (currentPlayer) {
-          currentPlayer = { ...currentPlayer, id: doc.id }
-          // ************* is it safe to be asserting as MatchObjecct here?
-          result.push(currentPlayer as PlayerObject)
-        }
+      const downloadedPlayers = await fetchPlayers().then(res => {
+        const result: PlayerObject[] = []
+        res.docs.forEach(doc => {
+          let currentPlayer = doc.data()
+          if (currentPlayer) {
+            currentPlayer = { ...currentPlayer, id: doc.id }
+            // ************* is it safe to be asserting as MatchObjecct here?
+            result.push(currentPlayer as PlayerObject)
+          }
+        })
+        return result
       })
-      return result
-    })
 
-    downloadedPlayers.sort((a, b) => {
-      return a.name > b.name ? 1 : -1
-    })
+      downloadedPlayers.sort((a, b) => {
+        return a.name > b.name ? 1 : -1
+      })
 
-    setPlayers(downloadedPlayers)
+      setPlayers(downloadedPlayers)
+    }
   }
 
   const addNewPlayer = async (newPlayerName: string): Promise<void> => {
     const newPlayer = {
+      matchesPlayed: [],
       name: newPlayerName,
       owner: auth?.currentUser?.uid,
-      score: 0,
+      score: '0.0',
       scoreMap: {},
     }
     await setDoc(doc(db, 'players', uuidv4()), newPlayer)
@@ -105,8 +107,12 @@ export const PlayersContextProvider = ({
   }
 
   const deletePlayer = async (id: string): Promise<void> => {
-    await deleteDoc(doc(db, 'players', id))
-    setPlayersWithFetchedData()
+    try {
+      await deleteDoc(doc(db, 'players', id))
+      setPlayersWithFetchedData()
+    } catch (error) {
+      alert(error)
+    }
   }
 
   const sortPlayers = (payload: SortPlayerArg): void => {
@@ -141,11 +147,12 @@ export const PlayersContextProvider = ({
     setReverseSortPlayers(prev => !prev)
   }
 
-  const updatePlayer = async (player: PlayerObject): Promise<void> => {
+  const updatePlayerName = async (player: PlayerObject): Promise<void> => {
     // using spread operator below due to firebase issue #5853
     // ... if you use player as is, it causes a typescript error
-    const { id, ...playerWithoutId } = { ...player }
-    await updateDoc(doc(db, 'players', id), { ...playerWithoutId })
+    const { id, name } = { ...player }
+    await updateDoc(doc(db, 'players', id), { name })
+    // using spread operator below due to firebase issue #5853
     setPlayersWithFetchedData()
   }
   useEffect(() => {
@@ -161,10 +168,17 @@ export const PlayersContextProvider = ({
   }, [matches])
 
   useEffect(() => {
-    onSnapshot(collection(db, 'players'), () => {
+    const snapShotQuery = query(
+      collection(db, 'players'),
+      where('owner', '==', auth?.currentUser?.uid ?? '')
+    )
+
+    const unsub = onSnapshot(snapShotQuery, () => {
       setPlayersWithFetchedData()
     })
-  }, [])
+
+    return () => unsub()
+  }, [user])
 
   return (
     <PlayersContext.Provider
@@ -174,7 +188,7 @@ export const PlayersContextProvider = ({
         players,
         reverseSortPlayers,
         sortPlayers,
-        updatePlayer,
+        updatePlayerName,
       }}
     >
       {children}

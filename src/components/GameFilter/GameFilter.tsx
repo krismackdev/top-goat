@@ -13,8 +13,6 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1000000)
 
-  console.log('gamefilterstate =', gameFilterState)
-
   useEffect(() => {
     const timeOutId = setTimeout(() => {
       setGameFilterState(prev => {

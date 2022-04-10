@@ -177,43 +177,47 @@ export const MatchesContextProvider = ({
 
   // this function sets the matches state with data from firestore
   const setMatchesWithFetchedData = async () => {
-    const fetchMatches = async () => {
-      const matchesRef = collection(db, 'matches')
-      const matchesQuery = query(
-        matchesRef,
-        where(
-          'owner',
-          '==',
-          auth.currentUser !== null ? auth.currentUser.uid : ''
+    if (auth.currentUser === null) {
+      return
+    } else {
+      const fetchMatches = async () => {
+        const matchesRef = collection(db, 'matches')
+        const matchesQuery = query(
+          matchesRef,
+          where(
+            'owner',
+            '==',
+            auth.currentUser !== null ? auth.currentUser.uid : ''
+          )
         )
-      )
-      const matchesCollection = await getDocs(matchesQuery)
-      return matchesCollection
-    }
+        const matchesCollection = await getDocs(matchesQuery)
+        return matchesCollection
+      }
 
-    const downloadedMatches = await fetchMatches().then(res => {
-      const result: MatchObject[] = []
-      res.docs.forEach(doc => {
-        let currentMatch = doc.data()
-        if (currentMatch) {
-          currentMatch = { ...currentMatch, id: doc.id }
-          // ************* is it safe to be asserting as MatchObjecct here?
-          result.push(currentMatch as MatchObject)
+      const downloadedMatches = await fetchMatches().then(res => {
+        const result: MatchObject[] = []
+        res.docs.forEach(doc => {
+          let currentMatch = doc.data()
+          if (currentMatch) {
+            currentMatch = { ...currentMatch, id: doc.id }
+            // ************* is it safe to be asserting as MatchObjecct here?
+            result.push(currentMatch as MatchObject)
+          }
+        })
+        return result
+      })
+      let newCurrentPlayOrder = 0
+      downloadedMatches.forEach(match => {
+        if (match.playOrder > newCurrentPlayOrder) {
+          newCurrentPlayOrder = match.playOrder
         }
       })
-      return result
-    })
-    let newCurrentPlayOrder = 0
-    downloadedMatches.forEach(match => {
-      if (match.playOrder > newCurrentPlayOrder) {
-        newCurrentPlayOrder = match.playOrder
-      }
-    })
-    setCurrentPlayOrder(newCurrentPlayOrder)
-    downloadedMatches.sort((a, b) => {
-      return b.playOrder - a.playOrder
-    })
-    setMatches(downloadedMatches)
+      setCurrentPlayOrder(newCurrentPlayOrder)
+      downloadedMatches.sort((a, b) => {
+        return b.playOrder - a.playOrder
+      })
+      setMatches(downloadedMatches)
+    }
   }
 
   useEffect(() => {
@@ -310,7 +314,6 @@ export const MatchesContextProvider = ({
   const addNewMatch = async (
     newMatch: MatchObjectWithStringScore
   ): Promise<void> => {
-    console.log('in ADM, newMatch =', newMatch)
     const { id, ...matchWithoutId } = newMatch
     await setDoc(doc(db, 'matches', id), {
       ...matchWithoutId,

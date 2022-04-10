@@ -156,8 +156,6 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({ setFormIsActive }) => {
     initialAddMatchState
   )
 
-  console.log('addMatchState =', addMatchState)
-
   useEffect(() => {
     let tempPlayerNames: string[] = []
     players?.forEach(player => {

@@ -5,13 +5,13 @@ const { match } = require("assert");
 admin.initializeApp();
 const db = admin.firestore();
 
-// update players' scores on every match write
-exports.updateScores = functions.firestore
+// update players' scores & matchesPlayed on every match write
+exports.playerUpdatesOnMatchWrites = functions.firestore
     .document("matches/{matchId}")
     .onWrite((change, context) => {
       const {before, after} = change;
       const matchId = context.params.matchId;
-      functions.logger.log("updateScores RUNNING...");
+      functions.logger.log("playerUpdatesOnMatchWrites RUNNING...");
 
       // handle a new match...
       if (!before.exists) {
@@ -24,8 +24,15 @@ exports.updateScores = functions.firestore
         }).length
 
         for (const player of newMatchPlayers) {
+
+          // update the matchesPlayed's
+          db.collection("players").doc(`${player[0]}`).update({
+            matchesPlayed: admin.firestore.FieldValue.arrayUnion(matchId),
+          });
+
+          // update the scoreMap's
           let newScore;
-          if (player[1].result === 'n/a') {
+          if (player[1].result === 'n/a') { ``
             continue
           }
           if (player[1].result === 'loss') {
@@ -64,6 +71,7 @@ exports.updateScores = functions.firestore
             delete newScoreMap[`${matchId}`]
             db.collection("players").doc(`${player[0]}`)
             .update({
+              matchesPlayed: admin.firestore.FieldValue.arrayRemove(matchId),
               scoreMap: newScoreMap,
               score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
             });
@@ -90,6 +98,7 @@ exports.updateScores = functions.firestore
               delete newScoreMap[`${matchId}`]
               db.collection("players").doc(`${playerId}`)
               .update({
+                matchesPlayed: admin.firestore.FieldValue.arrayRemove(matchId),
                 scoreMap: newScoreMap,
                 score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
               });
@@ -125,6 +134,7 @@ exports.updateScores = functions.firestore
             }
             db.collection("players").doc(`${playerId}`)
             .update({
+              matchesPlayed: admin.firestore.FieldValue.arrayUnion(matchId),
               scoreMap: newScoreMap,
               score: Object.values(newScoreMap).length > 0 ? (100 * (Object.values(newScoreMap).reduce((tot,cur) => tot + cur) / Object.values(newScoreMap).length)).toFixed(1) : "0.0"
             });

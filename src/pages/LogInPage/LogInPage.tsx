@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './LogInPage.module.css'
 import { auth } from '../../firebase/config'
 import { Link } from 'react-router-dom'
@@ -18,9 +18,12 @@ const LogInPage: React.FC = () => {
   const [resetPasswordActive, setResetPasswordActive] = useState(false)
   const [user, setUser] = useState<firebaseUser | null>(null)
 
-  onAuthStateChanged(auth, currentUser => {
-    setUser(currentUser)
-  })
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser)
+    })
+    return () => unsub()
+  }, [])
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

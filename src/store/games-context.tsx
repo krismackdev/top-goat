@@ -167,35 +167,39 @@ export const GamesContextProvider = ({
 
   // this function sets the games state with data from firestore
   const setGamesWithFetchedData = async () => {
-    const fetchGames = async () => {
-      const gamesRef = collection(db, 'games')
-      const gamesQuery = query(
-        gamesRef,
-        where(
-          'owner',
-          '==',
-          auth.currentUser !== null ? auth.currentUser.uid : ''
+    if (auth.currentUser === null) {
+      return
+    } else {
+      const fetchGames = async () => {
+        const gamesRef = collection(db, 'games')
+        const gamesQuery = query(
+          gamesRef,
+          where(
+            'owner',
+            '==',
+            auth.currentUser !== null ? auth.currentUser.uid : ''
+          )
         )
-      )
-      const gamesCollection = await getDocs(gamesQuery)
-      return gamesCollection
-    }
+        const gamesCollection = await getDocs(gamesQuery)
+        return gamesCollection
+      }
 
-    const downloadedGames = await fetchGames().then(res => {
-      const result: GameObject[] = []
-      res.docs.forEach(doc => {
-        let currentGame = doc.data()
-        if (currentGame) {
-          currentGame = { ...currentGame, id: doc.id }
-          // ************* is it safe to be asserting as GameObject here?
-          result.push(currentGame as GameObject)
-        }
+      const downloadedGames = await fetchGames().then(res => {
+        const result: GameObject[] = []
+        res.docs.forEach(doc => {
+          let currentGame = doc.data()
+          if (currentGame) {
+            currentGame = { ...currentGame, id: doc.id }
+            // ************* is it safe to be asserting as GameObject here?
+            result.push(currentGame as GameObject)
+          }
+        })
+        return result.sort((a, b) => {
+          return a.title > b.title ? 1 : -1
+        })
       })
-      return result.sort((a, b) => {
-        return a.title > b.title ? 1 : -1
-      })
-    })
-    setGames(downloadedGames)
+      setGames(downloadedGames)
+    }
   }
 
   useEffect(() => {
