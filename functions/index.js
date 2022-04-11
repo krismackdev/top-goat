@@ -307,3 +307,31 @@ exports.gameUpdatesOnMatchWrites = functions.firestore
           
       return null;
     });
+
+    exports.matchUpdatesOnPlayerNameChange = functions.firestore
+    .document("players/{playerId}")
+    .onUpdate((change, context) => {
+      const playerId = context.params.playerId;
+      const { after } = change;
+      const newName = after.data().name;
+
+      db.collection("matches").get().then((querySnapShot) => {
+        const docs = querySnapShot.docs;
+        for (const doc of docs) {
+          if (typeof doc.data().participants[playerId] !== 'undefined') {
+            db.collection("matches").doc(doc.id)
+              .update({
+                participants: {
+                  ...doc.data().participants,
+                  [`${playerId}`]: {
+                    ...doc.data().participants[playerId],
+                    name: newName
+                  }
+                }
+              });
+          };
+        }
+      })
+
+      return null;
+    })

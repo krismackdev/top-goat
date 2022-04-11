@@ -228,6 +228,10 @@ export const MatchesContextProvider = ({
     setMatchesWithFetchedData()
   }, [user])
 
+  useEffect(() => {
+    setMatchesWithFetchedData()
+  }, [players])
+
   const returnFilteredMatches = useCallback(() => {
     if (!matches) {
       return undefined
