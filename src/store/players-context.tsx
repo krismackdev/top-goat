@@ -111,7 +111,9 @@ export const PlayersContextProvider = ({
       await deleteDoc(doc(db, 'players', id))
       setPlayersWithFetchedData()
     } catch (error) {
-      alert(error)
+      alert(
+        "Players can't be deleted until they are deleted from all existing matches"
+      )
     }
   }
 
