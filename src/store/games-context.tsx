@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MatchesContext } from './matches-context'
 import { createContext, useCallback, useEffect, useState } from 'react'
 import { auth, db } from '../firebase/config'
 import {
@@ -6,6 +7,7 @@ import {
   doc,
   deleteDoc,
   getDocs,
+  onSnapshot,
   query,
   setDoc,
   updateDoc,
@@ -160,6 +162,7 @@ export const GamesContextProvider = ({
   const [reverseSortGames, setReverseSortGames] = useState(false)
   const [gameFilterState, setGameFilterState] = useState(initialGameFilterState)
   const [user, setUser] = useState<firebaseUser | null>(null)
+  const { matches } = useContext(MatchesContext)
 
   onAuthStateChanged(auth, currentUser => {
     setUser(currentUser)
@@ -174,11 +177,7 @@ export const GamesContextProvider = ({
         const gamesRef = collection(db, 'games')
         const gamesQuery = query(
           gamesRef,
-          where(
-            'owner',
-            '==',
-            auth.currentUser !== null ? auth.currentUser.uid : ''
-          )
+          where('owner', '==', auth?.currentUser?.uid)
         )
         const gamesCollection = await getDocs(gamesQuery)
         return gamesCollection
@@ -201,14 +200,6 @@ export const GamesContextProvider = ({
       setGames(downloadedGames)
     }
   }
-
-  useEffect(() => {
-    setGamesWithFetchedData()
-  }, [])
-
-  useEffect(() => {
-    setGamesWithFetchedData()
-  }, [user])
 
   const returnFilteredGames = useCallback(() => {
     if (!games) {
@@ -299,10 +290,6 @@ export const GamesContextProvider = ({
     // return filtered games
     return res
   }, [games, gameFilterState])
-
-  useEffect(() => {
-    setFilteredGames(returnFilteredGames())
-  }, [games, returnFilteredGames])
 
   const addNewGame = async (newGame: GameObject): Promise<void> => {
     const { id, ...newGameWithoutId } = newGame
@@ -468,6 +455,22 @@ export const GamesContextProvider = ({
     await updateDoc(doc(db, 'games', id), { ...gameWithoutId })
     setGamesWithFetchedData()
   }
+
+  useEffect(() => {
+    setFilteredGames(returnFilteredGames())
+  }, [games, returnFilteredGames])
+
+  useEffect(() => {
+    setGamesWithFetchedData()
+  }, [])
+
+  useEffect(() => {
+    setGamesWithFetchedData()
+  }, [user])
+
+  useEffect(() => {
+    setGamesWithFetchedData()
+  }, [matches])
 
   return (
     <GamesContext.Provider
