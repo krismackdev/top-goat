@@ -42,47 +42,70 @@ const GamePage: React.FC = () => {
   return (
     <div className={styles['game-page-container']}>
       {formIsActive && <AddGameForm setFormIsActive={setFormIsActive} />}
-      <Grid container rowSpacing={1} columnSpacing={1}>
-        <IconButton onClick={() => setGridViewIsActive(prev => !prev)}>
-          {gridViewIsActive ? (
-            <GridOffIcon color="success" />
-          ) : (
-            <GridOnIcon color="success" />
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          margin: '0 auto',
+          marginBottom: showGameFilters ? 0 : 1,
+        }}
+      >
+        <Grid item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setFormIsActive(true)}
+          >
+            Add Game
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button
+            variant="contained"
+            onClick={() => setShowGameFilters(prev => !prev)}
+          >
+            FILTERS
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button variant="contained" onClick={resetGameFilterState}>
+            CLEAR
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <IconButton onClick={() => setGridViewIsActive(prev => !prev)}>
+            {gridViewIsActive ? (
+              <GridOffIcon color="success" />
+            ) : (
+              <GridOnIcon color="success" />
+            )}
+          </IconButton>
+        </Grid>
+        <Grid item sx={{ marginLeft: 2 }}>
+          {showGameFilters && tabGameValue !== '' && (
+            <GameFilter filter={tabGameValue} />
           )}
-        </IconButton>
-        <Button variant="contained" onClick={() => setFormIsActive(true)}>
-          Add Game
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setShowGameFilters(prev => !prev)}
-        >
-          {showGameFilters ? 'HIDE' : 'SHOW'} FILTERS
-        </Button>
-        <Button variant="contained" onClick={resetGameFilterState}>
-          CLEAR FILTERS
-        </Button>
-        {showGameFilters && tabGameValue !== '' && (
-          <GameFilter filter={tabGameValue} />
-        )}
+        </Grid>
       </Grid>
       {showGameFilters && (
-        <Tabs
-          sx={{ marginBottom: '5px', marginLeft: '5px' }}
-          value={tabGameValue}
-          onChange={(e, newVal) => setTabGameValue(newVal)}
-          variant="scrollable"
-          scrollButtons="auto"
-        >
-          <Tab value="played" label="played" />
-          <Tab value="one" label="one" />
-          <Tab value="two" label="two" />
-          <Tab value="three" label="three" />
-          <Tab value="four" label="four" />
-          <Tab value="five" label="five" />
-          <Tab value="lastPlayed" label="last Played" />
-          <Tab value="playCount" label="play Count" />
-        </Tabs>
+        <Grid container sx={{ width: '85%', margin: '0 auto' }}>
+          <Tabs
+            sx={{ marginBottom: '5px', marginLeft: '5px' }}
+            value={tabGameValue}
+            onChange={(e, newVal) => setTabGameValue(newVal)}
+            variant="scrollable"
+            scrollButtons="auto"
+          >
+            <Tab value="played" label="played" />
+            <Tab value="one" label="one" />
+            <Tab value="two" label="two" />
+            <Tab value="three" label="three" />
+            <Tab value="four" label="four" />
+            <Tab value="five" label="five" />
+            <Tab value="lastPlayed" label="last Played" />
+            <Tab value="playCount" label="play Count" />
+          </Tabs>
+        </Grid>
       )}
 
       <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>

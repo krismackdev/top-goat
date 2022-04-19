@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { GamesContext } from '../../store'
-import { FormControlLabel, Switch } from '@mui/material'
+import { FormControlLabel, Radio, RadioGroup, Switch } from '@mui/material'
 import './GameFilter.css'
 import { useEffect } from 'react'
 
 interface GameFilterProps {
   filter: string
 }
+
+type PlayedValues = 'any' | 'yes' | 'no'
 
 const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
   const { gameFilterState, setGameFilterState } = useContext(GamesContext)
@@ -32,63 +34,25 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
 
   if (filter === 'played') {
     return (
-      <>
-        <h3>Played:</h3>
-        <label htmlFor="playedFilterAny">Any</label>
-        <input
-          type="radio"
-          name="played"
-          id="playedFilterAny"
-          value="any"
-          checked={gameFilterState.played.value === 'any'}
-          onChange={e =>
-            setGameFilterState(prev => {
-              return {
-                ...prev,
-                played: {
-                  value: 'any',
-                },
-              }
-            })
-          }
-        />
-        <label htmlFor="playedFilterYes">Yes</label>
-        <input
-          type="radio"
-          name="played"
-          id="playedFilterYes"
-          value="yes"
-          checked={gameFilterState.played.value === 'yes'}
-          onChange={e =>
-            setGameFilterState(prev => {
-              return {
-                ...prev,
-                played: {
-                  value: 'yes',
-                },
-              }
-            })
-          }
-        />
-        <label htmlFor="playedFilterNo">No</label>
-        <input
-          type="radio"
-          name="played"
-          id="playedFilterNo"
-          value="no"
-          checked={gameFilterState.played.value === 'no'}
-          onChange={e =>
-            setGameFilterState(prev => {
-              return {
-                ...prev,
-                played: {
-                  value: 'no',
-                },
-              }
-            })
-          }
-        />
-      </>
+      <RadioGroup
+        row
+        sx={{ marginLeft: 2 }}
+        value={gameFilterState.played.value}
+        onChange={e =>
+          setGameFilterState(prev => {
+            return {
+              ...prev,
+              played: {
+                value: (e.target as HTMLInputElement).value as PlayedValues,
+              },
+            }
+          })
+        }
+      >
+        <FormControlLabel value="any" control={<Radio />} label="Any" />
+        <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+        <FormControlLabel value="no" control={<Radio />} label="No" />
+      </RadioGroup>
     )
   }
 
@@ -101,7 +65,6 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
   ) {
     return (
       <>
-        <h3>{`${filter} player${filter === 'one' ? '' : 's'}:`}</h3>
         <FormControlLabel
           control={
             <Switch
@@ -169,8 +132,6 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
   if (filter === 'lastPlayed') {
     return (
       <>
-        <h4>Last Played:</h4>
-
         <FormControlLabel
           control={
             <Switch
@@ -255,8 +216,6 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
   if (filter === 'playCount') {
     return (
       <>
-        <h4>Play Count:</h4>
-
         <FormControlLabel
           control={
             <Switch
