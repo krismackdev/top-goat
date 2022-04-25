@@ -1,6 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { GamesContext } from '../../store'
-import { FormControlLabel, Radio, RadioGroup, Switch } from '@mui/material'
+import {
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Switch,
+  TextField,
+} from '@mui/material'
 import './GameFilter.css'
 import { useEffect } from 'react'
 
@@ -131,7 +137,7 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
 
   if (filter === 'lastPlayed') {
     return (
-      <>
+      <div style={{ display: 'flex' }}>
         <FormControlLabel
           control={
             <Switch
@@ -150,12 +156,18 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
               size="small"
             />
           }
-          label="from"
+          label=""
           labelPlacement="start"
         />
 
-        <input
+        <TextField
           type="date"
+          size="small"
+          label="start"
+          sx={{
+            maxWidth: 150,
+            marginLeft: 2,
+          }}
           value={gameFilterState.lastPlayed.start}
           disabled={!gameFilterState.lastPlayed.usingStart}
           onChange={e =>
@@ -189,12 +201,18 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
               size="small"
             />
           }
-          label="to"
+          label=""
           labelPlacement="start"
         />
 
-        <input
+        <TextField
           type="date"
+          size="small"
+          label="end"
+          sx={{
+            maxWidth: 150,
+            marginLeft: 2,
+          }}
           value={gameFilterState.lastPlayed.end}
           disabled={!gameFilterState.lastPlayed.usingEnd}
           onChange={e =>
@@ -209,13 +227,13 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
             })
           }
         />
-      </>
+      </div>
     )
   }
 
   if (filter === 'playCount') {
     return (
-      <>
+      <div style={{ display: 'flex' }}>
         <FormControlLabel
           control={
             <Switch
@@ -234,14 +252,20 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
               size="small"
             />
           }
-          label="min"
+          label=""
           labelPlacement="start"
         />
-        <input
+        <TextField
           onChange={e => setMinValue(+e.target.value)}
           type="number"
           value={minValue}
           disabled={!gameFilterState.playCount.usingMin}
+          label="min"
+          size="small"
+          sx={{
+            maxWidth: 125,
+            marginLeft: 2,
+          }}
         />
 
         <FormControlLabel
@@ -262,16 +286,19 @@ const GameFilter: React.FC<GameFilterProps> = ({ filter }) => {
               size="small"
             />
           }
-          label="max"
+          label=""
           labelPlacement="start"
         />
-        <input
+        <TextField
           onChange={e => setMaxValue(+e.target.value)}
           type="number"
           value={maxValue}
+          label="max"
+          size="small"
           disabled={!gameFilterState.playCount.usingMax}
+          sx={{ maxWidth: 125, marginLeft: 2 }}
         />
-      </>
+      </div>
     )
   }
 
