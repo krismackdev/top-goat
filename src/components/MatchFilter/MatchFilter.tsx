@@ -28,8 +28,7 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
   if (filter === 'games') {
     if (games) {
       return (
-        <>
-          <h4>Games:</h4>
+        <div style={{ display: 'flex' }}>
           <Button
             onClick={() => {
               setMatchFilterState(prev => {
@@ -58,6 +57,7 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
             size="small"
             multiple
             limitTags={1}
+            sx={{ marginLeft: 2, minWidth: 150 }}
             value={matchFilterState.gamesArray}
             onChange={(e, newVal) => {
               setMatchFilterState(prev => {
@@ -77,16 +77,15 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
               />
             )}
           />
-        </>
+        </div>
       )
     }
   }
 
   if (filter === 'playedDate') {
     return (
-      <>
-        <h4 style={{ display: 'inline' }}>Played Date:</h4>
-        <FormGroup sx={{ display: 'inline', marginRight: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <FormGroup>
           <FormControlLabel
             control={
               <Switch
@@ -102,14 +101,21 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
                     }
                   })
                 }}
+                size="small"
               />
             }
-            label="from"
+            label=""
             labelPlacement="start"
           />
         </FormGroup>
-        <input
+        <TextField
           type="date"
+          label="start"
+          size="small"
+          sx={{
+            maxWidth: 150,
+            marginLeft: 2,
+          }}
           value={matchFilterState.dates.start}
           disabled={!matchFilterState.dates.usingStart}
           onChange={e => {
@@ -125,7 +131,7 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
           }}
         />
 
-        <FormGroup sx={{ display: 'inline', marginRight: '10px' }}>
+        <FormGroup>
           <FormControlLabel
             control={
               <Switch
@@ -141,15 +147,22 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
                     }
                   })
                 }}
+                size="small"
               />
             }
-            label="to"
+            label=""
             labelPlacement="start"
           />
         </FormGroup>
 
-        <input
+        <TextField
           type="date"
+          label="end"
+          size="small"
+          sx={{
+            maxWidth: 150,
+            marginLeft: 2,
+          }}
           value={matchFilterState.dates.end}
           disabled={!matchFilterState.dates.usingEnd}
           onChange={e => {
@@ -164,13 +177,12 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
             })
           }}
         />
-      </>
+      </div>
     )
   }
   if (filter === 'players') {
     return (
-      <>
-        <h3>Players: </h3>
+      <div style={{ marginLeft: 20, display: 'flex' }}>
         {players
           ?.map(player => {
             return player.name
@@ -178,29 +190,15 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
           .map(player => {
             return (
               <>
-                <FormControl size="small">
-                  <InputLabel
-                    id={`player-label-${player}`}
-                  >{`${player}`}</InputLabel>
+                <FormControl size="small" sx={{ m: 0.25, minWidth: 105 }}>
+                  <InputLabel id={`player-label-${player}`} sx={{ m: -0.5 }}>
+                    {`${player}`}
+                  </InputLabel>
                   <Select
                     labelId={`player-label-${player}`}
                     id={`player-${player}`}
                     value={matchFilterState.players[player]}
                     label={`${player}`}
-                    // onChange={e => {
-                    //   dispatch(
-                    //     filterMatchesActions.updateFilter({
-                    //       type: 'players',
-                    //       filter: {
-                    //         active: filterSettings.players.active,
-                    //         display: {
-                    //           ...filterSettings.players.display,
-                    //           [player]: e.target.value,
-                    //         },
-                    //       },
-                    //     })
-                    //   )
-                    // }}
                     onChange={e => {
                       setMatchFilterState(prev => {
                         return {
@@ -222,7 +220,7 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
               </>
             )
           })}
-      </>
+      </div>
     )
   }
 

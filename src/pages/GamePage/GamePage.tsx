@@ -47,7 +47,7 @@ const GamePage: React.FC = () => {
         sx={{
           width: '85%',
           margin: '0 auto',
-          marginBottom: showGameFilters ? 0 : 1,
+          marginBottom: showGameFilters ? 0 : 0.5,
         }}
       >
         <Grid item>

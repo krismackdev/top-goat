@@ -4,6 +4,7 @@ import styles from './PlayerPage.module.css'
 import { GameTableCell as PlayerTableCell } from '../../mui'
 import {
   Button,
+  Grid,
   Paper,
   Table,
   TableBody,
@@ -28,9 +29,24 @@ const PlayerPage = () => {
 
   return (
     <div className={styles['player-page-container']}>
-      <Button variant="contained" onClick={() => setFormIsActive(true)}>
-        Add Player
-      </Button>
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          margin: '0 auto',
+          marginBottom: 1,
+        }}
+      >
+        <Grid item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setFormIsActive(true)}
+          >
+            Add Player
+          </Button>
+        </Grid>
+      </Grid>
 
       {formIsActive && <AddPlayerForm setFormIsActive={setFormIsActive} />}
 

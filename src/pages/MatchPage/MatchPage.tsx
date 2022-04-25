@@ -44,36 +44,56 @@ const MatchPage: React.FC = () => {
 
   return (
     <div className="match-page-container">
-      <Grid container rowSpacing={1} columnSpacing={1}>
-        <Button variant="contained" onClick={() => setFormIsActive(true)}>
-          Add Match
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => setShowMatchFilters(prev => !prev)}
-        >
-          {showMatchFilters ? 'HIDE' : 'SHOW'} FILTERS
-        </Button>
-        <Button variant="contained" onClick={resetMatchFilterState}>
-          CLEAR FILTERS
-        </Button>
-
-        {showMatchFilters && tabMatchValue !== '' && (
-          <MatchFilter filter={tabMatchValue} />
-        )}
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          margin: '0 auto',
+          marginBottom: showMatchFilters ? 0 : 1,
+        }}
+      >
+        <Grid item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setFormIsActive(true)}
+          >
+            Add Match
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button
+            variant="contained"
+            onClick={() => setShowMatchFilters(prev => !prev)}
+          >
+            FILTERS
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button variant="contained" onClick={resetMatchFilterState}>
+            CLEAR
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 3 }}>
+          {showMatchFilters && tabMatchValue !== '' && (
+            <MatchFilter filter={tabMatchValue} />
+          )}
+        </Grid>
       </Grid>
       {showMatchFilters && (
-        <Tabs
-          sx={{ marginBottom: '5px', marginLeft: '5px' }}
-          value={tabMatchValue}
-          onChange={(e, newVal) => setTabMatchValue(newVal)}
-          variant="scrollable"
-          scrollButtons="auto"
-        >
-          <Tab value="games" label="games" />
-          <Tab value="playedDate" label="played date" />
-          <Tab value="players" label="players" />
-        </Tabs>
+        <Grid container sx={{ width: '85%', margin: '0 auto' }}>
+          <Tabs
+            sx={{ marginBottom: '5px', marginLeft: '5px' }}
+            value={tabMatchValue}
+            onChange={(e, newVal) => setTabMatchValue(newVal)}
+            variant="scrollable"
+            scrollButtons="auto"
+          >
+            <Tab value="games" label="games" />
+            <Tab value="playedDate" label="played date" />
+            <Tab value="players" label="players" />
+          </Tabs>
+        </Grid>
       )}
 
       {formIsActive && <AddMatchForm setFormIsActive={setFormIsActive} />}
