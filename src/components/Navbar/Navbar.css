@@ -1,6 +1,6 @@
-header {
+/* header {
   height: 70px;
-  background-color: rgb(48, 43, 43);
+  background-color: rgb(175, 111, 111);
   width: 100%;
   color: rgb(255, 255, 255);
   display: flex;
@@ -50,3 +50,9 @@ header nav ul li:last-child:hover {
   border-bottom: none;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  nav {
+    display: none;
+  }
+} */

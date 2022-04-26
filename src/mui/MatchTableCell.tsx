@@ -5,6 +5,7 @@ const MatchTableCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: '#333',
     color: 'white',
+    fontWeight: 'bold',
   },
   [`&.${tableCellClasses.body}`]: {
     padding: '0 16px',

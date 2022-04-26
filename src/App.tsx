@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import './App.css'
-import { Navbar, PrivateRoute } from './components'
+import { PrivateRoute } from './components'
 import { LogInPage, GamePage, MatchPage, PlayerPage, SignUpPage } from './pages'
 import { Routes, Route } from 'react-router-dom'
 import { auth } from './firebase/config'
+import { ResponsiveAppBar } from './mui'
 import { onAuthStateChanged } from 'firebase/auth'
 
 const App: React.FC = () => {
@@ -15,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      {user && <Navbar />}
+      {user && <ResponsiveAppBar />}
       <Routes>
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signup" element={<SignUpPage />} />

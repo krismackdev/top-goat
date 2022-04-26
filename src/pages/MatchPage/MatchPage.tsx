@@ -10,6 +10,7 @@ import {
   Tab,
   Table,
   TableBody,
+  TableCell,
   TableContainer,
   TableHead,
   TableRow,
@@ -48,6 +49,7 @@ const MatchPage: React.FC = () => {
         container
         sx={{
           width: '85%',
+          maxWidth: '1500px',
           margin: '0 auto',
           marginBottom: showMatchFilters ? 0 : 1,
         }}
@@ -81,7 +83,10 @@ const MatchPage: React.FC = () => {
         </Grid>
       </Grid>
       {showMatchFilters && (
-        <Grid container sx={{ width: '85%', margin: '0 auto' }}>
+        <Grid
+          container
+          sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
+        >
           <Tabs
             sx={{ marginBottom: '5px', marginLeft: '5px' }}
             value={tabMatchValue}
@@ -98,7 +103,10 @@ const MatchPage: React.FC = () => {
 
       {formIsActive && <AddMatchForm setFormIsActive={setFormIsActive} />}
 
-      <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
+      <TableContainer
+        component={Paper}
+        sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
+      >
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -184,7 +192,7 @@ const MatchPage: React.FC = () => {
               ))
             ) : (
               <TableRow>
-                <MatchTableCell>No matches to show...</MatchTableCell>
+                <TableCell>NO MATCHES FOUND</TableCell>
               </TableRow>
             )}
           </TableBody>

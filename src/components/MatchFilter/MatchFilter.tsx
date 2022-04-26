@@ -25,6 +25,8 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
   const { games } = useContext(GamesContext)
   const { players } = useContext(PlayersContext)
 
+  console.log('players HERE =', players)
+
   if (filter === 'games') {
     if (games) {
       return (
@@ -183,6 +185,7 @@ const MatchFilter: React.FC<MatchFilterProps> = ({ filter }) => {
   if (filter === 'players') {
     return (
       <div style={{ marginLeft: 20, display: 'flex' }}>
+        {/* {players.length === 0 && 'no players to filter'} */}
         {players
           ?.map(player => {
             return player.name

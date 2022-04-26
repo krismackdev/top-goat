@@ -33,6 +33,7 @@ const PlayerPage = () => {
         container
         sx={{
           width: '85%',
+          maxWidth: '1500px',
           margin: '0 auto',
           marginBottom: 1,
         }}
@@ -50,7 +51,10 @@ const PlayerPage = () => {
 
       {formIsActive && <AddPlayerForm setFormIsActive={setFormIsActive} />}
 
-      <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
+      <TableContainer
+        component={Paper}
+        sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
+      >
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -96,7 +100,7 @@ const PlayerPage = () => {
               ))
             ) : (
               <TableRow>
-                <PlayerTableCell>NO GAMES FOUND</PlayerTableCell>
+                <PlayerTableCell>NO PLAYERS FOUND</PlayerTableCell>
               </TableRow>
             )}
           </TableBody>

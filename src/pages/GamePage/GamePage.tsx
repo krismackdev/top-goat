@@ -46,6 +46,7 @@ const GamePage: React.FC = () => {
         container
         sx={{
           width: '85%',
+          maxWidth: '1500px',
           margin: '0 auto',
           marginBottom: showGameFilters ? 0 : 0.5,
         }}
@@ -88,7 +89,10 @@ const GamePage: React.FC = () => {
         </Grid>
       </Grid>
       {showGameFilters && (
-        <Grid container sx={{ width: '85%', margin: '0 auto' }}>
+        <Grid
+          container
+          sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
+        >
           <Tabs
             sx={{ marginBottom: '5px', marginLeft: '5px' }}
             value={tabGameValue}
@@ -108,7 +112,10 @@ const GamePage: React.FC = () => {
         </Grid>
       )}
 
-      <TableContainer component={Paper} sx={{ width: '85%', margin: '0 auto' }}>
+      <TableContainer
+        component={Paper}
+        sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
+      >
         <Table size="small">
           {gridViewIsActive ? (
             <>
