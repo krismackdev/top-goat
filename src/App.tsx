@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import './App.css'
 import { PrivateRoute } from './components'
-import { LogInPage, GamePage, MatchPage, PlayerPage, SignUpPage } from './pages'
+import {
+  LogInPage,
+  DashboardPage,
+  GamePage,
+  MatchPage,
+  PlayerPage,
+  SignUpPage,
+} from './pages'
 import { Routes, Route } from 'react-router-dom'
 import { auth } from './firebase/config'
 import { ResponsiveAppBar } from './mui'
@@ -21,6 +28,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<PrivateRoute user={user} />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/games" element={<GamePage />} />
           <Route path="/matches" element={<MatchPage />} />
           <Route path="/players" element={<PlayerPage />} />

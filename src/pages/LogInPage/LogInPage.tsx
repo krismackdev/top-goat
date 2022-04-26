@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LogInPage.module.css'
 import { auth } from '../../firebase/config'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import {
   onAuthStateChanged,
   sendPasswordResetEmail,
-  signOut,
   signInWithEmailAndPassword,
   User as firebaseUser,
 } from 'firebase/auth'
@@ -41,14 +40,7 @@ const LogInPage: React.FC = () => {
   }
 
   if (user) {
-    return (
-      <>
-        <h2>You are logged in as: {user.email}</h2>
-        <Button onClick={() => signOut(auth)} variant="contained">
-          Logout
-        </Button>
-      </>
-    )
+    return <Navigate to="/dashboard" />
   }
 
   return (

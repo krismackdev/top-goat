@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebase/config'
-import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -16,7 +16,6 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
 const pages = ['Games', 'Matches', 'Players']
-const settings = ['Dashboard', 'Account', 'Logout']
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -151,12 +150,11 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key="dashboard" onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Dashboard</Typography>
-              </MenuItem>
-              <MenuItem key="account" onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Account</Typography>
-              </MenuItem>
+              <Link to="/dashboard">
+                <MenuItem key="account" onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Account</Typography>
+                </MenuItem>
+              </Link>
               <MenuItem
                 key="logout"
                 onClick={() => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { LogInPage } from '../../pages'
 
 interface PrivateRouteProps {
@@ -7,7 +7,7 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ user }) => {
-  return user ? <Outlet /> : <LogInPage />
+  return user ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default PrivateRoute

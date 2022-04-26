@@ -1,3 +1,4 @@
+export { default as DashboardPage } from './DashboardPage/DashboardPage'
 export { default as GamePage } from './GamePage/GamePage'
 export { default as MatchPage } from './MatchPage/MatchPage'
 export { default as LogInPage } from './LogInPage/LogInPage'
