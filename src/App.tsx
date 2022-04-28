@@ -6,6 +6,7 @@ import {
   DashboardPage,
   GamePage,
   MatchPage,
+  NotFoundPage,
   PlayerPage,
   SignUpPage,
 } from './pages'
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/games" element={<GamePage />} />
           <Route path="/matches" element={<MatchPage />} />
           <Route path="/players" element={<PlayerPage />} />
+          <Route path="/*" element={<NotFoundPage user={user} />} />
         </Route>
       </Routes>
     </>

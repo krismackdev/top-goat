@@ -1,6 +1,7 @@
 export { default as DashboardPage } from './DashboardPage/DashboardPage'
 export { default as GamePage } from './GamePage/GamePage'
 export { default as MatchPage } from './MatchPage/MatchPage'
+export { default as NotFoundPage } from './NotFoundPage/NotFoundPage'
 export { default as LogInPage } from './LogInPage/LogInPage'
 export { default as PlayerPage } from './PlayerPage/PlayerPage'
 export { default as SignUpPage } from './SignUpPage/SignUpPage'

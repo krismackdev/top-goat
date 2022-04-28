@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import Container from '@mui/material/Container'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
@@ -131,7 +132,8 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0, marginLeft: 2 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {/* <Avatar alt="Remy Sharp" src="./avatar.png" /> */}
+                <AccountCircleIcon color="primary" fontSize="large" />
               </IconButton>
             </Tooltip>
             <Menu
