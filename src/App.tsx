@@ -3,7 +3,7 @@ import './App.css'
 import { PrivateRoute } from './components'
 import {
   LogInPage,
-  DashboardPage,
+  AccountPage,
   GamePage,
   MatchPage,
   NotFoundPage,
@@ -29,7 +29,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<PrivateRoute user={user} />}>
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/games" element={<GamePage />} />
           <Route path="/matches" element={<MatchPage />} />
           <Route path="/players" element={<PlayerPage />} />

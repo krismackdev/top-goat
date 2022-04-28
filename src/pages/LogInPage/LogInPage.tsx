@@ -40,7 +40,7 @@ const LogInPage: React.FC = () => {
   }
 
   if (user) {
-    return <Navigate to="/dashboard" />
+    return <Navigate to="/games" />
   }
 
   return (

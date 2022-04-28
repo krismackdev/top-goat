@@ -1,4 +1,4 @@
-export { default as DashboardPage } from './DashboardPage/DashboardPage'
+export { default as AccountPage } from './AccountPage/AccountPage'
 export { default as GamePage } from './GamePage/GamePage'
 export { default as MatchPage } from './MatchPage/MatchPage'
 export { default as NotFoundPage } from './NotFoundPage/NotFoundPage'
