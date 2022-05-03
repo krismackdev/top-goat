@@ -14,6 +14,10 @@ const VerifyEmailPage = () => {
       <button onClick={handleClick}>
         Click here to resend verification email
       </button>
+      <p>
+        If you already clicked the link in the email, please refresh the page to
+        continue
+      </p>
     </div>
   )
 }

@@ -24,9 +24,13 @@ const LogInPage: React.FC = () => {
     return () => unsub()
   }, [])
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    try {
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    } catch (err) {
+      alert(err)
+    }
   }
 
   const handleReset = async () => {
