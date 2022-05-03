@@ -9,8 +9,9 @@ import {
   NotFoundPage,
   PlayerPage,
   SignUpPage,
+  VerifyEmailPage,
 } from './pages'
-import { Routes, Route } from 'react-router-dom'
+import { Navigate, Routes, Route } from 'react-router-dom'
 import { auth } from './firebase/config'
 import { ResponsiveAppBar } from './mui'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -22,12 +23,21 @@ const App: React.FC = () => {
     setUser(currentUser)
   })
 
+  user
+    ? console.log('IN APP, USER.EV =', user.emailVerified)
+    : console.log('user not defined')
+
+  if (user && !user.emailVerified) {
+    return <VerifyEmailPage />
+  }
+
   return (
     <>
-      {user && <ResponsiveAppBar />}
+      {user && user.emailVerified && <ResponsiveAppBar />}
       <Routes>
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/verifyemail" element={<VerifyEmailPage />} />
         <Route path="/" element={<PrivateRoute user={user} />}>
           <Route path="/account" element={<AccountPage />} />
           <Route path="/games" element={<GamePage />} />
