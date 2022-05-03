@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useState } from 'react'
 import { MatchesContext, PlayersContext } from '../../store'
 import { AddMatchForm, MatchFilter, MatchTableRow } from '../../components'
 import MatchTableCell from '../../mui/MatchTableCell'
-import './MatchPage.css'
+import styles from './MatchPage.module.css'
 import {
   Button,
   Grid,
@@ -44,7 +44,7 @@ const MatchPage: React.FC = () => {
   }
 
   return (
-    <div className="match-page-container">
+    <div className={styles['match-page-container']}>
       <Grid
         container
         sx={{
@@ -53,6 +53,7 @@ const MatchPage: React.FC = () => {
           margin: '0 auto',
           marginBottom: showMatchFilters ? 0 : 1,
         }}
+        className={styles.singleGrid}
       >
         <Grid item>
           <Button
@@ -82,13 +83,68 @@ const MatchPage: React.FC = () => {
           )}
         </Grid>
       </Grid>
+
+      {/* below is same as above, but uses 2 grid containers, so that filters go on next line and are styled better at breakpoint */}
+
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          maxWidth: '1500px',
+          margin: '0 auto',
+          marginBottom: showMatchFilters ? 2.4 : 1,
+          display: 'none',
+        }}
+        className={styles.dualGrid}
+      >
+        <Grid item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setFormIsActive(true)}
+          >
+            Add Match
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button
+            variant="contained"
+            onClick={() => setShowMatchFilters(prev => !prev)}
+          >
+            FILTERS
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button variant="contained" onClick={resetMatchFilterState}>
+            CLEAR
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          maxWidth: '1500px',
+          margin: '0 auto',
+          marginBottom: showMatchFilters ? 0 : 1,
+          display: 'none',
+        }}
+        className={styles.dualGrid}
+      >
+        <Grid item sx={{ marginLeft: -2 }}>
+          {showMatchFilters && tabMatchValue !== '' && (
+            <MatchFilter filter={tabMatchValue} />
+          )}
+        </Grid>
+      </Grid>
+
       {showMatchFilters && (
         <Grid
           container
           sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
         >
           <Tabs
-            sx={{ marginBottom: '5px', marginLeft: '5px' }}
+            sx={{ marginBottom: '5px', marginLeft: -1.5 }}
             value={tabMatchValue}
             onChange={(e, newVal) => setTabMatchValue(newVal)}
             variant="scrollable"

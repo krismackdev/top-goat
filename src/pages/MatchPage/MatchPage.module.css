@@ -1,0 +1,14 @@
+.match-page-container {
+  background-color: rgb(159, 173, 185);
+  height: calc(100vh - 70px);
+  padding: 40px 0;
+}
+
+@media (max-width: 950px) {
+  .singleGrid {
+    display: none !important;
+  }
+  .dualGrid {
+    display: flex !important;
+  }
+}

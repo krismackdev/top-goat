@@ -50,6 +50,7 @@ const GamePage: React.FC = () => {
           margin: '0 auto',
           marginBottom: showGameFilters ? 0 : 0.5,
         }}
+        className={styles.singleGrid}
       >
         <Grid item>
           <Button
@@ -88,13 +89,77 @@ const GamePage: React.FC = () => {
           )}
         </Grid>
       </Grid>
+
+      {/* below is same as above, but uses 2 grid containers, so that filters go on next line and are styled better at breakpoint */}
+
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          maxWidth: '1500px',
+          margin: '0 auto',
+          marginBottom: showGameFilters ? 2 : 0.5,
+          display: 'none',
+        }}
+        className={styles.dualGrid}
+      >
+        <Grid item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setFormIsActive(true)}
+          >
+            Add Game
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button
+            variant="contained"
+            onClick={() => setShowGameFilters(prev => !prev)}
+          >
+            FILTERS
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <Button variant="contained" onClick={resetGameFilterState}>
+            CLEAR
+          </Button>
+        </Grid>
+        <Grid item sx={{ marginLeft: 1 }}>
+          <IconButton onClick={() => setGridViewIsActive(prev => !prev)}>
+            {gridViewIsActive ? (
+              <GridOffIcon color="success" />
+            ) : (
+              <GridOnIcon color="success" />
+            )}
+          </IconButton>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        sx={{
+          width: '85%',
+          maxWidth: '1500px',
+          margin: '0 auto',
+          marginBottom: showGameFilters ? 0 : 0.5,
+          display: 'none',
+        }}
+        className={styles.dualGrid}
+      >
+        <Grid item sx={{ marginLeft: -2 }}>
+          {showGameFilters && tabGameValue !== '' && (
+            <GameFilter filter={tabGameValue} />
+          )}
+        </Grid>
+      </Grid>
+
       {showGameFilters && (
         <Grid
           container
           sx={{ width: '85%', maxWidth: '1500px', margin: '0 auto' }}
         >
           <Tabs
-            sx={{ marginBottom: '5px', marginLeft: '5px' }}
+            sx={{ marginBottom: '5px', marginLeft: -1.5 }}
             value={tabGameValue}
             onChange={(e, newVal) => setTabGameValue(newVal)}
             variant="scrollable"

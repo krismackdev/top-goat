@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import styles from './SignUpPage.module.css'
-import { Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { auth } from '../../firebase/config'
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
   User as firebaseUser,
 } from 'firebase/auth'
 import { Button, TextField } from '@mui/material'
@@ -25,14 +24,7 @@ const SignUpPage = () => {
   }
 
   if (user) {
-    return (
-      <>
-        <h2>You are logged in as: {user.email}</h2>
-        <Button onClick={() => signOut(auth)} variant="contained">
-          Logout
-        </Button>
-      </>
-    )
+    return <Navigate to="/games" />
   }
 
   return (
