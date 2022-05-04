@@ -7,7 +7,6 @@ import {
   doc,
   deleteDoc,
   getDocs,
-  onSnapshot,
   query,
   setDoc,
   updateDoc,
@@ -126,6 +125,7 @@ const initialGameFilterState: GameFilterStateObject = {
 
 export const GamesContext = createContext<{
   addNewGame: (newGame: GameObject) => void
+  deleteAllGames: () => void
   deleteGame: (id: string) => void
   gameFilterState: GameFilterStateObject
   filteredGames: GameObject[] | undefined
@@ -140,6 +140,7 @@ export const GamesContext = createContext<{
   updateGame: (game: GameObject) => void
 }>({
   addNewGame: () => {},
+  deleteAllGames: () => {},
   deleteGame: () => {},
   gameFilterState: initialGameFilterState,
   filteredGames: undefined,
@@ -299,6 +300,15 @@ export const GamesContextProvider = ({
 
   const deleteGame = async (id: string): Promise<void> => {
     await deleteDoc(doc(db, 'games', id))
+    setGamesWithFetchedData()
+  }
+
+  const deleteAllGames = async () => {
+    if (games) {
+      for (let game of games) {
+        await deleteDoc(doc(db, 'games', game.id))
+      }
+    }
     setGamesWithFetchedData()
   }
 
@@ -476,6 +486,7 @@ export const GamesContextProvider = ({
     <GamesContext.Provider
       value={{
         addNewGame,
+        deleteAllGames,
         deleteGame,
         gameFilterState,
         filteredGames,

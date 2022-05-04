@@ -11,7 +11,7 @@ import {
   SignUpPage,
   VerifyEmailPage,
 } from './pages'
-import { Navigate, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { auth } from './firebase/config'
 import { ResponsiveAppBar } from './mui'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -22,10 +22,6 @@ const App: React.FC = () => {
   onAuthStateChanged(auth, currentUser => {
     setUser(currentUser)
   })
-
-  user
-    ? console.log('IN APP, USER.EV =', user.emailVerified)
-    : console.log('user not defined')
 
   if (user && !user.emailVerified) {
     return <VerifyEmailPage />

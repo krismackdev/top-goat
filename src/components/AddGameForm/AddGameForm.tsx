@@ -180,8 +180,6 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
     initialAddGameState
   )
 
-  console.log('addGameState =', addGameState)
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (

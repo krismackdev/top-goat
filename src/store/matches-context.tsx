@@ -84,6 +84,7 @@ type MatchesContextProviderProps = { children: React.ReactNode }
 
 export const MatchesContext = createContext<{
   addNewMatch: (newGame: MatchObjectWithStringScore) => void
+  deleteAllMatches: () => void
   deleteMatch: (id: string) => void
   filteredMatches: MatchObject[] | undefined
   matches: MatchObject[] | undefined
@@ -97,6 +98,7 @@ export const MatchesContext = createContext<{
   updateMatch: (match: MatchObject) => void
 }>({
   addNewMatch: () => {},
+  deleteAllMatches: () => {},
   deleteMatch: () => {},
   filteredMatches: undefined,
   matches: undefined,
@@ -333,6 +335,16 @@ export const MatchesContextProvider = ({
     setGamesWithFetchedData()
   }
 
+  const deleteAllMatches = async () => {
+    if (matches) {
+      for (let match of matches) {
+        await deleteDoc(doc(db, 'matches', match.id))
+      }
+    }
+    await setMatchesWithFetchedData()
+    setGamesWithFetchedData()
+  }
+
   const resetMatchFilterState = () => {
     setMatchFilterState(initialMatchFilterState)
   }
@@ -438,6 +450,7 @@ export const MatchesContextProvider = ({
     <MatchesContext.Provider
       value={{
         addNewMatch,
+        deleteAllMatches,
         deleteMatch,
         filteredMatches,
         matches,

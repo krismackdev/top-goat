@@ -32,6 +32,7 @@ type PlayersContextProviderProps = { children: React.ReactNode }
 
 export const PlayersContext = createContext<{
   addNewPlayer: (newPlayerName: string) => void
+  deleteAllPlayers: () => void
   deletePlayer: (id: string) => void
   players: PlayerObject[] | undefined
   reverseSortPlayers: boolean
@@ -39,6 +40,7 @@ export const PlayersContext = createContext<{
   updatePlayerName: (player: PlayerObject) => void
 }>({
   addNewPlayer: () => {},
+  deleteAllPlayers: () => {},
   deletePlayer: () => {},
   players: undefined,
   reverseSortPlayers: false,
@@ -117,6 +119,15 @@ export const PlayersContextProvider = ({
     }
   }
 
+  const deleteAllPlayers = async () => {
+    if (players) {
+      for (let player of players) {
+        await deleteDoc(doc(db, 'players', player.id))
+      }
+    }
+    setPlayersWithFetchedData()
+  }
+
   const sortPlayers = (payload: SortPlayerArg): void => {
     switch (payload.field) {
       case 'player':
@@ -186,6 +197,7 @@ export const PlayersContextProvider = ({
     <PlayersContext.Provider
       value={{
         addNewPlayer,
+        deleteAllPlayers,
         deletePlayer,
         players,
         reverseSortPlayers,
