@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { GamesContext, MatchesContext, PlayersContext } from '../../store'
+import { auth } from '../../firebase/config'
+import { deleteUser } from 'firebase/auth'
 import './DeleteConfirmation.css'
 import {
   Button,
@@ -12,7 +14,7 @@ import {
 interface DeleteConfirmationProps {
   setShowDeleteConfirmation: React.Dispatch<React.SetStateAction<boolean>>
   id: string
-  type: 'game' | 'match' | 'player'
+  type: 'game' | 'match' | 'player' | 'data' | 'user'
 }
 
 const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
@@ -20,11 +22,11 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
   id,
   type,
 }) => {
-  const { deleteGame } = useContext(GamesContext)
-  const { deleteMatch } = useContext(MatchesContext)
-  const { deletePlayer } = useContext(PlayersContext)
+  const { deleteAllGames, deleteGame } = useContext(GamesContext)
+  const { deleteAllMatches, deleteMatch } = useContext(MatchesContext)
+  const { deleteAllPlayers, deletePlayer } = useContext(PlayersContext)
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     switch (type) {
       case 'game':
         deleteGame(id)
@@ -35,6 +37,20 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
       case 'player':
         deletePlayer(id)
         break
+      case 'data':
+        deleteAllGames()
+        deleteAllMatches()
+        deleteAllPlayers()
+        break
+      case 'user':
+        if (auth.currentUser) {
+          try {
+            await deleteUser(auth.currentUser)
+          } catch (err) {
+            alert(err)
+          }
+        }
+        break
     }
     setShowDeleteConfirmation(false)
   }
@@ -42,10 +58,25 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
   return (
     <Dialog open={true} onClose={() => setShowDeleteConfirmation(false)}>
       <DialogTitle>
-        Are you sure you want to delete this {`${type}`}?
+        {['game', 'match', 'player'].includes(type)
+          ? `Are you sure you want to delete this ${type}?`
+          : ''}
+        {type === 'data'
+          ? 'Are you sure you want to delete all your data?'
+          : ''}
+        {type === 'user' ? 'WARNING! ACCOUNT DELETION IS PERMANENT' : ''}
       </DialogTitle>
       <DialogContent>
-        <DialogActions>
+        {type === 'user' ? (
+          <p>
+            Are you sure you want to delete your account? You will no longer be
+            able to sign in to topgoat.com, and all of your data will be
+            permantly deleted.
+          </p>
+        ) : (
+          ''
+        )}
+        <DialogActions sx={{ marginTop: type === 'user' ? 2 : 0 }}>
           <Button
             sx={{ color: 'black' }}
             onClick={() => setShowDeleteConfirmation(false)}
@@ -53,7 +84,7 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
             Cancel
           </Button>
           <Button variant="contained" color="error" onClick={handleDelete}>
-            Delete
+            Delete {type === 'user' ? 'Forever' : ''}
           </Button>
         </DialogActions>
       </DialogContent>

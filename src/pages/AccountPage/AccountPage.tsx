@@ -2,17 +2,19 @@ import React, { useContext, useEffect, useState } from 'react'
 import { auth } from '../../firebase/config'
 import styles from './AccountPage.module.css'
 import { onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth'
-import { DeleteUserConfirmation } from '../../components'
+import { DeleteConfirmation } from '../../components'
 import { GamesContext, MatchesContext, PlayersContext } from '../../store'
 
 const AccountPage = () => {
   const [userEmail, setUserEmail] = useState('')
   const [showDeleteUserConfirmation, setShowDeleteUserConfirmation] =
     useState(false)
+  const [showDeleteDataConfirmation, setShowDeleteDataConfirmation] =
+    useState(false)
 
-  const { deleteAllGames, games } = useContext(GamesContext)
-  const { deleteAllMatches, matches } = useContext(MatchesContext)
-  const { deleteAllPlayers, players } = useContext(PlayersContext)
+  const { games } = useContext(GamesContext)
+  const { matches } = useContext(MatchesContext)
+  const { players } = useContext(PlayersContext)
 
   const createdDateWithoutFormatting = auth?.currentUser?.metadata.creationTime
     ? new Date(auth.currentUser.metadata.creationTime).toISOString()
@@ -43,8 +45,6 @@ const AccountPage = () => {
     }
   }
 
-  const handleDelete = () => {}
-
   const downloadFile = ({ data, fileName, fileType }: any) => {
     // Create a blob with the data we want to download as a file
     const blob = new Blob([data], { type: fileType })
@@ -74,19 +74,23 @@ const AccountPage = () => {
     })
   }
 
-  const handleDataDeletion = () => {
-    deleteAllGames()
-    deleteAllMatches()
-    deleteAllPlayers()
-  }
-
   return (
     <div className={styles['account-page-container']}>
       {showDeleteUserConfirmation && (
-        <DeleteUserConfirmation
-          setShowDeleteUserConfirmation={setShowDeleteUserConfirmation}
+        <DeleteConfirmation
+          setShowDeleteConfirmation={setShowDeleteUserConfirmation}
+          type="user"
+          id="none"
         />
       )}
+      {showDeleteDataConfirmation && (
+        <DeleteConfirmation
+          type="data"
+          setShowDeleteConfirmation={setShowDeleteDataConfirmation}
+          id="none"
+        />
+      )}
+
       <p>Registration Date: {createdDateWithFormatting}</p>
       <br />
 
@@ -104,7 +108,9 @@ const AccountPage = () => {
       <button onClick={handleDownload}>Download your data</button>
       <br />
       <br />
-      <button onClick={handleDataDeletion}>Delete all your data</button>
+      <button onClick={() => setShowDeleteDataConfirmation(true)}>
+        Delete all your data
+      </button>
     </div>
   )
 }
