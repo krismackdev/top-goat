@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { auth } from '../../firebase/config'
 import styles from './AccountPage.module.css'
-import { onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth'
+import {
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signOut,
+} from 'firebase/auth'
 import { DeleteConfirmation } from '../../components'
 import { GamesContext, MatchesContext, PlayersContext } from '../../store'
 
@@ -97,20 +101,26 @@ const AccountPage = () => {
       <p>Email: {userEmail}</p>
       <br />
 
-      <button onClick={handlePasswordReset}>Reset Password?</button>
+      <button onClick={handlePasswordReset}>Reset Password</button>
       <br />
       <br />
       <button onClick={() => setShowDeleteUserConfirmation(true)}>
-        Delete Your Account?
+        Delete Account
       </button>
       <br />
       <br />
-      <button onClick={handleDownload}>Download your data</button>
+      <button onClick={handleDownload}>Download Data</button>
       <br />
       <br />
       <button onClick={() => setShowDeleteDataConfirmation(true)}>
-        Delete all your data
+        Delete Data
       </button>
+      <br />
+      <br />
+      <button onClick={() => {}}>Import Data</button>
+      <br />
+      <br />
+      <button onClick={() => signOut(auth)}>Logout</button>
     </div>
   )
 }

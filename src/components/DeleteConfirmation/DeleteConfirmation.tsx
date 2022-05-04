@@ -76,7 +76,17 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
         ) : (
           ''
         )}
-        <DialogActions sx={{ marginTop: type === 'user' ? 2 : 0 }}>
+        {type === 'game' ? (
+          <p>
+            <span style={{ color: 'red' }}>WARNING!</span> Deleting a game will
+            also delete all of that game's matches!
+          </p>
+        ) : (
+          ''
+        )}
+        <DialogActions
+          sx={{ marginTop: type === 'user' || type === 'game' ? 2 : 0 }}
+        >
           <Button
             sx={{ color: 'black' }}
             onClick={() => setShowDeleteConfirmation(false)}

@@ -331,7 +331,27 @@ exports.gameUpdatesOnMatchWrites = functions.firestore
               });
           };
         }
-      })
-
+      }) 
       return null;
     })
+
+// when deleting a game, this will delete all associated matches
+exports.deleteMatchesAfterGameDeletion = functions.firestore
+  .document("games/{gameId}")
+  .onDelete((snap, context) => {
+    const gameId = context.params.gameId;
+    functions.logger.log("just deleted game with id = ", gameId);
+
+    db.collection("matches").get().then((querySnapShot) => {
+      const docs = querySnapShot.docs;
+      for (const doc of docs) {
+        if (doc.data().gameId === gameId) {
+          functions.logger.log("about to delete match with id = ", doc.id);
+          db.collection("matches").doc(doc.id)
+            .delete();
+        };
+      }
+    }) 
+
+  return null;
+  })
