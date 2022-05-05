@@ -125,6 +125,7 @@ const initialGameFilterState: GameFilterStateObject = {
 
 export const GamesContext = createContext<{
   addNewGame: (newGame: GameObject) => void
+  addNewGameFromImportedData: (newGame: GameObject) => void
   deleteAllGames: () => void
   deleteGame: (id: string) => void
   gameFilterState: GameFilterStateObject
@@ -140,6 +141,7 @@ export const GamesContext = createContext<{
   updateGame: (game: GameObject) => void
 }>({
   addNewGame: () => {},
+  addNewGameFromImportedData: () => {},
   deleteAllGames: () => {},
   deleteGame: () => {},
   gameFilterState: initialGameFilterState,
@@ -295,6 +297,17 @@ export const GamesContextProvider = ({
   const addNewGame = async (newGame: GameObject): Promise<void> => {
     const { id, ...newGameWithoutId } = newGame
     await setDoc(doc(db, 'games', newGame.id), newGameWithoutId)
+    setGamesWithFetchedData()
+  }
+
+  const addNewGameFromImportedData = async (
+    newGame: GameObject
+  ): Promise<void> => {
+    const { id, ...newGameWithoutId } = newGame
+    await setDoc(doc(db, 'games', id), {
+      ...newGameWithoutId,
+      owner: auth.currentUser?.uid,
+    })
     setGamesWithFetchedData()
   }
 
@@ -486,6 +499,7 @@ export const GamesContextProvider = ({
     <GamesContext.Provider
       value={{
         addNewGame,
+        addNewGameFromImportedData,
         deleteAllGames,
         deleteGame,
         gameFilterState,

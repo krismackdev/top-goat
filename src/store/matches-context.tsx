@@ -84,6 +84,7 @@ type MatchesContextProviderProps = { children: React.ReactNode }
 
 export const MatchesContext = createContext<{
   addNewMatch: (newGame: MatchObjectWithStringScore) => void
+  addNewMatchFromImportedData: (newGame: MatchObjectWithStringScore) => void
   deleteAllMatches: () => void
   deleteMatch: (id: string) => void
   filteredMatches: MatchObject[] | undefined
@@ -98,6 +99,7 @@ export const MatchesContext = createContext<{
   updateMatch: (match: MatchObject) => void
 }>({
   addNewMatch: () => {},
+  addNewMatchFromImportedData: () => {},
   deleteAllMatches: () => {},
   deleteMatch: () => {},
   filteredMatches: undefined,
@@ -329,6 +331,20 @@ export const MatchesContextProvider = ({
     setGamesWithFetchedData()
   }
 
+  const addNewMatchFromImportedData = async (
+    newMatch: MatchObjectWithStringScore
+  ): Promise<void> => {
+    const { id, ...matchWithoutId } = newMatch
+    await setDoc(doc(db, 'matches', id), {
+      ...matchWithoutId,
+      playOrder: currentPlayOrder ? currentPlayOrder + 1 : 1,
+      owner: auth.currentUser?.uid,
+    })
+    console.log('AFTER SETDOC...')
+    await setMatchesWithFetchedData()
+    setGamesWithFetchedData()
+  }
+
   const deleteMatch = async (id: string): Promise<void> => {
     await deleteDoc(doc(db, 'matches', id))
     await setMatchesWithFetchedData()
@@ -450,6 +466,7 @@ export const MatchesContextProvider = ({
     <MatchesContext.Provider
       value={{
         addNewMatch,
+        addNewMatchFromImportedData,
         deleteAllMatches,
         deleteMatch,
         filteredMatches,

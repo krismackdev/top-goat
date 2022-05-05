@@ -10,15 +10,17 @@ import { DeleteConfirmation } from '../../components'
 import { GamesContext, MatchesContext, PlayersContext } from '../../store'
 
 const AccountPage = () => {
+  const [uploadedFiles, setUploadedFiles] = useState<any>(null)
   const [userEmail, setUserEmail] = useState('')
   const [showDeleteUserConfirmation, setShowDeleteUserConfirmation] =
     useState(false)
   const [showDeleteDataConfirmation, setShowDeleteDataConfirmation] =
     useState(false)
 
-  const { games } = useContext(GamesContext)
-  const { matches } = useContext(MatchesContext)
-  const { players } = useContext(PlayersContext)
+  const { addNewGameFromImportedData, addNewGame, games } =
+    useContext(GamesContext)
+  const { addNewMatchFromImportedData, matches } = useContext(MatchesContext)
+  const { addNewPlayerFromImportedData, players } = useContext(PlayersContext)
 
   const createdDateWithoutFormatting = auth?.currentUser?.metadata.creationTime
     ? new Date(auth.currentUser.metadata.creationTime).toISOString()
@@ -78,6 +80,38 @@ const AccountPage = () => {
     })
   }
 
+  const handleFileUpload = (e: any) => {
+    const fileReader = new FileReader()
+    fileReader.readAsText(e.target.files[0], 'UTF-8')
+    fileReader.onload = e => {
+      setUploadedFiles(e.target?.result)
+    }
+  }
+
+  const handleDataImport = (e: any) => {
+    let importedData
+    try {
+      importedData = JSON.parse(uploadedFiles)
+    } catch (err) {
+      alert(err)
+    }
+    if (
+      'games' in importedData &&
+      'matches' in importedData &&
+      'players' in importedData
+    ) {
+      for (let game of importedData.games) {
+        addNewGameFromImportedData(game)
+      }
+      for (let match of importedData.matches) {
+        addNewMatchFromImportedData(match)
+      }
+      for (let player of importedData.players) {
+        addNewPlayerFromImportedData(player)
+      }
+    }
+  }
+
   return (
     <div className={styles['account-page-container']}>
       {showDeleteUserConfirmation && (
@@ -117,7 +151,11 @@ const AccountPage = () => {
       </button>
       <br />
       <br />
-      <button onClick={() => {}}>Import Data</button>
+      <h4>Import Data</h4>
+      <input type="file" onChange={handleFileUpload} />
+      <br />
+
+      <button onClick={handleDataImport}>Import into Top Goat</button>
       <br />
       <br />
       <button onClick={() => signOut(auth)}>Logout</button>

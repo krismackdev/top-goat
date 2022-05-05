@@ -24,6 +24,12 @@ interface PlayerObject {
   score: number
 }
 
+interface PlayerObjectComplete extends PlayerObject {
+  scoreMap?: {
+    field: number
+  }
+}
+
 interface SortPlayerArg {
   field: string
 }
@@ -32,6 +38,7 @@ type PlayersContextProviderProps = { children: React.ReactNode }
 
 export const PlayersContext = createContext<{
   addNewPlayer: (newPlayerName: string) => void
+  addNewPlayerFromImportedData: (playerObj: PlayerObjectComplete) => void
   deleteAllPlayers: () => void
   deletePlayer: (id: string) => void
   players: PlayerObject[] | undefined
@@ -40,6 +47,7 @@ export const PlayersContext = createContext<{
   updatePlayerName: (player: PlayerObject) => void
 }>({
   addNewPlayer: () => {},
+  addNewPlayerFromImportedData: () => {},
   deleteAllPlayers: () => {},
   deletePlayer: () => {},
   players: undefined,
@@ -108,6 +116,17 @@ export const PlayersContextProvider = ({
     setPlayersWithFetchedData()
   }
 
+  const addNewPlayerFromImportedData = async (
+    playerObj: PlayerObjectComplete
+  ): Promise<void> => {
+    const { id, ...playerObjWithoutId } = playerObj
+
+    await setDoc(doc(db, 'players', id), {
+      ...playerObjWithoutId,
+      owner: auth.currentUser?.uid,
+    })
+  }
+
   const deletePlayer = async (id: string): Promise<void> => {
     try {
       await deleteDoc(doc(db, 'players', id))
@@ -120,10 +139,20 @@ export const PlayersContextProvider = ({
   }
 
   const deleteAllPlayers = async () => {
-    if (players) {
-      for (let player of players) {
-        await deleteDoc(doc(db, 'players', player.id))
+    try {
+      if (players) {
+        for (let player of players) {
+          await setDoc(doc(db, 'players', player.id), {
+            ...player,
+            matchesPlayed: [],
+          })
+        }
+        for (let player of players) {
+          await deleteDoc(doc(db, 'players', player.id))
+        }
       }
+    } catch (err) {
+      alert(err)
     }
     setPlayersWithFetchedData()
   }
@@ -197,6 +226,7 @@ export const PlayersContextProvider = ({
     <PlayersContext.Provider
       value={{
         addNewPlayer,
+        addNewPlayerFromImportedData,
         deleteAllPlayers,
         deletePlayer,
         players,
