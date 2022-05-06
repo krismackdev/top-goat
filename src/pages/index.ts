@@ -1,5 +1,6 @@
 export { default as AccountPage } from './AccountPage/AccountPage'
 export { default as GamePage } from './GamePage/GamePage'
+export { default as GameDetailPage } from './GameDetailPage/GameDetailPage'
 export { default as MatchPage } from './MatchPage/MatchPage'
 export { default as NotFoundPage } from './NotFoundPage/NotFoundPage'
 export { default as LogInPage } from './LogInPage/LogInPage'

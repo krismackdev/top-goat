@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './App.css'
 import { PrivateRoute } from './components'
 import {
   LogInPage,
   AccountPage,
   GamePage,
+  GameDetailPage,
   MatchPage,
   NotFoundPage,
   PlayerPage,
@@ -16,7 +17,11 @@ import { auth } from './firebase/config'
 import { ResponsiveAppBar } from './mui'
 import { onAuthStateChanged } from 'firebase/auth'
 
+import { MatchesContext } from './store'
+
 const App: React.FC = () => {
+  const { matches } = useContext(MatchesContext)
+
   const [user, setUser] = useState<any>(null)
 
   onAuthStateChanged(auth, currentUser => {
@@ -37,6 +42,7 @@ const App: React.FC = () => {
         <Route path="/" element={<PrivateRoute user={user} />}>
           <Route path="/account" element={<AccountPage />} />
           <Route path="/games" element={<GamePage />} />
+          <Route path="/games/:id" element={<GameDetailPage />} />
           <Route path="/matches" element={<MatchPage />} />
           <Route path="/players" element={<PlayerPage />} />
           <Route path="/*" element={<NotFoundPage user={user} />} />

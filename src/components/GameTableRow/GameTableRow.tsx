@@ -2,6 +2,7 @@ import React, { useContext, useReducer, useState } from 'react'
 import { GamesContext } from '../../store'
 import './GameTableRow.css'
 import { DeleteConfirmation } from '../../components'
+import { Navigate } from 'react-router-dom'
 import { GameTableCell, StyledTextField } from '../../mui'
 import { IconButton, MenuItem, Select, TableRow } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel'
@@ -144,6 +145,7 @@ const editGameRowReducer = (
 
 const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+  const [showGameDetailPage, setShowGameDetailPage] = useState(false)
 
   const initialGameRowState: EditGameObject = {
     id: game.id,
@@ -183,6 +185,10 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
 
   const handleMatchDelete = (): void => {
     setShowDeleteConfirmation(true)
+  }
+
+  if (showGameDetailPage) {
+    return <Navigate to={`/games/${game.id}`} />
   }
 
   if (editGameRowState.isActive) {
@@ -415,7 +421,14 @@ const GameTableRow: React.FC<GameTableRowProps> = ({ game }) => {
           />
         )}
         <TableRow key={game.id}>
-          <GameTableCell>{game.title}</GameTableCell>
+          <GameTableCell
+            sx={{
+              '&:hover': { cursor: 'pointer', backgroundColor: '#EEE' },
+            }}
+            onClick={() => setShowGameDetailPage(true)}
+          >
+            {game.title}
+          </GameTableCell>
           <GameTableCell align="center">
             <img
               style={{ maxWidth: '30px' }}

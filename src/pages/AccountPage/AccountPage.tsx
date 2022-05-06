@@ -93,7 +93,7 @@ const AccountPage = () => {
     try {
       importedData = JSON.parse(uploadedFiles)
     } catch (err) {
-      alert(err)
+      alert('Must be a valid JSON file')
     }
     if (
       'games' in importedData &&
@@ -109,6 +109,9 @@ const AccountPage = () => {
       for (let player of importedData.players) {
         addNewPlayerFromImportedData(player)
       }
+      alert('Import was successful!')
+    } else {
+      alert('File must have same structure as exported data')
     }
   }
 

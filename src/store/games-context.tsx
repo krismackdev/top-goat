@@ -1,6 +1,11 @@
-import React, { useContext } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { MatchesContext } from './matches-context'
-import { createContext, useCallback, useEffect, useState } from 'react'
 import { auth, db } from '../firebase/config'
 import {
   collection,
@@ -80,6 +85,28 @@ interface GameFilterStateObject {
   }
 }
 
+type Result = 'win' | 'loss' | 'draw' | 'n/a'
+
+interface PlayerResultObject {
+  name: string
+  result: Result
+  score: string
+}
+
+interface ParticipantsObject {
+  [prop: string]: PlayerResultObject
+}
+
+interface MatchObject {
+  id: string
+  date: string
+  game: string
+  gameId: string
+  owner: string
+  playOrder: number
+  participants: ParticipantsObject
+}
+
 const initialGameFilterState: GameFilterStateObject = {
   lastPlayed: {
     start: new Date().toISOString().slice(0, 10),
@@ -129,6 +156,10 @@ export const GamesContext = createContext<{
   deleteAllGames: () => void
   deleteGame: (id: string) => void
   gameFilterState: GameFilterStateObject
+  getHighScores: (
+    id: string | undefined,
+    matches: MatchObject[] | undefined
+  ) => any
   filteredGames: GameObject[] | undefined
   games: GameObject[] | undefined
   resetGameFilterState: () => void
@@ -145,6 +176,7 @@ export const GamesContext = createContext<{
   deleteAllGames: () => {},
   deleteGame: () => {},
   gameFilterState: initialGameFilterState,
+  getHighScores: () => {},
   filteredGames: undefined,
   games: undefined,
   resetGameFilterState: () => {},
@@ -325,6 +357,33 @@ export const GamesContextProvider = ({
     setGamesWithFetchedData()
   }
 
+  const getHighScores = (
+    id: string | undefined,
+    matches: MatchObject[] | undefined
+  ): any => {
+    const result: any = {}
+    if (matches) {
+      for (let match of matches) {
+        if (match.gameId === id) {
+          for (let playerKey of Object.keys(match.participants)) {
+            // console.log('playerData ====== ', match.participants[playerKey])
+            if (playerKey in result) {
+              console.log('IF RAN')
+              result[playerKey].push(+match.participants[playerKey].score)
+            } else {
+              console.log('ELSE RAN')
+              result[playerKey] = []
+            }
+          }
+        }
+      }
+    }
+    for (let playerId of Object.keys(result)) {
+      result[playerId].sort((a: number, b: number) => b - a)
+    }
+    return result
+  }
+
   const resetGameFilterState = () => {
     setGameFilterState(initialGameFilterState)
   }
@@ -503,6 +562,7 @@ export const GamesContextProvider = ({
         deleteAllGames,
         deleteGame,
         gameFilterState,
+        getHighScores,
         filteredGames,
         games,
         resetGameFilterState,
