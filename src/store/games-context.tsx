@@ -366,13 +366,10 @@ export const GamesContextProvider = ({
       for (let match of matches) {
         if (match.gameId === id) {
           for (let playerKey of Object.keys(match.participants)) {
-            // console.log('playerData ====== ', match.participants[playerKey])
             if (playerKey in result) {
-              console.log('IF RAN')
               result[playerKey].push(+match.participants[playerKey].score)
             } else {
-              console.log('ELSE RAN')
-              result[playerKey] = []
+              result[playerKey] = [+match.participants[playerKey].score]
             }
           }
         }

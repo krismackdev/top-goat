@@ -20,7 +20,6 @@ const GameDetailPage = () => {
 
   topThreeScores = topThreeScores
     .sort((a: any, b: any) => {
-      console.log('a1, b1 =', a[0], b[0])
       if (isNaN(a[0])) {
         return 1
       }
@@ -37,9 +36,28 @@ const GameDetailPage = () => {
     })
     .slice(0, 3)
 
-  console.log('topThreeScores =', topThreeScores)
+  const topScoresByPlayer: any = {}
 
-  console.log('players here = ', players)
+  if (players) {
+    for (let player of players) {
+      topScoresByPlayer[player.id] = NaN
+    }
+    for (let pId of Object.keys(scores)) {
+      for (let points of scores[pId]) {
+        if (!isNaN(points)) {
+          if (
+            points > topScoresByPlayer[pId] ||
+            isNaN(topScoresByPlayer[pId])
+          ) {
+            topScoresByPlayer[pId] = points
+          }
+        }
+      }
+    }
+  }
+
+  console.log('topScoresByPlayer =', topScoresByPlayer)
+
   return (
     <>
       <h2>{currentGame?.title}</h2>
@@ -48,7 +66,9 @@ const GameDetailPage = () => {
       <br />
       <br />
       <h4>High Scores</h4>
-      <p>Top 3 overall</p>
+      <br />
+
+      <p>Top 3:</p>
       <br />
 
       {topThreeScores.map(score => {
@@ -58,6 +78,21 @@ const GameDetailPage = () => {
               {players?.find(pObj => pObj.id === score[1])?.name}: {score[0]}
             </p>
           </>
+        )
+      })}
+      <br />
+      <p>Top Score By Player:</p>
+      <br />
+      {players?.map(player => {
+        return (
+          <div key={player.id}>
+            <p>
+              {player.name}:{' '}
+              {isNaN(topScoresByPlayer[player.id])
+                ? 'n/a'
+                : topScoresByPlayer[player.id]}
+            </p>
+          </div>
         )
       })}
     </>

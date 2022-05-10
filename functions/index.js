@@ -5,6 +5,7 @@ const { match } = require("assert");
 admin.initializeApp();
 const db = admin.firestore();
 
+
 // update players' scores & matchesPlayed on every match write
 exports.playerUpdatesOnMatchWrites = functions.firestore
     .document("matches/{matchId}")
@@ -308,43 +309,43 @@ exports.gameUpdatesOnMatchWrites = functions.firestore
       return null;
     });
 
-    exports.matchUpdatesOnPlayerNameChange = functions.firestore
-    .document("players/{playerId}")
-    .onUpdate((change, context) => {
-      const playerId = context.params.playerId;
-      const { after } = change;
-      const newName = after.data().name;
+exports.matchUpdatesOnPlayerNameChange = functions.firestore
+  .document("players/{playerId}")
+  .onUpdate((change, context) => {
+    const playerId = context.params.playerId;
+    const { after } = change;
+    const newName = after.data().name;
 
-      db.collection("matches").get().then((querySnapShot) => {
-        const docs = querySnapShot.docs;
-        for (const doc of docs) {
-          if (typeof doc.data().participants[playerId] !== 'undefined') {
-            db.collection("matches").doc(doc.id)
-              .update({
-                participants: {
-                  ...doc.data().participants,
-                  [`${playerId}`]: {
-                    ...doc.data().participants[playerId],
-                    name: newName
-                  }
+    db.collection("matches").get().then((querySnapShot) => {
+      const docs = querySnapShot.docs;
+      for (const doc of docs) {
+        if (typeof doc.data().participants[playerId] !== 'undefined') {
+          db.collection("matches").doc(doc.id)
+            .update({
+              participants: {
+                ...doc.data().participants,
+                [`${playerId}`]: {
+                  ...doc.data().participants[playerId],
+                  name: newName
                 }
-              });
-          };
-        }
-      }) 
-      return null;
-    })
+              }
+            });
+        };
+      }
+    }) 
+    return null;
+  })
 
 // when deleting a game, this will delete all associated matches
 exports.deleteMatchesAfterGameDeletion = functions.firestore
   .document("games/{gameId}")
   .onDelete((snap, context) => {
     const gameId = context.params.gameId;
-    functions.logger.log("just deleted game with id = ", gameId);
+    functions.logger.log("LOGGER: just deleted game with id = ", gameId);
 
     db.collection("matches").get().then((querySnapShot) => {
       const docs = querySnapShot.docs;
-      for (const doc of docs) {
+      for (let doc of docs) {
         if (doc.data().gameId === gameId) {
           functions.logger.log("about to delete match with id = ", doc.id);
           db.collection("matches").doc(doc.id)
@@ -353,5 +354,140 @@ exports.deleteMatchesAfterGameDeletion = functions.firestore
       }
     }) 
 
+    return null;
+  })
+
+// add the playerRatings object to each game when created by user
+exports.giveNewGamesAPlayerRatingsObject = functions.firestore
+  .document("games/{gameId}")
+  .onCreate((snap, context) => {
+    const gameId = context.params.gameId;
+    functions.logger.log("LOGGER: adding playerRatings to game with id =", gameId);
+
+    const playerRatings = {}
+
+    db.collection("players").get().then((querySnapShot) => {
+      const docs = querySnapShot.docs;
+      for (let doc of docs) {
+        functions.logger.log("LOGGER: playerRatings now =", playerRatings)
+        playerRatings[doc.id] = {
+          score: "0.0",
+          scoreMap: {},
+        }
+      }
+      db.collection("games").doc(`${gameId}`).update({
+        playerRatings,
+      });
+    })
+
   return null;
   })
+
+// when deleting a player, remove that player from each game's playerRatings object
+exports.removePlayerFromPlayerRatingsInAllGames = functions.firestore
+  .document("players/{playerId}")
+  .onDelete((snap, context) => {
+    const playerId = context.params.playerId;
+
+    db.collection("games").get().then((querySnapShot) => {
+      const docs = querySnapShot.docs;
+      for (let doc of docs) {
+        const newPlayerRatings = {...doc.data().playerRatings}
+        delete newPlayerRatings[playerId]
+        db.collection("games").doc(doc.id)
+          .update({
+            playerRatings: newPlayerRatings
+          });
+      }
+    }) 
+
+    return null;
+  })
+
+// when adding a new player, add said player to each game's playerRatings object
+exports.addNewPlayerToEachGamesPlayerRatings = functions.firestore
+  .document("players/{playerId}")
+  .onCreate((snap, context) => {
+    const playerId = context.params.playerId;
+    functions.logger.log("LOGGER: adding new player to each game's playerRatings object");
+
+    db.collection("games").get().then((querySnapShot) => {
+      const docs = querySnapShot.docs;
+      for (let doc of docs) {
+        db.collection("games").doc(doc.id)
+          .update({
+            playerRatings: {
+              ...doc.data().playerRatings,
+              [playerId]: {
+                score: "0.0",
+                scoreMap: {}
+              }
+            }
+          })
+      }
+    })
+  
+    return null;
+  })
+
+  // on match create, update its game's playerRating > playerId > score & scoreMap for each player
+  exports.calculatePlayerScoresOnAGameAfterMatchAddition = functions.firestore
+    .document("matches/{matchId}")
+    .onCreate((snap, context) => {
+      functions.logger.log("MOST RECENT RUNNING...");
+
+      const matchId = context.params.matchId;
+      const gameId = snap.data().gameId;
+
+      const toBeAddedScores = {};
+
+      const newMatchPlayers = Object.entries(snap.data().participants);
+
+      // this excludes players with n/a results from being counted for scoring purposes
+      const totalNumberOfPlayers = newMatchPlayers.filter(entry => {
+        return entry[1].result === 'win' || entry[1].result === 'loss'
+      }).length
+
+      for (const player of newMatchPlayers) {
+        let newScore = 'skip'
+
+        if (player[1].result === 'loss') {
+          newScore = -1 * ( 1 / totalNumberOfPlayers )
+        } else if (player[1].result === 'win') {
+          newScore = 1 + ( -1 * ( 1 / totalNumberOfPlayers ) )
+        }
+        
+        if (newScore !== 'skip') {
+          toBeAddedScores[player[0]] = newScore
+        }
+      }
+
+      db.collection("games")
+      .doc(`${gameId}`)
+      .get()
+      .then((queryDocSnap) => {
+        return queryDocSnap.get("playerRatings");
+      })
+      .then((playerRatings) => {
+        const newPlayerRatings = {...playerRatings}
+        for (let playerId of Object.keys(toBeAddedScores)) {
+          newPlayerRatings[playerId].scoreMap[matchId] = toBeAddedScores[playerId]
+          newPlayerRatings[playerId].score = (100 * (Object.values( newPlayerRatings[playerId].scoreMap).reduce((tot,cur) => tot + cur) / Object.values( newPlayerRatings[playerId].scoreMap).length)).toFixed(1)
+        }
+        db.collection("games").doc(`${gameId}`)
+          .update({
+            playerRatings: newPlayerRatings
+          })
+        })
+
+
+      // DONE iterate all particpants in the match
+      // DONE calculate each of their scores, put all this info in a toBeAddedScores object
+      // DONE extract the gameId from the created match
+      // DONE get that game & extract playerRatings to a copied variable newPlayerRatings
+      // DONE iterate toBeAddedScores object, and insert scores into newPlayerRatings
+        // DONE during this same loop, run util helper function to calculate new score & update it
+      // DONE set playerRatings to updated version
+
+      return null;
+    })

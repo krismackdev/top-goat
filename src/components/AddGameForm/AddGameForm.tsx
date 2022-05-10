@@ -175,6 +175,7 @@ const AddGameForm: React.FC<AddGameFormProps> = ({ setFormIsActive }) => {
       five: 'no',
     },
   }
+
   const [addGameState, dispatch] = useReducer(
     addGameStateReducer,
     initialAddGameState
